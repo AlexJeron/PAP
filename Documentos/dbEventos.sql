@@ -45,12 +45,12 @@ primary key (turma_id)
 
 create table evento (
 evento_id int auto_increment,
+utilizador_id int not null,
+espectador_id int not null,
 local_id int,
-utilizador_id int,
-espectador_id int,
-inicio datetime,
+inicio datetime not null,
 fim datetime,
-atividade varchar(250),
+atividade varchar(250) not null,
 foreign key (local_id) references local (local_id),
 foreign key (utilizador_id) references utilizador (utilizador_id),
 foreign key (espectador_id) references espectador (espectador_id),
