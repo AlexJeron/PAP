@@ -1,6 +1,6 @@
-create database dbEventos;
+create database BiblioRaul;
 
-use dbEventos;
+use BiblioRaul;
 
 create table utilizador (
 utilizador_id int auto_increment,
@@ -81,16 +81,3 @@ foreign key (turma_id) references turma (turma_id),
 foreign key (evento_id) references evento (evento_id),
 primary key (turma_id, evento_id)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
