@@ -21,6 +21,10 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-@yield('content')
+
+<body class="{{ Request::path() === "login" ? "bg-gradient-primary" : "" }}"
+    id="{{ Request::path() === "dashboard" ? "page-top" : "" }}">
+    @yield('content')
+</body>
 
 </html>

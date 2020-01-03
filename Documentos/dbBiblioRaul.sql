@@ -10,8 +10,8 @@ email varchar(100) not null,
 primary key (utilizador_id)
 );
 
-create table espectador (
-espectador_id int auto_increment,
+create table total_espectadores (
+total_espectadores_id int auto_increment,
 numero_alunos int,
 numero_professores int,
 numero_pais int,
@@ -46,7 +46,7 @@ primary key (turma_id)
 create table evento (
 evento_id int auto_increment,
 utilizador_id int not null,
-espectador_id int not null,
+total_espectadores_id int not null,
 local_id int,
 inicio datetime not null,
 fim datetime,
