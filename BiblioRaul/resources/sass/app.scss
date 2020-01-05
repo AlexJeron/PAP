@@ -12,6 +12,8 @@ $fa-font-path: "../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 
+@import "~open-iconic/font/css/open-iconic-bootstrap.min.css";
+
 #BiblioRaul {
   font-weight: 300;
   font-size: 24px;
@@ -21,4 +23,8 @@ $fa-font-path: "../webfonts";
 #Raul {
   font-weight: 900;
   color: #098dd2;
+}
+
+.sidebar-icon {
+  margin-top: 10rem;
 }

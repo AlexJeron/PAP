@@ -17,8 +17,9 @@
     <!-- Nav Item - Dashboard -->
     <li class="{{ Request::path() === "/" ? "nav-item active" : "nav-item" }}">
         <a class="nav-link" href="/">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <div class="oi oi-dashboard"></div>
+            <span>Dashboard</span>
+        </a>
     </li>
 
     <!-- Divider -->
