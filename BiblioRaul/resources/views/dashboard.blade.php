@@ -1,5 +1,13 @@
 @extends("layout")
 
+@section('title')
+
+<head>
+    <title>BiblioRaul - Dashboard</title>
+</head>
+
+@endsection
+
 @section("content")
 
 <!-- Page Wrapper -->
