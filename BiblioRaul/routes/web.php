@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    $professor = App\Professor::latest()->get();
-    return view('dashboard', ['professor' => $professor]);
+    $professores = App\Professor::take(3)->latest()->get();
+    return view('dashboard', ['professores' => $professores]);
 });
 
 Route::get('/login', function () {

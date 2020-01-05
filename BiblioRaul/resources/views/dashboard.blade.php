@@ -319,8 +319,8 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                                @foreach ($professor as $elemento_professor)
-                                <p>{{ $elemento_professor->nome }}</p>
+                                @foreach ($professores as $professor)
+                                <p>{{ $professor->nome }}</p>
                                 @endforeach
                             </div>
                         </div>
