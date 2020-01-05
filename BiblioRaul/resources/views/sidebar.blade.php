@@ -11,14 +11,17 @@
         <div class="sidebar-brand-text mx-3" id="BiblioRaul">Biblio<span id="Raul">Raul</span></div>
     </a>
     <!-- <img src="/img/BiblioRaul.png" alt="BiblioRaul" width="100%" height="3%"> -->
+
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
     <li class="{{ Request::path() === "/" ? "nav-item active" : "nav-item" }}">
         <a class="nav-link" href="/">
-            <div class="oi oi-dashboard"></div>
-            <span>Dashboard</span>
+            <div class="row">
+                <div class="col-2 oi oi-dashboard"></div>
+                <span class="col-10 sidebar-item-label">Dashboard</span>
+            </div>
         </a>
     </li>
 

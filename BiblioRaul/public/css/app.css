@@ -5901,10 +5901,15 @@ readers do not read off random characters that represent icons */
 
 #Raul {
   font-weight: 900;
-  color: #098dd2;
 }
 
-.sidebar-icon {
-  margin-top: 10rem;
+.sidebar-item-label {
+  padding: 0;
+}
+
+.bg-gradient-primary {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #0772AB), to(#055F78));
+  background-image: linear-gradient(180deg, #0772AB 10%, #055F78 100%);
+  background-size: cover;
 }
 
