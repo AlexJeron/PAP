@@ -9,4 +9,3 @@ class Professor extends Model
     protected $table = "Professor";
     protected $primaryKey = 'professor_id';
 }
-

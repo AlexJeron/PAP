@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateprofessoresTable extends Migration
+class CreateProfessoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateprofessoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('professores', function (Blueprint $table) {
-            $table->bigIncrements('professor_id');
+        Schema::create('Professor', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nome');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateprofessoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professores');
+        Schema::dropIfExists('Professor');
     }
 }
