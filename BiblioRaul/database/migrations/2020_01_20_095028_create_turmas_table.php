@@ -11,15 +11,13 @@ class CreateTurmasTable extends Migration
      *
      * @return void
      */
-
     public function up()
     {
-        Schema::create('turmas', function (Blueprint $table) {
+        Schema::create('turma', function (Blueprint $table) {
             $table->bigIncrements('turma_id');
-            $table->string('nome_turma');
+            $table->string('nome', '10');
             $table->timestamps();
         });
-        // Schema::rename('turmas', 'turma');
     }
 
     /**
@@ -29,6 +27,6 @@ class CreateTurmasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('turmas');
+        Schema::dropIfExists('turma');
     }
 }
