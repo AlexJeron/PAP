@@ -25,6 +25,6 @@ Route::get('/tables', function () {
     return view('tables');
 });
 
-Auth::routes(['register' => false]);
+Auth::routes( /*['register' => false]*/);
 
 Route::get('/home', 'HomeController@index')->name('home');
