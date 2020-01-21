@@ -40,19 +40,21 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Um email válido é: a@b.c">
+                        <label for="email" class="lblLogin">Email</label>
                         <input class="input100 @error('email') is-invalid @enderror" value="{{ old('email') }}"
                             type="text" name="email" id="email" autocomplete="email" autofocus>
                         @error('email')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert" style="position:absolute">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                        <span class="focus-input100" data-placeholder="Email"></span>
+                        <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Insira uma palavra-passe">
+                        <label for="password" class="lblLogin">Password</label>
                         <span class="btn-show-pass">
-                            <i class="zmdi zmdi-eye"></i>
+                            <i class="zmdi zmdi-eye" style="margin-top:25px"></i>
                         </span>
                         <input class="input100 @error('password') is-invalid @enderror" type="password" name="password"
                             id="password" autocomplete="current-password">
@@ -62,7 +64,7 @@
                         </span>
                         @enderror
 
-                        <span class="focus-input100" data-placeholder="Password"></span>
+                        <span class="focus-input100"></span>
                     </div>
 
                     <div class="container-login100-form-btn" style="margin-bottom:3rem">

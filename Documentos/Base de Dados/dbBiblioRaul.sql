@@ -2,12 +2,13 @@ CREATE DATABASE BiblioRaul;
 
 USE BiblioRaul;
 
-CREATE TABLE utilizador (
-  utilizador_id int AUTO_INCREMENT,
+CREATE TABLE user (
+  user_id int AUTO_INCREMENT,
   nome varchar(50) NOT NULL,
-  PASSWORD varchar(250) NOT NULL,
-  email varchar(100) NOT NULL,
-  PRIMARY KEY (utilizador_id)
+  PASSWORD varchar(255) NOT NULL,
+  email varchar(255) NOT NULL,
+  token_lembrar varchar(255),
+  PRIMARY KEY (user_id)
 );
 
 CREATE TABLE total_espectadores (
@@ -15,19 +16,21 @@ CREATE TABLE total_espectadores (
   numero_alunos int,
   numero_professores int,
   numero_pais int,
-  outros varchar(250),
+  outros varchar(255),
   PRIMARY KEY (espectador_id)
 );
 
 CREATE TABLE LOCAL (
   local_id int AUTO_INCREMENT,
   nome varchar(50) NOT NULL,
+  espaço int,
   PRIMARY KEY (local_id)
 );
 
 CREATE TABLE recurso (
   recurso_id int AUTO_INCREMENT,
   nome varchar(50) NOT NULL,
+  quantidade int,
   PRIMARY KEY (recurso_id)
 );
 
@@ -39,20 +42,20 @@ CREATE TABLE professor (
 
 CREATE TABLE turma (
   turma_id int AUTO_INCREMENT,
-  nome_turma varchar(10) NOT NULL,
+  nome varchar(10) NOT NULL,
   PRIMARY KEY (turma_id)
 );
 
 CREATE TABLE evento (
   evento_id int AUTO_INCREMENT,
-  utilizador_id int NOT NULL,
+  user_id int NOT NULL,
   total_espectadores_id int NOT NULL,
   local_id int,
   inicio datetime NOT NULL,
   fim datetime,
-  atividade varchar(250) NOT NULL,
+  atividade varchar(255) NOT NULL,
   FOREIGN KEY (local_id) REFERENCES LOCAL (local_id),
-  FOREIGN KEY (utilizador_id) REFERENCES utilizador (utilizador_id),
+  FOREIGN KEY (user_id) REFERENCES USER (user_id),
   FOREIGN KEY (espectador_id) REFERENCES espectador (espectador_id),
   PRIMARY KEY (evento_id)
 );
