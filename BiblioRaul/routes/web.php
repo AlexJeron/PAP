@@ -13,8 +13,8 @@
 
 Route::get('/', function () {
     $professores = App\Professor::take(3)->latest()->get();
-    $utilizadores = App\Utilizador::take(3)->latest()->get();
-    return view('dashboard-template', ['professores' => $professores, 'utilizadores' => $utilizadores]);
+    $users = App\Utilizador::take(3)->latest()->get();
+    return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
 });
 
 Route::get('/login', function () {

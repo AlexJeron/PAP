@@ -327,8 +327,8 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                                @foreach ($utilizadores as $utilizador)
-                                <p>{{ $utilizador->password }}</p>
+                                @foreach ($users as $user)
+                                <p>{{ $user->password }}</p>
                                 @endforeach
                             </div>
                         </div>
