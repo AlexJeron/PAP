@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login-temp', function () {
-    return view('login-template');
+    return view('login-template-2');
 });
 
 Route::get('/tables', function () {
