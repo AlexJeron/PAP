@@ -7,7 +7,7 @@ CREATE TABLE user (
   nome varchar(50) NOT NULL,
   PASSWORD varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
-  token_lembrar varchar(255),
+  remember_token varchar(255),
   PRIMARY KEY (user_id)
 );
 
