@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
 });
 
-Route::get('/login-temp', function () {
-    return view('login-template-2');
+Route::get('/login', function () {
+    return view('login');
 });
 
 Route::get('/tables', function () {
