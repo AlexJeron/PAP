@@ -7,7 +7,16 @@
 </head>
 
 @endsection
-
+@if(session()->has('alert'))
+<div id="message">
+    <div style="padding: 5px;">
+        <div id="inner-message" class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Já tem sessão iniciada!
+        </div>
+    </div>
+</div>
+@endif
 @section("content")
 
 <!-- Page Wrapper -->
@@ -366,7 +375,7 @@
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="js/sb-admin-2.js"></script>
 
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>
@@ -374,4 +383,9 @@
 <!-- Page level custom scripts -->
 <script src="js/demo/chart-area-demo.js"></script>
 <script src="js/demo/chart-pie-demo.js"></script>
+
+<script>
+
+</script>
+
 @endsection
