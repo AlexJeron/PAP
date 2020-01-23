@@ -14,7 +14,7 @@
 Route::get('/', function () {
     $professores = App\Professor::take(3)->latest()->get();
     $users = App\User::take(3)->latest()->get();
-    return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
+    return view('dashboard', ['professores' => $professores, 'users' => $users]);
 })->middleware('auth');
 
 Route::get('/login', function () {
@@ -22,11 +22,9 @@ Route::get('/login', function () {
 });
 
 Route::get('/tables', function () {
-    return view('tables');
+    return view('tables-template');
 })->middleware('auth');
 
 Auth::routes( /*['register' => false]*/);
-
-// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

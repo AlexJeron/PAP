@@ -1,4 +1,4 @@
-@extends("layout")
+@extends('layouts.main')
 
 @section('title')
 
@@ -17,13 +17,13 @@
     </div>
 </div>
 @endif
-@section("content")
+@section('content')
 
 <!-- Page Wrapper -->
 <div id="wrapper">
 
     <!-- Sidebar -->
-    @include("sidebar")
+    @include('layouts.sidebar')
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -31,7 +31,7 @@
         <!-- Main Content -->
         <div id="content">
 
-            @include("topbar")
+            @include('layouts.topbar')
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
@@ -352,7 +352,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        @include('footer')
+        @include('layouts.footer')
     </div>
     <!-- End of Content Wrapper -->
 
@@ -364,7 +364,7 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-@include('logout-modal')
+@include('layouts.logout-modal')
 
 
 <!-- Bootstrap core JavaScript-->
