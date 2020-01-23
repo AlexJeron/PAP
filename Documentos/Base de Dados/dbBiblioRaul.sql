@@ -1,6 +1,6 @@
-CREATE DATABASE BiblioRaul;
+CREATE DATABASE dbeventostemp;
 
-USE BiblioRaul;
+USE dbeventostemp;
 
 CREATE TABLE user (
   user_id int AUTO_INCREMENT,
@@ -17,7 +17,7 @@ CREATE TABLE total_espectadores (
   numero_professores int,
   numero_pais int,
   outros varchar(255),
-  PRIMARY KEY (espectador_id)
+  PRIMARY KEY (total_espectadores_id)
 );
 
 CREATE TABLE LOCAL (
@@ -56,7 +56,7 @@ CREATE TABLE evento (
   atividade varchar(255) NOT NULL,
   FOREIGN KEY (local_id) REFERENCES LOCAL (local_id),
   FOREIGN KEY (user_id) REFERENCES USER (user_id),
-  FOREIGN KEY (espectador_id) REFERENCES espectador (espectador_id),
+  FOREIGN KEY (total_espectadores_id) REFERENCES total_espectadores (total_espectadores_id),
   PRIMARY KEY (evento_id)
 );
 

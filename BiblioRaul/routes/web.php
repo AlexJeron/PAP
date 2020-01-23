@@ -18,13 +18,24 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/login', function () {
-    return view('login');
+    return view('auth.login');
 });
+
+Auth::routes( /*['register' => false]*/);
 
 Route::get('/tables', function () {
     return view('tables-template');
 })->middleware('auth');
 
-Auth::routes( /*['register' => false]*/);
-
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('/professor', function () {
+    return view('professor.create');
+});
+
+Route::get('/professor', 'ProfessorController@index')->middleware('auth');
+route::post('/professor', 'ProfessorController@store')->middleware('auth');
+Route::get('/professor/create', 'ProfessorController@create')->middleware('auth');
+Route::get('/professor/{professor}', 'ProfessorController@show')->middleware('auth');
+Route::get('/professor/{professor}/edit', 'ProfessorController@edit')->middleware('auth');
+Route::put('/professor/{professor}', 'ProfessorController@update')->middleware('auth');
