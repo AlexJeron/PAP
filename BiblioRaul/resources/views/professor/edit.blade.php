@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Editar Professor') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/professor/{{ $professor->professor_id }}">
+                    <form method="POST" action="/professor/{{ $professor->id }}">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">

@@ -35,6 +35,11 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
+
+        request()->validate([
+            'nome' => 'required',
+        ]);
+
         $professor = new Professor();
         $professor->nome = request('nome');
         $professor->save();
@@ -62,7 +67,6 @@ class ProfessorController extends Controller
      */
     public function edit($id)
     {
-        // $professor = Professor::find($id);
         $professor = Professor::find($id);
 
         return view('professor.edit', compact('professor'));
@@ -81,11 +85,15 @@ class ProfessorController extends Controller
      */
     public function update($id)
     {
+        request()->validate([
+            'nome' => 'required',
+        ]);
+
         $professor = Professor::find($id);
         $professor->nome = request('nome');
         $professor->save();
 
-        return redirect('/professor/' . $professor->professor_id);
+        return redirect('/professor/' . $professor->id);
     }
 
     /**
