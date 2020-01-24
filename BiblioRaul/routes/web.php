@@ -30,12 +30,14 @@ Route::get('/tables', function () {
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/professor', function () {
-    return view('professor.create');
+    return view('professor.index', [
+        'professor' => App\Professor::latest()->get(),
+    ]);
 });
 
 Route::get('/professor', 'ProfessorController@index')->middleware('auth');
-route::post('/professor', 'ProfessorController@store')->middleware('auth');
 Route::get('/professor/create', 'ProfessorController@create')->middleware('auth');
+route::post('/professor', 'ProfessorController@store')->middleware('auth');
 Route::get('/professor/{professor}', 'ProfessorController@show')->middleware('auth');
 Route::get('/professor/{professor}/edit', 'ProfessorController@edit')->middleware('auth');
 Route::put('/professor/{professor}', 'ProfessorController@update')->middleware('auth');

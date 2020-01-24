@@ -14,7 +14,21 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        //
+        // $professor = Professor::find($professor);
+        $professor = Professor::latest()->get();
+
+        return view('professor.index', ['professor' => $professor]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Professor  $professor
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Professor $professor)
+    {
+        return view('professor.show', compact('professor'));
     }
 
     /**
@@ -33,30 +47,11 @@ class ProfessorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-
-        request()->validate([
-            'nome' => 'required',
-        ]);
-
-        $professor = new Professor();
-        $professor->nome = request('nome');
-        $professor->save();
+        Professor::create($this->validateProfessor());
 
         return redirect('/professor');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Professor  $professor
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $professor = Professor::find($id);
-        return view('professor.show', compact('professor'));
     }
 
     /**
@@ -65,10 +60,8 @@ class ProfessorController extends Controller
      * @param  \App\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Professor $professor)
     {
-        $professor = Professor::find($id);
-
         return view('professor.edit', compact('professor'));
         /**
          * ou
@@ -83,15 +76,9 @@ class ProfessorController extends Controller
      * @param  \App\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Professor $professor)
     {
-        request()->validate([
-            'nome' => 'required',
-        ]);
-
-        $professor = Professor::find($id);
-        $professor->nome = request('nome');
-        $professor->save();
+        $professor->update($this->validateProfessor());
 
         return redirect('/professor/' . $professor->id);
     }
@@ -105,5 +92,12 @@ class ProfessorController extends Controller
     public function destroy(Professor $professor)
     {
         //
+    }
+
+    protected function validateProfessor()
+    {
+        return request()->validate([
+            'nome' => 'required',
+        ]);
     }
 }

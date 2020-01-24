@@ -16,13 +16,11 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="nome" value="{{ $professor->nome }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('nome') is-invalid @enderror"
+                                    name="nome" value="{{ $professor->nome }}" autocomplete="name" autofocus>
 
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                @error('nome')
+                                <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
                                 @enderror
                             </div>
                         </div>

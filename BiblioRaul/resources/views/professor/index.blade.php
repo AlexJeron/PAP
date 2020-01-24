@@ -25,7 +25,15 @@
             @include('layouts.topbar')
 
             <!-- Begin Page Content -->
+            @foreach ($professor as $professor)
+            <a href="/professor/{{ $professor->id }}">
+                {{ $professor->nome }}
+            </a>
+            @endforeach
+
+            {{-- @foreach ($professor as $professor)
             {{ $professor->nome }}
+            @endforeach --}}
             <!-- /.container-fluid -->
 
         </div>

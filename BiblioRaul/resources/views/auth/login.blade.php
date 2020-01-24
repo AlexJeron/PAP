@@ -59,7 +59,7 @@
                         <input class="input100 @error('password') is-invalid @enderror" type="password" name="password"
                             id="password" autocomplete="current-password">
                         @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert" style="position:absolute">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror

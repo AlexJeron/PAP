@@ -19,9 +19,6 @@
                                     name="nome" value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                 @error('nome')
-                                {{-- <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span> --}}
                                 <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
                                 @enderror
                             </div>
