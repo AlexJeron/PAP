@@ -15,10 +15,8 @@
     <!-- Nav Item - Dashboard -->
     <li class="{{ Request::path() === "/" ? "nav-item active" : "nav-item" }}">
         <a class="nav-link" href="/">
-            <div class="row">
-                <div class="col-2 oi oi-dashboard"></div>
-                <span class="col-10 sidebar-item-label">Dashboard</span>
-            </div>
+            <i class="oi oi-dashboard"></i>
+            <span>Dashboard</span>
         </a>
     </li>
 
