@@ -115,4 +115,8 @@
 
 <!-- Datatables custom script -->
 <script src="/js/datatables.js"></script>
+
 @endsection
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

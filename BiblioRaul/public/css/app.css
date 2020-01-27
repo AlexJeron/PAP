@@ -6069,3 +6069,7 @@ readers do not read off random characters that represent icons */
   border-top: 0px solid;
 }
 
+div.dataTables_filter {
+  margin-top: -2rem;
+}
+
