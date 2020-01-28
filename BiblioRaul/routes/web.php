@@ -11,34 +11,42 @@
 |
  */
 
+// Main Dashboard
 Route::get('/', function () {
-    return view('dashboard',);
+    return view('dashboard', );
 })->middleware('auth');
 
+// Dashboard template
 Route::get('/template', function () {
     $professores = App\Professor::take(3)->latest()->get();
     $users = App\User::take(3)->latest()->get();
     return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
 })->middleware('auth');
 
+// Login Page
 Route::get('/login', function () {
     return view('auth.login');
 });
 
+// Auth
 Auth::routes( /*['register' => false]*/);
 
+// Logout Method
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+// Tables template
 Route::get('/tables', function () {
     return view('tables-template');
 })->middleware('auth');
 
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
+// Professor Index Page
 Route::get('/professor', function () {
     return view('professor.index', [
         'professor' => App\Professor::latest()->get(),
     ]);
 });
 
+// Professor Methods
 Route::get('/professor', 'ProfessorController@index')->middleware('auth');
 Route::get('/professor/create', 'ProfessorController@create')->middleware('auth');
 route::post('/professor', 'ProfessorController@store')->middleware('auth');

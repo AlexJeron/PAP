@@ -98,6 +98,7 @@ class ProfessorController extends Controller
     {
         return request()->validate([
             'nome' => 'required',
+            'email' => 'bail',
         ]);
     }
 }

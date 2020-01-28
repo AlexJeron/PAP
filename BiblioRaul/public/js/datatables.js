@@ -71,7 +71,12 @@ $(document).ready(function() {
                 }
             }
         },
-        columns: [{ width: "5%" }, { width: "85%" }, { width: "10%" }]
+        columns: [
+            { width: "5%" },
+            { width: "42.5%" },
+            { width: "42.5%" },
+            { width: "10%" }
+        ]
     });
 });
 

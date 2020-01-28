@@ -48,6 +48,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nome</th>
+                                        <th>Email</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -56,6 +57,7 @@
                                     <tr>
                                         <td> {{ $professor->id }} </td>
                                         <td> {{ $professor->nome }} </td>
+                                        <td> {{ $professor->email }} </td>
                                         <td>
                                             <i class="far fa-edit"></i>
                                             <i class="far fa-trash-alt"></i>

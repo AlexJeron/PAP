@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProfessorTableSeeder extends Seeder
+class TurmaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class ProfessorTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Professor::class, 50)->create();
+        factory(App\Turma::class, 20)->create();
     }
 }
