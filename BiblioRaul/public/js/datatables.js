@@ -5,6 +5,7 @@ $(document).ready(function() {
         colReorder: true,
         fixedHeader: true,
         responsive: true,
+        sScrollX: "100%",
         // keys: true,
         // select: true,
         lengthMenu: [
@@ -37,7 +38,8 @@ $(document).ready(function() {
         ],
         language: {
             sEmptyTable: "Nenhum registo encontrado",
-            sInfo: "A mostrar de _START_ até _END_ de _TOTAL_ registos",
+            sInfo:
+                "A mostrar <b>_START_</b> até <b>_END_</b> de <b>_TOTAL_</b> registos",
             sInfoEmpty: "A mostrar 0 até 0 de 0 registos",
             sInfoFiltered: "(Filtrados de _MAX_ registos)",
             sInfoPostFix: "",
@@ -72,10 +74,16 @@ $(document).ready(function() {
             }
         },
         columns: [
-            { width: "5%" },
-            { width: "42.5%" },
-            { width: "42.5%" },
+            // { width: "5%" },
+            { width: "45%" },
+            { width: "45%" },
             { width: "10%" }
+        ],
+        columns: [
+            // { orderable: true },
+            { orderable: true },
+            { orderable: true },
+            { orderable: false }
         ]
     });
 });

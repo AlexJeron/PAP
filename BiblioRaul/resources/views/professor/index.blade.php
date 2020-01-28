@@ -33,34 +33,31 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Professores</h1>
-
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Gerir Professores</h6>
+                        <h5 class="m-0 font-weight-bold text-primary">Gerir Professores</h5>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
+                        <div class="table table-clear">
+                            <table class="table zebra" id="dataTable" width="100%" cellspacing="0">
+                                <thead class="transparency">
                                     <tr>
-                                        <th>#</th>
+                                        {{-- <th>#</th> --}}
                                         <th>Nome</th>
                                         <th>Email</th>
-                                        <th>Ações</th>
+                                        <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($professor as $professor)
                                     <tr>
-                                        <td> {{ $professor->id }} </td>
+                                        {{-- <td> {{ $professor->id }} </td> --}}
                                         <td> {{ $professor->nome }} </td>
                                         <td> {{ $professor->email }} </td>
-                                        <td>
-                                            <i class="far fa-edit"></i>
-                                            <i class="far fa-trash-alt"></i>
+                                        <td class="text-center">
+                                            <i class="far fa-edit" style="color:#f6993f"></i>
+                                            <i class="far fa-trash-alt" style="color:#e3342f"></i>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -81,11 +78,6 @@
 
 </div>
 <!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
 
 @include('layouts.logout-modal')
 
