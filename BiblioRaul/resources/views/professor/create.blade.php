@@ -24,6 +24,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+
+                                @error('email')
+                                <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

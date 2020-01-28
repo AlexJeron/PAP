@@ -3,21 +3,21 @@
 
 // Variables
 @import "variables";
-$fa-font-path: "../webfonts";
+// $fa-font-path: "../webfonts";
 
 // Fontawesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
 
 // Open Iconic
 @import "~open-iconic/font/css/open-iconic-bootstrap.min.css";
 
+// Main Style
+@import "public/scss/sb-admin-2.scss";
+
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
-
-// Variables
-$main: #0772AB;
-$main-dark: #055F78;
 
 .alert {
     position: relative;
@@ -197,6 +197,18 @@ $main-dark: #055F78;
     border-top: 0px solid;
 }
 
-div.dataTables_filter {
-    margin-top: -2rem;
+div.dataTables_wrapper div.dataTables_filter {
+    margin-top: -1.9rem;
+}
+
+div.dt-buttons.btn-group.flex-wrap {
+    box-shadow: 0.115rem 0.125rem 0.25rem 0 rgba(58, 59, 69, 0.2);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem rgba(78, 115, 223, 0.25);
+}
+
+input.form-control.form-control-sm {
+    box-shadow: 0 0 0 0.0525rem rgba(78, 115, 223, 0.25);
 }

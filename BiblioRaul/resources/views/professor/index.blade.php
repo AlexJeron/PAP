@@ -43,39 +43,23 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>#</th>
                                         <th>Nome</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($professor as $professor)
-                                    {{-- <a href="/professor/{{ $professor->id }}">
-                                    {{ $professor->nome }}
-                                    </a>
-                                    <br> --}}
                                     <tr>
                                         <td> {{ $professor->id }} </td>
                                         <td> {{ $professor->nome }} </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td> {{ $professor->id }} </td>
-                                        <td> {{ $professor->nome }} </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td> {{ $professor->id }} </td>
-                                        <td> {{ $professor->nome }} </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td> {{ $professor->id }} </td>
-                                        <td> {{ $professor->nome }} </td>
-                                        <td></td>
+                                        <td>
+                                            <i class="far fa-edit"></i>
+                                            <i class="far fa-trash-alt"></i>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

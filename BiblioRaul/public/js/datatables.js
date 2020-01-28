@@ -1,22 +1,39 @@
-// Call the dataTables jQuery plugin
+// Call the DataTables jQuery plugin
 $(document).ready(function() {
     $("#dataTable").DataTable({
-        select: true,
         dom: "Bfrtip",
         colReorder: true,
         fixedHeader: true,
-        keys: true,
         responsive: true,
+        // keys: true,
+        // select: true,
         lengthMenu: [
             [10, 15, 20, -1],
             ["10 linhas", "15 linhas", "20 linhas", "Mostrar tudo"]
         ],
         buttons: [
-            { extend: "copy", text: "Copiar", className: "btn-danger" },
-            "excel",
-            "pdf",
-            { extend: "print", text: "Imprimir" },
-            "pageLength"
+            {
+                extend: "copy",
+                text: "Copiar",
+                className: "btn btn-sm btn-primary btn-shadow-sm"
+            },
+            {
+                extend: "excel",
+                className: "btn btn-sm btn-primary btn-shadow-sm"
+            },
+            {
+                extend: "pdf",
+                className: "btn btn-sm btn-primary btn-shadow-sm"
+            },
+            {
+                extend: "print",
+                text: "Imprimir",
+                className: "btn btn-sm btn-primary btn-shadow-sm"
+            },
+            {
+                extend: "pageLength",
+                className: "btn btn-sm btn-primary btn-shadow-sm"
+            }
         ],
         language: {
             sEmptyTable: "Nenhum registo encontrado",
@@ -49,9 +66,16 @@ $(document).ready(function() {
             },
             buttons: {
                 pageLength: {
-                    _: "A mostrar %d linhas"
+                    _: "A mostrar %d linhas",
+                    "-1": "A mostrar todas as linhas"
                 }
             }
-        }
+        },
+        columns: [{ width: "5%" }, { width: "85%" }, { width: "10%" }]
     });
+});
+
+// Remove DataTables' default classes
+$(document).ready(function() {
+    $("button").removeClass("btn-secondary");
 });

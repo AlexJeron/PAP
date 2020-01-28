@@ -98,11 +98,11 @@
             <span>Charts</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
-    <li class="{{ Request::path() === "tables" ? "nav-item active" : "nav-item" }}">
-        <a class="nav-link" href="tables">
+    <!-- Nav Item - Professores -->
+    <li class="{{ Request::path() === "professor" ? "nav-item active" : "nav-item" }}">
+        <a class="nav-link" href="professor">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Professores</span></a>
     </li>
 
     <!-- Divider -->

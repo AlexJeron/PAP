@@ -12,9 +12,13 @@
  */
 
 Route::get('/', function () {
+    return view('dashboard',);
+})->middleware('auth');
+
+Route::get('/template', function () {
     $professores = App\Professor::take(3)->latest()->get();
     $users = App\User::take(3)->latest()->get();
-    return view('dashboard', ['professores' => $professores, 'users' => $users]);
+    return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
 })->middleware('auth');
 
 Route::get('/login', function () {
