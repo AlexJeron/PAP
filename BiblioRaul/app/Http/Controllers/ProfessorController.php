@@ -76,11 +76,19 @@ class ProfessorController extends Controller
      * @param  \App\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function update(Professor $professor)
+    public function update(Request $request)
     {
-        $professor->update($this->validateProfessor());
+        // $professor->update($this->validateProfessor());
+        // return redirect('/professor/' . $professor->id);
+        $validatedData = $request->validate([
+            'nome' => 'required|max:255',
+            'email' => 'nullable|max:255',
+        ]);
 
-        return redirect('/professor/' . $professor->id);
+        $professor = Professor::findOrFail($request->id);
+        $professor->update($request->all());
+
+        return back();
     }
 
     /**
@@ -89,16 +97,18 @@ class ProfessorController extends Controller
      * @param  \App\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Professor $professor)
+    public function destroy(Request $request)
     {
-        //
+        $professor = Professor::findOrFail($request->professor_id);
+        $professor->delete();
+        return back();
     }
 
     protected function validateProfessor()
     {
         return request()->validate([
             'nome' => 'required',
-            'email' => 'bail',
+            'email' => 'nullable',
         ]);
     }
 }

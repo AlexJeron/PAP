@@ -7,11 +7,6 @@
 <link rel="stylesheet" type="text/css"
     href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fh-3.1.6/kt-2.5.1/r-2.2.3/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.css" />
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript"
-    src="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fh-3.1.6/kt-2.5.1/r-2.2.3/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.js">
-</script>
 @endsection
 
 @section('content')
@@ -33,7 +28,6 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div class="row">
@@ -71,8 +65,14 @@
                                         <td> {{ $professor->nome }} </td>
                                         <td> {{ $professor->email }} </td>
                                         <td class="text-center">
-                                            <i class="far fa-edit" style="color:#f6993f"></i>
-                                            <i class="far fa-trash-alt" style="color:#e3342f"></i>
+                                            <a type="button" data-nome="{{ $professor->nome }}"
+                                                data-email="{{ $professor->email }}" data-id="{{ $professor->id }}"
+                                                data-toggle="modal" data-target="#editProfessorModal">
+                                                <i class="far fa-edit" style="color:#f6993f"></i>
+                                            </a>
+                                            <a type="button" data-prof_id="{{ $professor->id }}" data-toggle="modal"
+                                                data-target="#deleteProfessorModal">
+                                                <i class="far fa-trash-alt" style="color:#e3342f"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -94,28 +94,30 @@
 </div>
 <!-- End of Page Wrapper -->
 
+<!-- New Professor Modal -->
 <div class="modal fade" id="newProfessorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Adicionar Professor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="/professor">
-                    @csrf
+        <form method="POST" action="/professor">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Adicionar Professor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">{{ __('Nome') }}</label>
                         <div class="col-sm-10">
                             <input id="name" type="text" class="form-control @error('nome') is-invalid @enderror"
-                                name="nome" value="{{ old('name') }}" autocomplete="name" autofocus>
+                                name="nome" value="{{ old('name') }}" maxlength="80" autofocus required>
 
                             @error('nome')
                             <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
                             @enderror
+
                         </div>
                     </div>
 
@@ -124,24 +126,109 @@
 
                         <div class="col-sm-10">
                             <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                name="email" value="{{ old('email') }}" maxlength="80">
 
                             @error('email')
                             <div class="invalid-feedback">{{ $errors->first('email') }}</div>
                             @enderror
+
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="submit" class="btn btn-primary">
                             {{ __('Adicionar') }}
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
+<!-- End of New Professor Modal -->
+
+<!-- Edit Professor Modal -->
+<div class="modal fade" id="editProfessorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form method="POST" action="/professor/{{ $professor->id }}">
+            @csrf
+            @method('PUT')
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Professor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id" value="{{ $professor->id }}">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">{{ __('Nome') }}</label>
+                        <div class="col-sm-10">
+                            <input id="name" type="text" class="form-control @error('nome') is-invalid @enderror"
+                                name="nome" value="{{ $professor->nome }}" maxlength="80" autofocus required>
+
+                            @error('nome')
+                            <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">{{ __('Email') }}</label>
+
+                        <div class="col-sm-10">
+                            <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ $professor->nome }}" maxlength="80">
+
+                            @error('email')
+                            <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Editar') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- End of Edit Professor Modal -->
+
+<!-- Delete Professor Modal -->
+<div class="modal fade" id="deleteProfessorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form method="POST" action="{{ route('professor.destroy', 'delete') }}">
+            @method('DELETE')
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Apagar Professor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="professor_id" id="prof_id" value="">
+                    Tem a certeza que deseja apagar este registo?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Apagar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- End of Delete Professor Modal -->
 
 @include('layouts.logout-modal')
 
@@ -149,16 +236,28 @@
 
 @section('scripts')
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
+<!-- JQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
+
+<!-- DataTables Core -->
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Datatables custom script -->
 <script src="/js/datatables.js"></script>
 
-@endsection
+<!-- DataTables CDN -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript"
+    src="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fh-3.1.6/kt-2.5.1/r-2.2.3/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.js">
+</script>
 
-<script src="vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap JS -->
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="/js/modal.js"></script>
+
+@endsection

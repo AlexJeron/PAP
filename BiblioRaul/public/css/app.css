@@ -8841,8 +8841,8 @@ fieldset:disabled a.btn {
 
 .btn-danger {
   color: #fff;
-  background-color: #e74a3b;
-  border-color: #e74a3b;
+  background-color: #e3342f;
+  border-color: #e3342f;
 }
 
 .btn-danger:hover {
@@ -13047,7 +13047,7 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #f8f9fc !important;
+  background-color: #f2f4fa !important;
 }
 
 a.bg-light:hover,
@@ -18735,7 +18735,7 @@ body.sidebar-toggled footer.sticky-footer {
 
 .alert-danger {
   color: #ffffff;
-  background-color: #e74a3b;
+  background-color: #e3342f;
 }
 
 .alert-danger hr {

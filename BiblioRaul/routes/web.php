@@ -47,9 +47,12 @@ Route::get('/professor', function () {
 });
 
 // Professor Methods
-Route::get('/professor', 'ProfessorController@index')->middleware('auth');
-Route::get('/professor/create', 'ProfessorController@create')->middleware('auth');
-route::post('/professor', 'ProfessorController@store')->middleware('auth');
-Route::get('/professor/{professor}', 'ProfessorController@show')->middleware('auth');
-Route::get('/professor/{professor}/edit', 'ProfessorController@edit')->middleware('auth');
-Route::put('/professor/{professor}', 'ProfessorController@update')->middleware('auth');
+// Route::get('/professor', 'ProfessorController@index')->middleware('auth');
+// Route::get('/professor/create', 'ProfessorController@create')->middleware('auth');
+// route::post('/professor', 'ProfessorController@store')->middleware('auth');
+// Route::get('/professor/{professor}', 'ProfessorController@show')->middleware('auth');
+// Route::get('/professor/{professor}/edit', 'ProfessorController@edit')->middleware('auth');
+// Route::get('/professor/{professor}', 'ProfessorController@destroy')->middleware('auth');
+// Route::put('/professor/{professor}', 'ProfessorController@update')->middleware('auth');
+
+Route::resource('professor', 'ProfessorController');
