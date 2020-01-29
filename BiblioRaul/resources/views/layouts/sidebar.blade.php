@@ -30,24 +30,41 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+        <a class="{{ Request::path() === "professor" ? "nav-link" : "nav-link collapsed" }}" href="#"
+            data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="{{ Request::path() === "professor" ? "true" : "false" }}" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tabelas</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="{{ Request::path() === "professor" ? "collapse show" : "collapse" }}"
+            aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <h6 class="collapse-header">Gerir Tabelas:</h6>
+                <!-- Professores -->
+                <a class="{{ Request::path() === "professor" ? "collapse-item active" : "collapse-item" }}"
+                    href="professor">
+                    <i class="fas fa-fw fa-chalkboard-teacher"></i>
+                    <span>Professores</span></a>
+                <!-- Turmas -->
+                <a class="{{ Request::path() === "turma" ? "collapse-item active" : "collapse-item" }}" href="turma">
+                    <i class="fas fa-user-graduate" style="margin-left:3px"></i>
+                    <span style="margin-left:3px">Turmas</span></a>
             </div>
         </div>
     </li>
 
+    <!-- Nav Item - Relatórios -->
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-list-alt"></i>
+            <span>Relatórios</span>
+        </a>
+    </li>
+
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+            aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Utilities</span>
         </a>
@@ -98,12 +115,7 @@
             <span>Charts</span></a>
     </li>
 
-    <!-- Nav Item - Professores -->
-    <li class="{{ Request::path() === "professor" ? "nav-item active" : "nav-item" }}">
-        <a class="nav-link" href="professor">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Professores</span></a>
-    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
