@@ -39,7 +39,7 @@
 </div>
 <!-- End of Page Wrapper -->
 
-@include('layouts.logout-modal')>
+@include('layouts.logout-modal')
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>

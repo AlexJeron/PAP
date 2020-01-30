@@ -107,8 +107,8 @@ class ProfessorController extends Controller
     protected function validateProfessor()
     {
         return request()->validate([
-            'nome' => 'required',
-            'email' => 'nullable',
+            'nome' => 'required|max:255',
+            'email' => 'nullable|max:255',
         ]);
     }
 }

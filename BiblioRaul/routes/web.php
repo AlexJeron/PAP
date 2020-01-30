@@ -34,17 +34,23 @@ Auth::routes( /*['register' => false]*/);
 // Logout Method
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+// Professor
+Route::resource('professor', 'ProfessorController');
+
+// User
+Route::resource('user', 'UserController');
+
 // Tables template
 Route::get('/tables', function () {
     return view('tables-template');
 })->middleware('auth');
 
 // Professor Index Page
-Route::get('/professor', function () {
-    return view('professor.index', [
-        'professor' => App\Professor::latest()->get(),
-    ]);
-});
+// Route::get('/professor', function () {
+//     return view('professor.index', [
+//         'professor' => App\Professor::latest()->get(),
+//     ]);
+// });
 
 // Professor Methods
 // Route::get('/professor', 'ProfessorController@index')->middleware('auth');
@@ -54,5 +60,3 @@ Route::get('/professor', function () {
 // Route::get('/professor/{professor}/edit', 'ProfessorController@edit')->middleware('auth');
 // Route::get('/professor/{professor}', 'ProfessorController@destroy')->middleware('auth');
 // Route::put('/professor/{professor}', 'ProfessorController@update')->middleware('auth');
-
-Route::resource('professor', 'ProfessorController');

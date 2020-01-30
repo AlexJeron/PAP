@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="{{ Request::path() === "/" ? "nav-item active" : "nav-item" }}">
+    <li class="{{ request()->is('/') ? 'nav-item active' : 'nav-item' }}">
         <a class="nav-link" href="/">
             <i class="oi oi-dashboard"></i>
             <span>Dashboard</span>
@@ -28,54 +28,55 @@
         Interface
     </div>
 
-    <!-- Nav Item - Outras Atividades -->
+    <!-- Nav Item - Atividades -->
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-calendar-alt"></i>
-            <span>Outras Atividades</span>
+            <span>Atividades</span>
         </a>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="{{ Request::path() === "professor" ? "nav-link" : "nav-link collapsed" }}" href="#"
-            data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="{{ Request::path() === "professor" ? "true" : "false" }}" aria-controls="collapseTwo"
-            style="margin-left: -2px;">
+    <li class="{{ request()->is('professor', 'turma', 'user', 'local', 'recurso') ? 'nav-item active' : 'nav-item' }}">
+        <a class="{{ request()->is('professor', 'turma', 'user', 'local', 'recurso') ? 'nav-link' : 'nav-link collapsed' }}"
+            href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="{{ request()->is('professor', 'turma', 'user', 'local', 'recurso') ? 'true' : 'false' }}"
+            aria-controls="collapseTwo" style="margin-left: -2px;">
             <i class="fas fa-fw fa-table"></i>
-            <span style="margin-left: -2px;">Tabelas</span>
+            <span style="margin-left: -2px;">Outras Tabelas</span>
         </a>
-        <div id="collapseTwo" class="{{ Request::path() === "professor" ? "collapse show" : "collapse" }}"
+        <div id="collapseTwo"
+            class="{{ request()->is('professor', 'turma', 'user', 'local', 'recurso') ? 'collapse show' : "collapse" }}"
             aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gerir Tabelas:</h6>
 
                 <!-- Professores -->
-                <a class="{{ Request::path() === "professor" ? "collapse-item active" : "collapse-item" }}"
-                    href="professor">
+                <a class="{{ request()->is('professor') ? 'collapse-item active' : 'collapse-item' }}" href="professor">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span style="margin-left:4px">Professores</span></a>
 
                 <!-- Turmas -->
-                <a class="{{ Request::path() === "turma" ? "collapse-item active" : "collapse-item" }}" href="turma">
+                <a class="{{ request()->is('turma') ? 'collapse-item active' : 'collapse-item' }}" href="turma">
                     <i class="fas fa-user-graduate" style="margin-left:2px"></i>
                     <span style="margin-left:8px">Turmas</span></a>
 
                 <!-- Users -->
-                <a class="{{ Request::path() === "user" ? "collapse-item active" : "collapse-item" }}" href="user">
+                <a class="{{ request()->is('user') ? 'collapse-item active' : 'collapse-item' }}" href="user">
                     <i class="fas fa-users"></i>
                     <span style="margin-left:5px">Utilizadores</span></a>
 
                 <!-- Locais -->
-                <a class="{{ Request::path() === "local" ? "collapse-item active" : "collapse-item" }}" href="local">
+                <a class="{{ request()->is('local') ? 'collapse-item active' : 'collapse-item' }}" href="local"
+                    style="margin-left:11px">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span style="margin-left:5px">Locais</span></a>
+                    <span style="margin-left:9px">Locais</span></a>
 
                 <!-- Recursos -->
-                <a class="{{ Request::path() === "recurso" ? "collapse-item active" : "collapse-item" }}"
-                    href="recurso">
+                <a class="{{ request()->is('recurso') ? 'collapse-item active' : 'collapse-item' }}" href="recurso"
+                    style="margin-left:10px">
                     <i class="fas fa-toolbox"></i>
-                    <span style="margin-left:5px">Recursos</span></a>
+                    <span style="margin-left:6px">Recursos</span></a>
 
             </div>
         </div>

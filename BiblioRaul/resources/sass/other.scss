@@ -1,0 +1,51 @@
+#BiblioRaul {
+    font-weight: 300;
+    font-size: 24px;
+    text-transform: none;
+}
+
+#Raul {
+    font-weight: 900;
+    // color: #098dd2;
+}
+
+#message {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+#inner-message {
+    margin: 0 auto;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 0px solid;
+    border-top: 0px solid;
+}
+
+div.dt-buttons.btn-group.flex-wrap {
+    box-shadow: 0.115rem 0.125rem 0.25rem 0 rgba(58, 59, 69, 0.2);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem rgba(78, 115, 223, 0.25);
+}
+
+.transparency {
+    background-color: rgba(9, 140, 210, 0.110);
+    color: $primary;
+}
+
+.zebra tr:nth-child(even) {
+    background-color: rgba(9, 140, 210, 0.035);
+}
+
+.table-clear td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 0px solid #e3e6f0;
+}
