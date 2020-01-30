@@ -17,7 +17,6 @@ class TurmaController extends Controller
         $turma = Turma::latest()->get();
 
         return view('turma.index', ['turma' => $turma]);
-
     }
 
     /**

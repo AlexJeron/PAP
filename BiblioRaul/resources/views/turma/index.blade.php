@@ -53,19 +53,19 @@
                             <table class="table zebra" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="transparency">
                                     <tr>
+                                        <th>Ano</th>
                                         <th>Nome</th>
-                                        <th>Email</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($turma as $turma)
                                     <tr>
+                                        <td> {{ $turma->ano }} </td>
                                         <td> {{ $turma->nome }} </td>
-                                        <td> {{ $turma->email }} </td>
                                         <td class="text-center">
-                                            <a type="button" data-id="{{ $turma->id }}" data-nome="{{ $turma->nome }}"
-                                                data-email="{{ $turma->email }}" data-toggle="modal"
+                                            <a type="button" data-id="{{ $turma->id }}" data-ano="{{ $turma->ano }}"
+                                                data-nome="{{ $turma->nome }}" data-toggle="modal"
                                                 data-target="#editTurmaModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>

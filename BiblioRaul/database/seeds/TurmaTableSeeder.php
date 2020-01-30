@@ -63,8 +63,8 @@ class TurmaTableSeeder extends Seeder
             ['ano' => 10, 'nome' => '1º PTGPSI'],
             ['ano' => 11, 'nome' => '2º PTGPSI'],
             ['ano' => 12, 'nome' => '3º PTGPSI'],
-
         ];
+
         DB::table('turma')->insert($turmas);
     }
 }

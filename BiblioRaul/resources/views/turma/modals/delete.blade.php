@@ -1,19 +1,19 @@
-<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="deleteTurmaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="{{ route('user.destroy', 'delete') }}">
+        <form method="POST" action="{{ route('turma.destroy', 'delete') }}">
             @method('DELETE')
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Apagar Utilizador</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Apagar Turma</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="class_id" id="turma_id" value="">
-                    Tem a certeza que deseja apagar este utilizador?
+                    Tem a certeza que deseja apagar este registo?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
