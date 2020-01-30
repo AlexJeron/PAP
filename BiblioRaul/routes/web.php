@@ -40,6 +40,9 @@ Route::resource('professor', 'ProfessorController');
 // User
 Route::resource('user', 'UserController');
 
+// Turma
+Route::resource('turma', 'TurmaController');
+
 // Tables template
 Route::get('/tables', function () {
     return view('tables-template');

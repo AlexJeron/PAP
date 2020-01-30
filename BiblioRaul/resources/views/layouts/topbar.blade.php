@@ -37,7 +37,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                {{-- <span class="badge badge-danger badge-counter">3+</span> --}}
             </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -94,11 +94,11 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" id="night-mode" href="#">
                     <i class="fas fa-moon fa-sm fa-fw mr-2 text-gray-400"></i>
                     Modo Noturno
                     <label class="switch" id="switch" style="margin-top:0.1rem">
-                        <input type="checkbox">
+                        <input type="checkbox" id="night-mode-checkbox">
                         <span class="slider round"></span>
                     </label>
                 </a>

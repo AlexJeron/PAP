@@ -15,3 +15,13 @@ $("body").on("click", function(e) {
         $("li.dropdown").removeClass("open");
     }
 });
+
+// $("#night-mode").click(function() {
+//     if ($("#night-mode-checkbox").not("checked")) {
+//         $("#night-mode-checkbox").prop("checked", true);
+//         console.log("check");
+//     } else if ($("#night-mode-checkbox").is("checked")) {
+//         $("#night-mode-checkbox").prop("checked", false);
+//         console.log("uncheck");
+//     }
+// });

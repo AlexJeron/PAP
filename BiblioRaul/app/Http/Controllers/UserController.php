@@ -88,22 +88,17 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        $user->update($this->validateUser());
-        return redirect('/user/' . $user->id);
+        $validatedData = $request->validate([
+            'nome' => 'required|max:255',
+            'email' => 'nullable|max:255',
+        ]);
 
-        //
+        $user = User::findOrFail($request->id);
+        $user->update($request->all());
 
-        // $validatedData = $request->validate([
-        //     'nome' => 'required|max:255',
-        //     'email' => 'nullable|max:255',
-        // ]);
-
-        // $professor = Professor::findOrFail($request->id);
-        // $professor->update($request->all());
-
-        // return back();
+        return back();
     }
 
     /**
