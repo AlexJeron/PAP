@@ -8,4 +8,9 @@ class Turma extends Model
 {
     protected $table = 'turma';
     protected $fillable = ['ano', 'nome'];
+
+    public function atividade()
+    {
+        return $this->belongsToMany(Atividade::class);
+    }
 }

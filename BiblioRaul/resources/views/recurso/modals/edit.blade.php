@@ -27,16 +27,16 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="quantidade"
+                        <label for="quantidade_total"
                             class="col-sm-4 col-form-label text-md-right">{{ __('Quantidade Total') }}</label>
 
                         <div class="col-sm-8">
-                            <input id="quantidade" type="text"
-                                class="form-control @error('quantidade') is-invalid @enderror" name="quantidade"
-                                value="{{ $recurso->quantidade }}" maxlength="80">
+                            <input id="quantidade_total" type="text"
+                                class="form-control @error('quantidade_total') is-invalid @enderror"
+                                name="quantidade_total" value="{{ $recurso->quantidade_total }}" maxlength="80">
 
-                            @error('quantidade')
-                            <div class="invalid-feedback">{{ $errors->first('quantidade') }}</div>
+                            @error('quantidade_total')
+                            <div class="invalid-feedback">{{ $errors->first('quantidade_total') }}</div>
                             @enderror
 
                         </div>

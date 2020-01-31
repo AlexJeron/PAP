@@ -58,12 +58,12 @@
                                     @foreach ($recurso as $recurso)
                                     <tr>
                                         <td> {{ $recurso->nome }} </td>
-                                        <td> {{ $recurso->quantidade }} </td>
+                                        <td> {{ $recurso->quantidade_total }} </td>
                                         <td class="text-center">
                                             <a type="button" data-id="{{ $recurso->id }}"
                                                 data-nome="{{ $recurso->nome }}"
-                                                data-quantidade="{{ $recurso->quantidade }}" data-toggle="modal"
-                                                data-target="#editRecursoModal">
+                                                data-quantidade_total="{{ $recurso->quantidade_total }}"
+                                                data-toggle="modal" data-target="#editRecursoModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>
                                             <a type="button" data-recurso_id="{{ $recurso->id }}" data-toggle="modal"

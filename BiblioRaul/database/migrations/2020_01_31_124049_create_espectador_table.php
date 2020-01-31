@@ -15,7 +15,7 @@ class CreateEspectadorTable extends Migration
     {
         Schema::create('espectador', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
+            $table->string('nome')->unique();
             $table->timestamps();
         });
     }

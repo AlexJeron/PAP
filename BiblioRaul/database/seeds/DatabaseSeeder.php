@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TurmaTableSeeder::class);
         $this->call(LocalTableSeeder::class);
         $this->call(RecursoTableSeeder::class);
+        $this->call(EspectadorTableSeeder::class);
         $this->call(AtividadeTableSeeder::class);
     }
 }

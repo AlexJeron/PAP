@@ -13,7 +13,7 @@ class RecursoTableSeeder extends Seeder
     {
         DB::table('recurso')->insert([
             'nome' => 'Tablet',
-            'quantidade' => 20,
+            'quantidade_total' => 20,
         ]);
 
     }

@@ -76,7 +76,7 @@ class RecursoController extends Controller
     {
         $validatedData = $request->validate([
             'nome' => 'required|max:255',
-            'quantidade' => 'nullable|max:255',
+            'quantidade_total' => 'nullable|max:255',
         ]);
 
         $recurso = Recurso::findOrFail($request->id);
@@ -103,7 +103,7 @@ class RecursoController extends Controller
     {
         return request()->validate([
             'nome' => 'required|max:255',
-            'quantidade' => 'nullable|max:255',
+            'quantidade_total' => 'nullable|max:255',
         ]);
     }
 }
