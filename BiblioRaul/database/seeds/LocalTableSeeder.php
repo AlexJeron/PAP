@@ -15,5 +15,6 @@ class LocalTableSeeder extends Seeder
             'nome' => 'Sala 9',
             'espaco' => 30,
         ]);
+
     }
 }

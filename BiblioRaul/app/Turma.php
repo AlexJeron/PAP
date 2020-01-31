@@ -8,4 +8,5 @@ class Turma extends Model
 {
     protected $table = 'turma';
     protected $fillable = ['ano', 'nome'];
+
 }

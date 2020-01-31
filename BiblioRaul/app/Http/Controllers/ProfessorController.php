@@ -14,6 +14,7 @@ class ProfessorController extends Controller
      */
     public function index()
     {
+        // $professor = Professor::find($professor);
         $professor = Professor::latest()->get();
 
         return view('professor.index', ['professor' => $professor]);
