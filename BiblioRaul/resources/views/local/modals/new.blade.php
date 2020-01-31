@@ -25,15 +25,16 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="espaco"
-                            class="col-sm-3 col-form-label text-md-right">{{ __('Espaço total') }}</label>
+                        <label for="capacidade"
+                            class="col-sm-3 col-form-label text-md-right">{{ __('Capacidade total') }}</label>
 
                         <div class="col-sm-9">
-                            <input id="espaco" type="espaco" class="form-control @error('espaco') is-invalid @enderror"
-                                name="espaco" value="{{ old('espaco') }}" maxlength="80">
+                            <input id="capacidade" type="capacidade"
+                                class="form-control @error('capacidade') is-invalid @enderror" name="capacidade"
+                                value="{{ old('capacidade') }}" maxlength="80">
 
-                            @error('espaco')
-                            <div class="invalid-feedback">{{ $errors->first('espaco') }}</div>
+                            @error('capacidade')
+                            <div class="invalid-feedback">{{ $errors->first('capacidade') }}</div>
                             @enderror
 
                         </div>

@@ -7,6 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Local extends Model
 {
     protected $table = 'local';
-    protected $fillable = ['nome', 'espaco'];
-
+    protected $fillable = ['nome', 'capacidade'];
 }

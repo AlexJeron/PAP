@@ -75,7 +75,7 @@ class LocalController extends Controller
     {
         $validatedData = $request->validate([
             'nome' => 'required|max:255',
-            'espaco' => 'nullable|max:255',
+            'capacidade' => 'nullable|max:255',
         ]);
 
         $local = Local::findOrFail($request->id);
@@ -102,7 +102,7 @@ class LocalController extends Controller
     {
         return request()->validate([
             'nome' => 'required|max:255',
-            'espaco' => 'nullable|max:255',
+            'capacidade' => 'nullable|max:255',
         ]);
     }
 }

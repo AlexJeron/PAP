@@ -50,7 +50,7 @@
                                 <thead class="transparency">
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Espaco</th>
+                                        <th>Capacidade</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
@@ -58,10 +58,10 @@
                                     @foreach ($local as $local)
                                     <tr>
                                         <td> {{ $local->nome }} </td>
-                                        <td> {{ $local->espaco }} </td>
+                                        <td> {{ $local->capacidade }} </td>
                                         <td class="text-center">
                                             <a type="button" data-id="{{ $local->id }}" data-nome="{{ $local->nome }}"
-                                                data-espaco="{{ $local->espaco }}" data-toggle="modal"
+                                                data-capacidade="{{ $local->capacidade }}" data-toggle="modal"
                                                 data-target="#editLocalModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LocalTableSeeder extends Seeder
+class AtividadeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,6 @@ class LocalTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('local')->insert([
-            'nome' => 'Sala 9',
-            'capacidade' => 30,
-        ]);
+        factory(App\Atividade::class, 20)->create();
     }
 }

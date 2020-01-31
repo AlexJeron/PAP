@@ -1,0 +1,13 @@
+<?php
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Local;
+use Faker\Generator as Faker;
+
+$factory->define(Local::class, function (Faker $faker) {
+    return [
+        'nome' => $faker->city,
+        'capacidade' => $faker->numberBetween($min = 5, $max = 90),
+    ];
+});
