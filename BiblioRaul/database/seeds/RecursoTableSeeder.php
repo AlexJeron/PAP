@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LocalTableSeeder extends Seeder
+class RecursoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,10 @@ class LocalTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('local')->insert([
-            'nome' => 'Sala 9',
-            'espaco' => 30,
+        DB::table('recurso')->insert([
+            'nome' => 'Tablet',
+            'quantidade' => 20,
         ]);
+
     }
 }
