@@ -29,37 +29,21 @@ Route::get('/login', function () {
 });
 
 // Auth
-Auth::routes( /*['register' => false]*/);
+Auth::routes(['register' => false]);
 
 // Logout Method
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // Professor
-Route::resource('professor', 'ProfessorController');
+Route::resource('professor', 'ProfessorController')->middleware('auth');
 
 // User
-Route::resource('user', 'UserController');
+Route::resource('user', 'UserController')->middleware('auth');
 
 // Turma
-Route::resource('turma', 'TurmaController');
+Route::resource('turma', 'TurmaController')->middleware('auth');
 
 // Tables template
 Route::get('/tables', function () {
     return view('tables-template');
 })->middleware('auth');
-
-// Professor Index Page
-// Route::get('/professor', function () {
-//     return view('professor.index', [
-//         'professor' => App\Professor::latest()->get(),
-//     ]);
-// });
-
-// Professor Methods
-// Route::get('/professor', 'ProfessorController@index')->middleware('auth');
-// Route::get('/professor/create', 'ProfessorController@create')->middleware('auth');
-// route::post('/professor', 'ProfessorController@store')->middleware('auth');
-// Route::get('/professor/{professor}', 'ProfessorController@show')->middleware('auth');
-// Route::get('/professor/{professor}/edit', 'ProfessorController@edit')->middleware('auth');
-// Route::get('/professor/{professor}', 'ProfessorController@destroy')->middleware('auth');
-// Route::put('/professor/{professor}', 'ProfessorController@update')->middleware('auth');

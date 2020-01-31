@@ -92,7 +92,7 @@ class TurmaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $turma = Turma::findOrFail($request->turma_id);
+        $turma = Turma::findOrFail($request->class_id);
         $turma->delete();
         return back();
     }
