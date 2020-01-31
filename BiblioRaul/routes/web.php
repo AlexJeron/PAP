@@ -50,3 +50,6 @@ Route::resource('turma', 'TurmaController')->middleware('auth');
 
 // Local
 Route::resource('local', 'LocalController')->middleware('auth');
+
+// Recurso
+Route::resource('recurso', 'RecursoController')->middleware('auth');

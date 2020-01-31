@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Professor;
+use App\Recurso;
 use Illuminate\Http\Request;
 
-class ProfessorController extends Controller
+class RecursoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,20 +14,20 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        $professor = Professor::latest()->get();
+        $recurso = Recurso::latest()->get();
 
-        return view('professor.index', ['professor' => $professor]);
+        return view('recurso.index', ['recurso' => $recurso]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Professor  $professor
+     * @param  \App\Recurso  $recurso
      * @return \Illuminate\Http\Response
      */
-    public function show(Professor $professor)
+    public function show(Recurso $recurso)
     {
-        return view('professor.show', compact('professor'));
+        return view('recurso.show', compact('recurso'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        return view('professor.create');
+        return view('recurso.create');
     }
 
     /**
@@ -48,66 +48,62 @@ class ProfessorController extends Controller
      */
     public function store()
     {
-        Professor::create($this->validateProfessor());
+        Recurso::create($this->validateRecurso());
 
-        return redirect('/professor');
+        return redirect('/recurso');
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Professor  $professor
+     * @param  \App\Recurso  $recurso
      * @return \Illuminate\Http\Response
      */
-    public function edit(Professor $professor)
+    public function edit(Recurso $recurso)
     {
-        return view('professor.edit', compact('professor'));
-        /**
-         * ou
-         *
-         * return view('professor.edit', ['professor' => $professor]); */
+        return view('recurso.edit', compact('recurso'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Professor  $professor
+     * @param  \App\Recurso  $recurso
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-        // $professor->update($this->validateProfessor());
-        // return redirect('/professor/' . $professor->id);
         $validatedData = $request->validate([
             'nome' => 'required|max:255',
-            'email' => 'nullable|max:255',
+            'quantidade' => 'nullable|max:255',
         ]);
 
-        $professor = Professor::findOrFail($request->id);
-        $professor->update($request->all());
+        $recurso = Recurso::findOrFail($request->id);
+        $recurso->update($request->all());
 
         return back();
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Professor  $professor
+     * @param  \App\Recurso  $recurso
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
-        $professor = Professor::findOrFail($request->professor_id);
-        $professor->delete();
+        $recurso = Recurso::findOrFail($request->recurso_id);
+        $recurso->delete();
         return back();
     }
 
-    protected function validateProfessor()
+    protected function validateRecurso()
     {
         return request()->validate([
             'nome' => 'required|max:255',
-            'email' => 'nullable|max:255',
+            'quantidade' => 'nullable|max:255',
         ]);
     }
 }
