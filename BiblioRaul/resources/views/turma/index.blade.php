@@ -126,6 +126,6 @@
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Custom JS -->
-<script src="/js/turma-modal.js"></script>
+<script src="/js/modals/turma.js"></script>
 
 @endsection

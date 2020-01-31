@@ -13,7 +13,7 @@
 
 // Main Dashboard
 Route::get('/', function () {
-    return view('dashboard', );
+    return view('dashboard');
 })->middleware('auth');
 
 // Dashboard template
@@ -21,6 +21,11 @@ Route::get('/template', function () {
     $professores = App\Professor::take(3)->latest()->get();
     $users = App\User::take(3)->latest()->get();
     return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
+})->middleware('auth');
+
+// Tables template
+Route::get('/tables', function () {
+    return view('tables-template');
 })->middleware('auth');
 
 // Login Page
@@ -43,7 +48,5 @@ Route::resource('user', 'UserController')->middleware('auth');
 // Turma
 Route::resource('turma', 'TurmaController')->middleware('auth');
 
-// Tables template
-Route::get('/tables', function () {
-    return view('tables-template');
-})->middleware('auth');
+// Local
+Route::resource('local', 'LocalController')->middleware('auth');

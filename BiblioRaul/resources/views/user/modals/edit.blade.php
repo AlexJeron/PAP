@@ -1,4 +1,4 @@
-<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <form method="POST" action="/user/{{ $user->id }}">
@@ -6,7 +6,7 @@
             @method('PUT')
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Utilizador</h5>
+                    <h5 class="modal-title" id="editUserModalLabel">Editar Utilizador</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -14,7 +14,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id" value="{{ $user->id }}">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">{{ __('Nome') }}</label>
+                        <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Nome') }}</label>
                         <div class="col-sm-10">
                             <input id="name" type="text" class="form-control @error('nome') is-invalid @enderror"
                                 name="nome" value="{{ $user->nome }}" maxlength="80" autofocus required>
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">{{ __('Email') }}</label>
+                        <label for="email" class="col-sm-2 col-form-label text-md-right">{{ __('Email') }}</label>
 
                         <div class="col-sm-10">
                             <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"

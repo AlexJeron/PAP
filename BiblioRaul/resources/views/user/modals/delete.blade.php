@@ -1,4 +1,4 @@
-<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <form method="POST" action="{{ route('user.destroy', 'delete') }}">
@@ -6,7 +6,7 @@
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Apagar Utilizador</h5>
+                    <h5 class="modal-title" id="deleteUserModalLabel">Apagar Utilizador</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

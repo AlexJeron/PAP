@@ -1,23 +1,21 @@
-<div class="modal fade" id="editProfessorModal" tabindex="-1" role="dialog" aria-labelledby="editProfessorModalLabel"
+<div class="modal fade" id="newLocalModal" tabindex="-1" role="dialog" aria-labelledby="newLocalModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="/professor/{{ $professor->id }}">
+        <form method="POST" action="/local">
             @csrf
-            @method('PUT')
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editProfessorModalLabel">Editar Professor</h5>
+                    <h5 class="modal-title" id="newLocalModalLabel">Adicionar Local</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="{{ $professor->id }}">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">{{ __('Nome') }}</label>
-                        <div class="col-sm-10">
+                        <label for="name" class="col-sm-3 col-form-label text-md-right">{{ __('Nome') }}</label>
+                        <div class="col-sm-9">
                             <input id="name" type="text" class="form-control @error('nome') is-invalid @enderror"
-                                name="nome" value="{{ $professor->nome }}" maxlength="80" autofocus required>
+                                name="nome" value="{{ old('name') }}" maxlength="80" autofocus required>
 
                             @error('nome')
                             <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
@@ -27,14 +25,15 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">{{ __('Email') }}</label>
+                        <label for="espaco"
+                            class="col-sm-3 col-form-label text-md-right">{{ __('Espaço total') }}</label>
 
-                        <div class="col-sm-10">
-                            <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ $professor->nome }}" maxlength="80">
+                        <div class="col-sm-9">
+                            <input id="espaco" type="espaco" class="form-control @error('espaco') is-invalid @enderror"
+                                name="espaco" value="{{ old('espaco') }}" maxlength="80">
 
-                            @error('email')
-                            <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                            @error('espaco')
+                            <div class="invalid-feedback">{{ $errors->first('espaco') }}</div>
                             @enderror
 
                         </div>
@@ -42,7 +41,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Editar') }}
+                            {{ __('Adicionar') }}
                         </button>
                     </div>
                 </div>

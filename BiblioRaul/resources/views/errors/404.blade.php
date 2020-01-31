@@ -26,7 +26,7 @@
                 <div class="text-center">
                     <div class="error mx-auto" data-text="404">404</div>
                     <p class="lead text-gray-800 mb-5">Página não encontrada</p>
-                    <a href="/">&larr; Voltar para o Dashboard</a>
+                    <a href="{{ URL::previous() }}">&larr; Voltar atrás</a>
                 </div>
 
             </div>

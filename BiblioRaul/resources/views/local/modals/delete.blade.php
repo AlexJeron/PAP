@@ -1,18 +1,18 @@
-<div class="modal fade" id="deleteTurmaModal" tabindex="-1" role="dialog" aria-labelledby="deleteTurmaModalLabel"
+<div class="modal fade" id="deleteLocalModal" tabindex="-1" role="dialog" aria-labelledby="deleteLocalModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="{{ route('turma.destroy', 'delete') }}">
+        <form method="POST" action="{{ route('local.destroy', 'delete') }}">
             @method('DELETE')
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteTurmaModalLabel">Apagar Turma</h5>
+                    <h5 class="modal-title" id="deleteLocalModalLabel">Apagar Local</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="class_id" id="turma_id" value="">
+                    <input type="hidden" name="local_id" id="local_id" value="">
                     Tem a certeza que deseja apagar este registo?
                 </div>
                 <div class="modal-footer">

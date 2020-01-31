@@ -1,19 +1,19 @@
-<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <form method="POST" action="/user">
             @csrf
-            <div class="modal-content">
+            <div class="modal-content" style="width:80%; margin:auto">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registar Utilizador</h5>
+                    <h5 class="modal-title" id="newUserModalLabel">Registar Utilizador</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-3 col-form-label">{{ __('Nome') }}</label>
-                        <div class="col-sm-9">
+                        <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                        <div class="col-sm-7">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                 name="nome" value="{{ old('name') }}" maxlength="80" autofocus required>
 
@@ -27,9 +27,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="email" class="col-sm-3 col-form-label">{{ __('Email') }}</label>
+                        <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
-                        <div class="col-sm-9">
+                        <div class="col-sm-7">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                 name="email" value="{{ old('email') }}" maxlength="80">
 
@@ -44,9 +44,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password" class="col-sm-3 col-form-label">{{ __('Password') }}</label>
+                        <label for="password"
+                            class="col-sm-4 col-form-label text-md-right">{{ __('Palavra-passe') }}</label>
 
-                        <div class="col-sm-9">
+                        <div class="col-sm-7">
                             <input id="password" type="password"
                                 class="form-control @error('password') is-invalid @enderror" name="password" required
                                 autocomplete="new-password">
@@ -61,9 +62,9 @@
 
                     <div class="form-group row">
                         <label for="password-confirm"
-                            class="col-sm-3 col-form-label">{{ __('Confirmar Password') }}</label>
+                            class="col-sm-4 col-form-label text-md-right">{{ __('Confirmar Palavra-passe') }}</label>
 
-                        <div class="col-sm-9">
+                        <div class="col-sm-7">
                             <input id="password-confirm" type="password" class="form-control"
                                 name="password_confirmation" required autocomplete="new-password">
                         </div>

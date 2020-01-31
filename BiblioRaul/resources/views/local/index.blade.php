@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('head')
-<title>BiblioRaul - Professores</title>
+<title>BiblioRaul - Locais</title>
 
 <!-- DataTables CDN -->
 <link rel="stylesheet" type="text/css"
@@ -32,46 +32,41 @@
                     <div class="card-header py-3">
                         <div class="row">
                             <h5 class="col-9 d-flex p-2 m-0 font-weight-bold text-primary">
-                                Gerir Professores
+                                Gerir Locais
                                 </h4>
                                 <div class="col-3">
                                     <button type="button"
                                         class="float-right d-flex d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                                        style="margin-top:0.3rem" data-toggle="modal" data-target="#newProfessorModal">
+                                        style="margin-top:0.3rem" data-toggle="modal" data-target="#newLocalModal">
                                         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Adicionar
-                                        Professor</button>
+                                        Local</button>
                                 </div>
                         </div>
-                        {{-- <h5 class="m-0 font-weight-bold text-primary"> --}}
-
-                        {{-- </h5> --}}
-
                     </div>
+
                     <div class="card-body">
                         <div class="table table-clear">
                             <table class="table zebra" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="transparency">
                                     <tr>
-                                        {{-- <th>#</th> --}}
                                         <th>Nome</th>
-                                        <th>Email</th>
+                                        <th>Espaco</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($professor as $professor)
+                                    @foreach ($local as $local)
                                     <tr>
-                                        {{-- <td> {{ $professor->id }} </td> --}}
-                                        <td> {{ $professor->nome }} </td>
-                                        <td> {{ $professor->email }} </td>
+                                        <td> {{ $local->nome }} </td>
+                                        <td> {{ $local->espaco }} </td>
                                         <td class="text-center">
-                                            <a type="button" data-id="{{ $professor->id }}"
-                                                data-nome="{{ $professor->nome }}" data-email="{{ $professor->email }}"
-                                                data-toggle="modal" data-target="#editProfessorModal">
+                                            <a type="button" data-id="{{ $local->id }}" data-nome="{{ $local->nome }}"
+                                                data-espaco="{{ $local->espaco }}" data-toggle="modal"
+                                                data-target="#editLocalModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>
-                                            <a type="button" data-prof_id="{{ $professor->id }}" data-toggle="modal"
-                                                data-target="#deleteProfessorModal">
+                                            <a type="button" data-local_id="{{ $local->id }}" data-toggle="modal"
+                                                data-target="#deleteLocalModal">
                                                 <i class="far fa-trash-alt" style="color:#e3342f"></i></a>
                                         </td>
                                     </tr>
@@ -94,14 +89,14 @@
 </div>
 <!-- End of Page Wrapper -->
 
-<!-- New Professor Modal -->
-@include('professor.modals.new')
+<!-- New Local Modal -->
+@include('local.modals.new')
 
-<!-- Edit Professor Modal -->
-@include('professor.modals.edit')
+<!-- Edit Local Modal -->
+@include('local.modals.edit')
 
-<!-- Delete Professor Modal -->
-@include('professor.modals.delete')
+<!-- Delete Local Modal -->
+@include('local.modals.delete')
 
 @include('layouts.logout-modal')
 
@@ -127,6 +122,6 @@
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Custom JS -->
-<script src="/js/modals/professor.js"></script>
+<script src="/js/modals/local.js"></script>
 
 @endsection
