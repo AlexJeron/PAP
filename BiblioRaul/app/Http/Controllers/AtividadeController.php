@@ -14,28 +14,10 @@ class AtividadeController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $atividade = Atividade::latest()->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        return view('atividade.index', ['atividade' => $atividade]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -46,7 +28,30 @@ class AtividadeController extends Controller
      */
     public function show(Atividade $atividade)
     {
-        //
+        return view('atividade.show', compact('atividade'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('atividade.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store()
+    {
+        Atividade::create($this->validateAtividade());
+
+        return redirect('/atividade');
     }
 
     /**
@@ -57,7 +62,7 @@ class AtividadeController extends Controller
      */
     public function edit(Atividade $atividade)
     {
-        //
+        return view('atividade.edit', compact('atividade'));
     }
 
     /**
@@ -67,9 +72,21 @@ class AtividadeController extends Controller
      * @param  \App\Atividade  $atividade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Atividade $atividade)
+    public function update(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nome' => 'required|max:255',
+            'user_id' => 'required|max:20',
+            'local_id' => 'required|max:20',
+            'inicio' => 'required|max:25',
+            'fim' => 'nullable|max:25',
+            'observacao' => 'nullable|max:255',
+        ]);
+
+        $atividade = Atividade::findOrFail($request->id);
+        $atividade->update($request->all());
+
+        return back();
     }
 
     /**
@@ -78,8 +95,22 @@ class AtividadeController extends Controller
      * @param  \App\Atividade  $atividade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Atividade $atividade)
+    public function destroy(Request $request)
     {
-        //
+        $atividade = Atividade::findOrFail($request->atividade_id);
+        $atividade->delete();
+        return back();
+    }
+
+    protected function validateAtividade()
+    {
+        return request()->validate([
+            'nome' => 'required|max:255',
+            'user_id' => 'required|max:20',
+            'local_id' => 'required|max:20',
+            'inicio' => 'required|max:25',
+            'fim' => 'nullable|max:25',
+            'observacao' => 'nullable|max:255',
+        ]);
     }
 }
