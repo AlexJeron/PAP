@@ -9,7 +9,7 @@ class Espectador extends Model
     protected $table = 'espectador';
     protected $fillable = ['nome'];
 
-    public function atividade()
+    public function atividades()
     {
         return $this->belongsToMany(Atividade::class);
     }

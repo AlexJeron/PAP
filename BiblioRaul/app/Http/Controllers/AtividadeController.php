@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AtividadeController extends Controller
@@ -14,10 +15,21 @@ class AtividadeController extends Controller
      */
     public function index()
     {
-        $atividade = Atividade::latest()->get();
+        // Mostrar as atividades do mês atual [Eloquent]
+        $atividade = Atividade::latest()
+            ->whereMonth('inicio', Carbon::now()->month)
+            ->get();
+
+        // [Query Builder]
+        // $atividade = DB::table('atividade')
+        //     ->select('atividade.id', 'atividade.nome', 'local.nome AS local', DB::raw('DATE_FORMAT(inicio, "%d") AS inicio'), 'fim', 'observacao')
+        //     ->join('local', 'local_id', '=', 'local.id')
+        // // ->join('atividade_espectador', 'atividade.id', '=', 'atividade_espectador.atividade_id')
+        // // ->join('espectador', 'espectador.id', '=', 'atividade_espectador.espectador_id')
+        //     ->whereMonth('inicio', Carbon::now()->month)
+        //     ->get();
 
         return view('atividade.index', ['atividade' => $atividade]);
-
     }
 
     /**

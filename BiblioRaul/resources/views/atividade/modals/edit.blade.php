@@ -27,15 +27,15 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="observacao" class="col-sm-2 col-form-label">{{ __('Observação') }}</label>
+                        <label for="professores" class="col-sm-2 col-form-label">{{ __('Professores') }}</label>
 
                         <div class="col-sm-10">
-                            <input id="observacao" type="text"
-                                class="form-control @error('observacao') is-invalid @enderror" name="observacao"
-                                value="{{ $atividade->observacao }}" maxlength="80">
+                            <input id="professores" type="text"
+                                class="form-control @error('professores') is-invalid @enderror" name="professores"
+                                value="{{ $atividade->professores }}" maxlength="80">
 
-                            @error('observacao')
-                            <div class="invalid-feedback">{{ $errors->first('observacao') }}</div>
+                            @error('professores')
+                            <div class="invalid-feedback">{{ $errors->first('professores') }}</div>
                             @enderror
 
                         </div>

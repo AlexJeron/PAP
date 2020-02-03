@@ -6,6 +6,9 @@ $("#editAtividadeModal").on("show.bs.modal", function(event) {
     var fim = button.data("fim");
     var local_id = button.data("local_id");
     var observacao = button.data("observacao");
+    var professores = button.data("professores");
+    professores.forEach(nome => console.log(nome));
+    // console.log(professores[0].nome);
     var modal = $(this);
     modal.find(".modal-body #id").val(id);
     modal.find(".modal-body #name").val(nome);
@@ -13,6 +16,7 @@ $("#editAtividadeModal").on("show.bs.modal", function(event) {
     modal.find(".modal-body #fim").val(fim);
     modal.find(".modal-body #local_id").val(local_id);
     modal.find(".modal-body #observacao").val(observacao);
+    modal.find(".modal-body #professores").val(professores);
 });
 
 $("#deleteAtividadeModal").on("show.bs.modal", function(event) {

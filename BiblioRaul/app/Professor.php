@@ -10,7 +10,7 @@ class Professor extends Model
     protected $fillable = ['nome', 'email'];
     // protected $primaryKey = 'professor_id';
 
-    public function atividade()
+    public function atividades()
     {
         return $this->belongsToMany(Atividade::class);
     }

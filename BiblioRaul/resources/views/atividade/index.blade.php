@@ -31,8 +31,13 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div class="row">
+                            <?php
+                                $dt = Carbon::now();
+                                setlocale(LC_TIME, 'Portuguese');
+                                $dt = $dt->formatLocalized('%B');
+                            ?>
                             <h5 class="col-9 d-flex p-2 m-0 font-weight-bold text-primary">
-                                Gerir Atividades {{ Carbon::now() }}
+                                Gerir Atividades de {{ $dt }}
                                 </h4>
                                 <div class="col-3">
                                     <button type="button"
@@ -49,9 +54,10 @@
                                 <thead class="transparency">
                                     <tr>
                                         <th>Dia</th>
-                                        <th>Nome</th>
+                                        <th>Atividade</th>
                                         <th>Local</th>
-                                        <th>Observação</th>
+                                        <th>Turma</th>
+                                        {{-- <th>Professores</th> --}}
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
@@ -60,14 +66,20 @@
                                     <tr>
                                         <td> {{ $atividade->inicio->format('d') }} </td>
                                         <td> {{ $atividade->nome }} </td>
-                                        <td> {{ $atividade->local_id }} </td>
+                                        <td> {{ $atividade->local->nome }} </td>
                                         <td> {{ $atividade->observacao }} </td>
+                                        {{-- <td>
+                                            @foreach ($atividade->professores as $professor)
+                                            <br> {{ $professor->nome }}
+                                        @endforeach
+                                        </td> --}}
                                         <td class="text-center">
                                             <a type="button" data-id="{{ $atividade->id }}"
                                                 data-nome="{{ $atividade->nome }}"
                                                 data-inicio="{{ $atividade->inicio }}" data-fim="{{ $atividade->fim }}"
-                                                data-local="{{ $atividade->local_id }}"
-                                                data-observacao="{{ $atividade->observacao }}" data-toggle="modal"
+                                                data-local="{{ $atividade->local }}"
+                                                data-observacao="{{ $atividade->observacao }}"
+                                                data-professores="{{ $atividade->professores }}" data-toggle="modal"
                                                 data-target="#editAtividadeModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>
@@ -79,6 +91,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{-- <p>
+                                @foreach ($atividade->professores as $professor)
+                                <p>{{ $professor->nome }}</p>
+                            @endforeach
+                            </p> --}}
                         </div>
                     </div>
                 </div>

@@ -14,22 +14,27 @@ class Atividade extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function professor()
+    public function local()
+    {
+        return $this->belongsTo(Local::class);
+    }
+
+    public function professores()
     {
         return $this->belongsToMany(Professor::class);
     }
 
-    public function turma()
+    public function turmas()
     {
         return $this->belongsToMany(Turma::class);
     }
 
-    public function espectador()
+    public function espectadores()
     {
         return $this->belongsToMany(Espectador::class);
     }
 
-    public function recurso()
+    public function recursos()
     {
         return $this->belongsToMany(Recurso::class);
     }
