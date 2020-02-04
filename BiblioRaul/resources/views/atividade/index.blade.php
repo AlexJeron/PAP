@@ -56,7 +56,7 @@
                                         <th>Dia</th>
                                         <th>Atividade</th>
                                         <th>Local</th>
-                                        <th>Turma</th>
+                                        <th>Turmas</th>
                                         {{-- <th>Professores</th> --}}
                                         <th class="text-center">Ações</th>
                                     </tr>
@@ -67,19 +67,22 @@
                                         <td> {{ $atividade->inicio->format('d') }} </td>
                                         <td> {{ $atividade->nome }} </td>
                                         <td> {{ $atividade->local->nome }} </td>
-                                        <td> {{ $atividade->observacao }} </td>
-                                        {{-- <td>
-                                            @foreach ($atividade->professores as $professor)
-                                            <br> {{ $professor->nome }}
-                                        @endforeach
-                                        </td> --}}
+                                        <td>
+                                            @foreach ($atividade->turmas as $turma)
+                                            {{ $turma->ano . "º" . $turma->nome }}
+                                            @endforeach
+                                        </td>
                                         <td class="text-center">
                                             <a type="button" data-id="{{ $atividade->id }}"
                                                 data-nome="{{ $atividade->nome }}"
-                                                data-inicio="{{ $atividade->inicio }}" data-fim="{{ $atividade->fim }}"
-                                                data-local="{{ $atividade->local }}"
+                                                data-inicio="{{ $atividade->inicio->format('Y-m-d\TH:i') }}"
+                                                data-fim="{{ $atividade->fim->format('Y-m-d\TH:i') }}"
+                                                data-local="{{ $atividade->local->nome }}"
+                                                data-local_id="{{ $atividade->local->id }}"
                                                 data-observacao="{{ $atividade->observacao }}"
-                                                data-professores="{{ $atividade->professores }}" data-toggle="modal"
+                                                data-professores="{{ $atividade->professores }}"
+                                                data-user="{{ $atividade->user->nome }}"
+                                                data-user_id="{{ $atividade->user->id }}" data-toggle="modal"
                                                 data-target="#editAtividadeModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>

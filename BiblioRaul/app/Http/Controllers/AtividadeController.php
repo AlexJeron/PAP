@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Atividade;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 
 class AtividadeController extends Controller
@@ -19,6 +20,13 @@ class AtividadeController extends Controller
         $atividade = Atividade::latest()
             ->whereMonth('inicio', Carbon::now()->month)
             ->get();
+        $user = DB::table('user')->orderBy('nome')->get();
+        $local = DB::table('local')->orderBy('nome')->get();
+
+        // $local = Atividade::latest()
+        //     ->from('atividade', 'local')
+        //     ->where('atividade.local_id', '=', 'local.id');
+        // $local = Atividade::where('atividade.local_id', '=', 'local.id');
 
         // [Query Builder]
         // $atividade = DB::table('atividade')
@@ -29,7 +37,7 @@ class AtividadeController extends Controller
         //     ->whereMonth('inicio', Carbon::now()->month)
         //     ->get();
 
-        return view('atividade.index', ['atividade' => $atividade]);
+        return view('atividade.index', compact('atividade', 'user', 'local'));
     }
 
     /**
