@@ -14,19 +14,6 @@
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id" value="{{ $turma->id }}">
                     <div class="form-group row">
-                        <label for="ano" class="col-sm-3 col-form-label text-md-right">{{ __('Ano') }}</label>
-                        <div class="col-sm-9">
-                            <input id="ano" type="text" class="form-control @error('ano') is-invalid @enderror"
-                                name="ano" value="{{ $turma->ano }}" maxlength="80" autofocus required>
-
-                            @error('ano')
-                            <div class="invalid-feedback">{{ $errors->first('ano') }}</div>
-                            @enderror
-
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <label for="nome" class="col-sm-3 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                         <div class="col-sm-9">

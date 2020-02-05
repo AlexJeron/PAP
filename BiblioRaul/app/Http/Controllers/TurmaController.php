@@ -74,7 +74,6 @@ class TurmaController extends Controller
     public function update(Request $request)
     {
         $validatedData = $request->validate([
-            'ano' => 'required|max:10',
             'nome' => 'required|max:10',
         ]);
 
@@ -100,7 +99,6 @@ class TurmaController extends Controller
     protected function validateTurma()
     {
         return request()->validate([
-            'ano' => 'required|max:10',
             'nome' => 'required|max:10',
         ]);
     }

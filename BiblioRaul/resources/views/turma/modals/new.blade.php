@@ -11,20 +11,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="ano" class="col-sm-3 col-form-label text-md-right">{{ __('Ano') }}</label>
-                        <div class="col-sm-9">
-                            <input id="ano" type="text" class="form-control @error('ano') is-invalid @enderror"
-                                name="ano" value="{{ old('ano') }}" maxlength="80" autofocus required>
-
-                            @error('ano')
-                            {{-- <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span> --}}
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
 
                     <div class="form-group row">
                         <label for="nome" class="col-sm-3 col-form-label text-md-right">{{ __('Nome') }}</label>

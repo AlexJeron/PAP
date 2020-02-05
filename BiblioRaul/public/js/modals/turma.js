@@ -1,11 +1,9 @@
 $("#editTurmaModal").on("show.bs.modal", function(event) {
     var button = $(event.relatedTarget);
     var id = button.data("id");
-    var ano = button.data("ano");
     var nome = button.data("nome");
     var modal = $(this);
     modal.find(".modal-body #id").val(id);
-    modal.find(".modal-body #ano").val(ano);
     modal.find(".modal-body #nome").val(nome);
 });
 

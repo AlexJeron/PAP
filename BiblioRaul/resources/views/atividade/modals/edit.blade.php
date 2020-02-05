@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="inicio" class="col-sm-2 col-form-label text-md-right">{{ __('Inicio') }}</label>
+                        <label for="inicio" class="col-sm-2 col-form-label text-md-right">{{ __('Início') }}</label>
 
                         <div class="col-sm-10">
                             <input id="inicio" type="datetime-local"
@@ -98,6 +98,23 @@
                                 name="observacao" rows="2">{{ old('observacao') }}</textarea>
 
                             @error('observacao')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="professor_id"
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Professor') }}</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="professor_id" name="professor_id[]" multiple>
+                                @foreach ($professor as $professor)
+                                <option value="{{ $professor->id }}"> {{ $professor->nome }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('professor_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 

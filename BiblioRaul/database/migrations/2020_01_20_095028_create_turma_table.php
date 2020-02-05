@@ -15,7 +15,6 @@ class CreateTurmaTable extends Migration
     {
         Schema::create('turma', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('ano');
             $table->string('nome', '10');
             $table->timestamps();
         });

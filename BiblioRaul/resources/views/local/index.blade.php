@@ -109,7 +109,7 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Datatables custom script -->
-<script src="/js/professor-datatable.js"></script>
+<script src="/js/datatable/professor.js"></script>
 
 <!-- DataTables CDN -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>

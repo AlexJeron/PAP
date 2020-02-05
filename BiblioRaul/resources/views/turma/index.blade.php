@@ -53,7 +53,6 @@
                             <table class="table zebra" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="transparency">
                                     <tr>
-                                        <th>Ano</th>
                                         <th>Nome</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
@@ -61,12 +60,10 @@
                                 <tbody>
                                     @foreach ($turma as $turma)
                                     <tr>
-                                        <td> {{ $turma->ano }} </td>
                                         <td> {{ $turma->nome }} </td>
                                         <td class="text-center">
-                                            <a type="button" data-id="{{ $turma->id }}" data-ano="{{ $turma->ano }}"
-                                                data-nome="{{ $turma->nome }}" data-toggle="modal"
-                                                data-target="#editTurmaModal">
+                                            <a type="button" data-id="{{ $turma->id }}" data-nome="{{ $turma->nome }}"
+                                                data-toggle="modal" data-target="#editTurmaModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>
                                             <a type="button" data-turma_id="{{ $turma->id }}" data-toggle="modal"
@@ -113,7 +110,7 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Datatables custom script -->
-<script src="/js/professor-datatable.js"></script>
+<script src="/js/datatable/turma.js"></script>
 
 <!-- DataTables CDN -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>

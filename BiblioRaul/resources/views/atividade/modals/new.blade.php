@@ -31,8 +31,7 @@
                             <select class="form-control" id="local_id" name="local_id">
                                 <option disabled selected></option>
                                 @foreach ($local as $local)
-                                <option value="{{ $local->id }}"> {{ $local->nome }}
-                                </option>
+                                <option value="{{ $local->id }}">{{ $local->nome }}</option>
                                 @endforeach
                             </select>
 

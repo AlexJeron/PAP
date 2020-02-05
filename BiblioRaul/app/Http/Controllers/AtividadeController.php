@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Atividade;
 use App\Local;
+use App\Professor;
+use App\Turma;
 use App\User;
 use Auth;
 use Carbon\Carbon;
@@ -25,6 +27,9 @@ class AtividadeController extends Controller
         setlocale(LC_COLLATE, 'pt-PT.utf8');
         $user = User::all()->sortBy('nome', SORT_LOCALE_STRING);
         $local = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
+        $professor = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
+        $turma = Turma::all()->sortBy('nome', SORT_LOCALE_STRING);
+
         // $user = DB::table('user')->orderBy('nome')->get();
         // $local = DB::table('local')->orderBy('nome')->get();
 
@@ -42,7 +47,7 @@ class AtividadeController extends Controller
         //     ->whereMonth('inicio', Carbon::now()->month)
         //     ->get();
 
-        return view('atividade.index', compact('atividade', 'user', 'local'));
+        return view('atividade.index', compact('atividade', 'user', 'local', 'professor', 'turma'));
     }
 
     /**
@@ -107,7 +112,7 @@ class AtividadeController extends Controller
      */
     public function update(Request $request)
     {
-        // dd(request()->all());
+        dd(request()->all());
         // $validatedData = $request->validate([
         //     'nome' => 'required|max:255',
         //     'user_id' => 'required|max:20',

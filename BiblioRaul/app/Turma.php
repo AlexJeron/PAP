@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Turma extends Model
 {
     protected $table = 'turma';
-    protected $fillable = ['ano', 'nome'];
+    protected $fillable = ['nome'];
 
     public function atividades()
     {

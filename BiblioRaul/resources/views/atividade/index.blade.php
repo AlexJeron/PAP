@@ -69,7 +69,7 @@
                                         <td> {{ $atividade->local->nome }} </td>
                                         <td>
                                             @foreach ($atividade->turmas as $turma)
-                                            {{ $turma->ano . "º" . $turma->nome }}
+                                            {{ $turma->nome }}
                                             @endforeach
                                         </td>
                                         <td class="text-center">
@@ -77,12 +77,10 @@
                                                 data-nome="{{ $atividade->nome }}"
                                                 data-inicio="{{ $atividade->inicio->format('Y-m-d\TH:i') }}"
                                                 data-fim="{{ optional($atividade->fim)->format('Y-m-d\TH:i') }}"
-                                                {{-- data-local="{{ $atividade->local->nome }}" --}}
                                                 data-local_id="{{ $atividade->local->id }}"
                                                 data-observacao="{{ $atividade->observacao }}"
                                                 data-professores="{{ $atividade->professores }}"
                                                 data-turmas="{{ $atividade->turmas }}"
-                                                {{-- data-user="{{ $atividade->user->nome }}" --}}
                                                 data-user_id="{{ $atividade->user->id }}" data-toggle="modal"
                                                 data-target="#editAtividadeModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
@@ -136,7 +134,7 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Datatables custom script -->
-<script src="/js/atividade-datatable.js"></script>
+<script src="/js/datatable/atividade.js"></script>
 
 <!-- DataTables CDN -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
