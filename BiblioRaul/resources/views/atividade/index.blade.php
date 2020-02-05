@@ -6,6 +6,8 @@
 <!-- DataTables CDN -->
 <link rel="stylesheet" type="text/css"
     href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fh-3.1.6/kt-2.5.1/r-2.2.3/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.css" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css" />
 
 @endsection
 
@@ -93,11 +95,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- <p>
-                                @foreach ($atividade->professores as $professor)
-                                <p>{{ $professor->nome }}</p>
-                            @endforeach
-                            </p> --}}
                         </div>
                     </div>
                 </div>
@@ -148,5 +145,6 @@
 
 <!-- Custom JS -->
 <script src="/js/modals/atividade.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('js/bootstrap-select-pt_PT.js') }}"></script>
 @endsection

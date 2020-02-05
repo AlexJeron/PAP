@@ -16,7 +16,6 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    {{-- <link href="/css/sb-admin-2.css" rel="stylesheet"> --}}
     <link href="/css/app.css" rel="stylesheet">
 
     @yield('head')

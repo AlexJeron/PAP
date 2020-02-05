@@ -112,7 +112,7 @@ class AtividadeController extends Controller
      */
     public function update(Request $request)
     {
-        dd(request()->all());
+        // dd(request()->all());
         // $validatedData = $request->validate([
         //     'nome' => 'required|max:255',
         //     'user_id' => 'required|max:20',
@@ -131,6 +131,8 @@ class AtividadeController extends Controller
         $atividade->fim = Carbon::parse($request->fim)->format('Y-m-d H:i:s');
         $atividade->observacao = $request->observacao;
         $atividade->save();
+
+        $atividade->professores()->attach(request('professor_id'));
 
         return back();
     }
@@ -157,6 +159,7 @@ class AtividadeController extends Controller
             'inicio' => 'required|max:25',
             'fim' => 'nullable|max:25',
             'observacao' => 'nullable|max:255',
+            'professor_id' => 'exists:professor,id',
         ]);
     }
 }

@@ -18686,6 +18686,12 @@ div.dt-buttons.btn-group.flex-wrap {
   border-top: 0px solid #e3e6f0;
 }
 
+.bootstrap-select > .dropdown-toggle.bs-placeholder {
+  color: #6e707e !important;
+  border: 1px solid #d1d3e2;
+  background-color: #fff;
+}
+
 /* The switch - the box around the slider */
 
 .switch {

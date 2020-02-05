@@ -108,7 +108,8 @@
                         <label for="professor_id"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Professor') }}</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="professor_id" name="professor_id[]" multiple>
+                            <select class="form-control selectpicker" id="professor_id" name="professor_id[]" multiple
+                                data-live-search="true">
                                 @foreach ($professor as $professor)
                                 <option value="{{ $professor->id }}"> {{ $professor->nome }}</option>
                                 @endforeach
