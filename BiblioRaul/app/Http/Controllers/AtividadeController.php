@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
+use App\Local;
+use App\User;
+use Auth;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Http\Request;
 
 class AtividadeController extends Controller
@@ -20,8 +22,11 @@ class AtividadeController extends Controller
         $atividade = Atividade::latest()
             ->whereMonth('inicio', Carbon::now()->month)
             ->get();
-        $user = DB::table('user')->orderBy('nome')->get();
-        $local = DB::table('local')->orderBy('nome')->get();
+        setlocale(LC_COLLATE, 'pt-PT.utf8');
+        $user = User::all()->sortBy('nome', SORT_LOCALE_STRING);
+        $local = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
+        // $user = DB::table('user')->orderBy('nome')->get();
+        // $local = DB::table('local')->orderBy('nome')->get();
 
         // $local = Atividade::latest()
         //     ->from('atividade', 'local')
@@ -67,9 +72,17 @@ class AtividadeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        Atividade::create($this->validateAtividade());
+        // dd(request()->all());
+        // $this->validateAtividade();
+        $atividade = new Atividade(request(['nome', 'local_id', 'user_id', 'inicio', 'fim', 'observacao']));
+        $atividade->user_id = Auth::user()->id;
+        $atividade->inicio = Carbon::parse($request->inicio)->format('Y-m-d H:i:s');
+        $atividade->fim = Carbon::parse($request->fim)->format('Y-m-d H:i:s');
+        $atividade->save();
+
+        // Atividade::create($this->validateAtividade());
 
         return redirect('/atividade');
     }
@@ -94,17 +107,25 @@ class AtividadeController extends Controller
      */
     public function update(Request $request)
     {
-        $validatedData = $request->validate([
-            'nome' => 'required|max:255',
-            'user_id' => 'required|max:20',
-            'local_id' => 'required|max:20',
-            'inicio' => 'required|max:25',
-            'fim' => 'nullable|max:25',
-            'observacao' => 'nullable|max:255',
-        ]);
+        // dd(request()->all());
+        // $validatedData = $request->validate([
+        //     'nome' => 'required|max:255',
+        //     'user_id' => 'required|max:20',
+        //     'local_id' => 'required|max:20',
+        //     'inicio' => 'required|max:25',
+        //     'fim' => 'nullable|max:25',
+        //     'observacao' => 'nullable|max:255',
+        // ]);
+        $this->validateAtividade();
 
         $atividade = Atividade::findOrFail($request->id);
-        $atividade->update($request->all());
+        $atividade->nome = $request->nome;
+        $atividade->local_id = $request->local_id;
+        $atividade->user_id = $request->user_id;
+        $atividade->inicio = Carbon::parse($request->inicio)->format('Y-m-d H:i:s');
+        $atividade->fim = Carbon::parse($request->fim)->format('Y-m-d H:i:s');
+        $atividade->observacao = $request->observacao;
+        $atividade->save();
 
         return back();
     }
@@ -126,8 +147,8 @@ class AtividadeController extends Controller
     {
         return request()->validate([
             'nome' => 'required|max:255',
-            'user_id' => 'required|max:20',
             'local_id' => 'required|max:20',
+            // 'user_id' => 'required|max:20',
             'inicio' => 'required|max:25',
             'fim' => 'nullable|max:25',
             'observacao' => 'nullable|max:255',

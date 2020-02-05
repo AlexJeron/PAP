@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Atividade extends Model
 {
     protected $table = 'atividade';
+    protected $fillable = ['nome', 'local_id', 'user_id', 'observacao'];
     protected $dates = ['inicio', 'fim'];
 
     public function user()

@@ -14,95 +14,98 @@
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id" value="{{ $atividade->id }}">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">{{ __('Nome') }}</label>
+                        <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Atividade') }}</label>
                         <div class="col-sm-10">
                             <input id="name" type="text" class="form-control @error('nome') is-invalid @enderror"
-                                name="nome" value="" maxlength="80" autofocus required>
+                                name="nome" maxlength="80" autofocus required>
 
                             @error('nome')
-                            <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="local" class="col-sm-2 col-form-label">{{ __('Local') }}</label>
+                        <label for="local_id" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}</label>
                         <div class="col-sm-10">
-                            <select id="local" class="form-control" name="local">
+                            <select class="form-control" id="local_id" name="local_id">
                                 @foreach ($local as $local)
                                 <option value="{{ $local->id }}"> {{ $local->nome }}
                                 </option>
                                 @endforeach
                             </select>
 
-                            @error('local')
-                            <div class="invalid-feedback">{{ $errors->first('local') }}</div>
+                            @error('local_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="user" class="col-sm-2 col-form-label">{{ __('Utilizador') }}</label>
+                        <label for="user_id"
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Utilizador') }}</label>
 
                         <div class="col-sm-10">
-                            <select id="user" class="form-control" name="user" value="" maxlength="80">
+                            <select id="user_id" class="form-control" name="user_id">
                                 @foreach ($user as $user)
                                 <option value="{{ $user->id }}"> {{ $user->nome }} </option>
                                 @endforeach
                             </select>
 
-                            @error('user')
-                            <div class="invalid-feedback">{{ $errors->first('user') }}</div>
+                            @error('user_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="inicio" class="col-sm-2 col-form-label">{{ __('Inicio') }}</label>
+                        <label for="inicio" class="col-sm-2 col-form-label text-md-right">{{ __('Inicio') }}</label>
 
                         <div class="col-sm-10">
                             <input id="inicio" type="datetime-local"
                                 class="form-control @error('inicio') is-invalid @enderror" name="inicio" required>
 
                             @error('inicio')
-                            <div class="invalid-feedback">{{ $errors->first('inicio') }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="fim" class="col-sm-2 col-form-label">{{ __('Fim') }}</label>
+                        <label for="fim" class="col-sm-2 col-form-label text-md-right">{{ __('Fim') }}</label>
 
                         <div class="col-sm-10">
                             <input id="fim" type="datetime-local"
                                 class="form-control @error('fim') is-invalid @enderror" name="fim" required>
 
                             @error('fim')
-                            <div class="invalid-feedback">{{ $errors->first('fim') }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="observacao" class="col-sm-2 col-form-label">{{ __('Observações') }}</label>
+                        <label for="observacao"
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Observações') }}</label>
 
                         <div class="col-sm-10">
                             <textarea id="observacao" class="form-control @error('observacao') is-invalid @enderror"
-                                name="observacao" rows="3"></textarea>
+                                name="observacao" rows="2">{{ old('observacao') }}</textarea>
 
                             @error('observacao')
-                            <div class="invalid-feedback">{{ $errors->first('observacao') }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
                         </div>
                     </div>
 
                     <table id="profTable"></table>
+                    <table id="turmaTable"></table>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -115,10 +118,3 @@
         </form>
     </div>
 </div>
-
-<script>
-    // $("#editAtividadeModal").on("shown.bs.modal", function(event) {
-    //     document.getElementById("local").value = "teste";
-    //     console.log("teste");
-    // });
-</script>

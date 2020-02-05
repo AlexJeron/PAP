@@ -76,12 +76,13 @@
                                             <a type="button" data-id="{{ $atividade->id }}"
                                                 data-nome="{{ $atividade->nome }}"
                                                 data-inicio="{{ $atividade->inicio->format('Y-m-d\TH:i') }}"
-                                                data-fim="{{ $atividade->fim->format('Y-m-d\TH:i') }}"
-                                                data-local="{{ $atividade->local->nome }}"
+                                                data-fim="{{ optional($atividade->fim)->format('Y-m-d\TH:i') }}"
+                                                {{-- data-local="{{ $atividade->local->nome }}" --}}
                                                 data-local_id="{{ $atividade->local->id }}"
                                                 data-observacao="{{ $atividade->observacao }}"
                                                 data-professores="{{ $atividade->professores }}"
-                                                data-user="{{ $atividade->user->nome }}"
+                                                data-turmas="{{ $atividade->turmas }}"
+                                                {{-- data-user="{{ $atividade->user->nome }}" --}}
                                                 data-user_id="{{ $atividade->user->id }}" data-toggle="modal"
                                                 data-target="#editAtividadeModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
