@@ -121,9 +121,22 @@
 
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="turma" class="col-sm-2 col-form-label text-md-right">{{ __('Turma') }}</label>
+                        <div class="col-sm-10">
+                            <select class="form-control selectpicker" id="turma" name="turma[]" multiple
+                                data-live-search="true">
+                                @foreach ($turma as $turma)
+                                <option value="{{ $turma->id }}"> {{ $turma->nome }}</option>
+                                @endforeach
+                            </select>
 
-                    <table id="profTable"></table>
-                    <table id="turmaTable"></table>
+                            @error('turma')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

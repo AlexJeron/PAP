@@ -70,9 +70,15 @@
                                         <td> {{ $atividade->nome }} </td>
                                         <td> {{ $atividade->local->nome }} </td>
                                         <td>
-                                            @foreach ($atividade->turmas as $turma)
+                                            {{-- @foreach ($atividade->turmas as $turma)
                                             {{ $turma->nome }}
-                                            @endforeach
+                                            @endforeach --}}
+                                            <?php
+                                            $array = json_decode($atividade->turmas, true);
+                                            for ($i = 0; $i < count($array); $i++) {
+                                                echo($array[$i]["nome"] . " ");
+                                            }
+                                            ?>
                                         </td>
                                         <td class="text-center">
                                             <a type="button" data-id="{{ $atividade->id }}"

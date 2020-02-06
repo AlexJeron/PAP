@@ -132,7 +132,8 @@ class AtividadeController extends Controller
         $atividade->observacao = $request->observacao;
         $atividade->save();
 
-        $atividade->professores()->attach(request('professor_id'));
+        $atividade->professores()->sync(request('professor_id'));
+        $atividade->turmas()->sync(request('turma'));
 
         return back();
     }
@@ -160,6 +161,7 @@ class AtividadeController extends Controller
             'fim' => 'nullable|max:25',
             'observacao' => 'nullable|max:255',
             'professor_id' => 'exists:professor,id',
+            'turma' => 'exists:turma,id',
         ]);
     }
 }
