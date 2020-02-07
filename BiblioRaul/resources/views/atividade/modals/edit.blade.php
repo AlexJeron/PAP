@@ -141,18 +141,17 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="edit_recurso"
-                            class="col-sm-2 col-form-label text-md-right">{{ __('Recursos') }}<span
+                        <label for="recurso_id" class="col-sm-2 col-form-label text-md-right">{{ __('Recursos') }}<span
                                 style="margin-right: -0.5rem"></span></label>
                         <div class="col-sm-8">
-                            <select class="form-control selectpicker" id="edit_recurso" name="edit_recurso"
+                            <select class="form-control selectpicker" id="recurso_id" name="recurso_id"
                                 data-live-search="true">
                                 @foreach ($recurso as $recurso)
                                 <option value="{{ $recurso->id }}">{{ $recurso->nome }}</option>
                                 @endforeach
                             </select>
 
-                            @error('edit_recurso')
+                            @error('recurso_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 

@@ -28,18 +28,18 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="new_local" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}<span
+                        <label for="new_local_id" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}<span
                                 class="red" style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-10">
-                            <select class="form-control selectpicker" id="new_local" name="new_local"
+                            <select class="form-control selectpicker" id="new_local_id" name="new_local_id"
                                 data-live-search="true" title="Selecione um local" required>
                                 @foreach ($local as $local)
                                 <option value="{{ $local->id }}">{{ $local->nome }}</option>
                                 @endforeach
                             </select>
 
-                            @error('new_local')
+                            @error('new_local_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
@@ -107,17 +107,17 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="new_turma" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}<span
+                        <label for="new_turmas" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}<span
                                 class="red" style="visibility: hidden; margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
-                            <select class="form-control selectpicker" id="new_turma" name="new_turma[]"
+                            <select class="form-control selectpicker" id="new_turmas" name="new_turmas[]"
                                 title="Selecione uma ou mais turmas" multiple data-live-search="true">
                                 @foreach ($turma as $turma)
                                 <option value="{{ $turma->id }}"> {{ $turma->nome }}</option>
                                 @endforeach
                             </select>
 
-                            @error('new_turma')
+                            @error('new_turmas')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
@@ -125,18 +125,18 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="new_professor"
+                        <label for="new_professores"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Professores') }}<span class="red"
                                 style="visibility: hidden; margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
-                            <select class="form-control selectpicker" id="new_professor" name="new_professor[]"
+                            <select class="form-control selectpicker" id="new_professores" name="new_professores[]"
                                 title="Selecione um ou mais professores" multiple data-live-search="true">
                                 @foreach ($professor as $professor)
                                 <option value="{{ $professor->id }}"> {{ $professor->nome }}</option>
                                 @endforeach
                             </select>
 
-                            @error('new_professor')
+                            @error('new_professores')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
@@ -144,29 +144,29 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="new_recurso" class="col-sm-2 col-form-label text-md-right">{{ __('Recursos') }}<span
-                                class="red" style="visibility: hidden; margin-right: -0.5rem">*</span></label>
+                        <label for="new_recurso_id"
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Recursos') }}<span class="red"
+                                style="visibility: hidden; margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-8">
-                            <select class="form-control selectpicker" id="new_recurso" name="new_recurso"
+                            <select class="form-control selectpicker" id="new_recurso_id" name="new_recurso_id"
                                 title="Selecione um recurso" data-live-search="true">
                                 @foreach ($recurso as $recurso)
                                 <option value="{{ $recurso->id }}"> {{ $recurso->nome }}</option>
                                 @endforeach
                             </select>
 
-                            @error('new_recurso')
+                            @error('new_recurso_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
                         </div>
 
                         <div class="col-sm-2">
-                            <input id="quantidade_necessaria" type="number" min="0"
-                                class="form-control @error('quantidade_necessaria') is-invalid @enderror"
-                                name="quantidade_necessaria" value="{{ old('quantidade_necessaria') }}"
-                                placeholder="Total">
+                            <input id="new_num_recursos" type="number" min="0"
+                                class="form-control @error('new_num_recursos') is-invalid @enderror"
+                                name="new_num_recursos" value="{{ old('new_num_recursos') }}" placeholder="Total">
 
-                            @error('quantidade_necessaria')
+                            @error('new_num_recursos')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 

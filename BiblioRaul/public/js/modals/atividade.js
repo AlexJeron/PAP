@@ -5,14 +5,13 @@ $("#editAtividadeModal").on("show.bs.modal", function(event) {
     var inicio = button.data("inicio");
     var fim = button.data("fim");
     var local_id = button.data("local_id");
+    var recurso_id = button.data("recurso_id");
+    var num_recursos = button.data("num_recursos");
     var total_espectadores = button.data("total_espectadores");
     var outros_espectadores = button.data("outros_espectadores");
     var professores = button.data("professores");
     var turmas = button.data("turmas");
-    var recurso_id = button.data("recurso_id");
-    var num_recursos = button.data("num_recursos");
     var observacao = button.data("observacao");
-    // var user = button.data("user");
     var user_name = button.data("user_name");
 
     // Select Local
@@ -21,6 +20,10 @@ $("#editAtividadeModal").on("show.bs.modal", function(event) {
 
     // Select User
     $("select[name=user_name]").val(user_name);
+    $(".selectpicker").selectpicker("refresh");
+
+    // Select Recurso
+    $("select[name=recurso_id]").val(recurso_id);
     $(".selectpicker").selectpicker("refresh");
 
     // Select Professores
@@ -37,31 +40,21 @@ $("#editAtividadeModal").on("show.bs.modal", function(event) {
     }
     $("#turmas").selectpicker("val", turmaArray);
 
-    // Select Recurso
-    console.log(recurso_id);
-    $("select[name=recurso_id]").val(recurso_id);
-    $(".selectpicker").selectpicker("refresh");
-
     var modal = $(this);
     modal.find(".modal-body #id").val(id);
     modal.find(".modal-body #name").val(nome);
     modal.find(".modal-body #inicio").val(inicio);
     modal.find(".modal-body #fim").val(fim);
-    // modal.find(".modal-body #local").val(local);
     modal.find(".modal-body #local_id").val(local_id);
+    modal.find(".modal-body #recurso_id").val(recurso_id);
+    modal.find(".modal-body #num_recursos").val(num_recursos);
     modal.find(".modal-body #observacao").val(observacao);
     modal.find(".modal-body #total_espectadores").val(total_espectadores);
     modal.find(".modal-body #outros_espectadores").val(outros_espectadores);
-    modal.find(".modal-body #num_recursos").val(num_recursos);
-    // modal.find(".modal-body #professores").val(profNome);
-    // modal.find(".modal-body #turmas").val(turmaNome);
-    // modal.find(".modal-body #user").val(user);
-    modal.find(".modal-body #recurso_id").val(recurso_id);
-    modal.find(".modal-body #num_recursos").val(num_recursos);
     modal.find(".modal-body #user_name").val(user_name);
 
     document.getElementById("local_id").value = local_id;
-    document.getElementById("edit_recurso").value = recurso_id;
+    document.getElementById("recurso_id").value = recurso_id;
     document.getElementById("user_name").value = user_name;
 });
 

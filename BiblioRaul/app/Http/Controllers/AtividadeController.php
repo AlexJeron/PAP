@@ -84,16 +84,17 @@ class AtividadeController extends Controller
         // dd(request()->all());
         $this->validateNewAtividade();
 
-        $atividade = new Atividade(request(['nome', 'local_id', 'user_id', 'inicio', 'fim', 'total_espectadores', 'outros_espectadores', 'observacao']));
-        $atividade->local_id = $request->new_local;
+        $atividade = new Atividade(request(['nome', 'user_id', 'local_id', 'recurso_id', 'inicio', 'fim', 'total_espectadores', 'outros_espectadores', 'num_recursos', 'observacao']));
         $atividade->user_id = Auth::user()->id;
+        $atividade->local_id = $request->new_local_id;
+        $atividade->recurso_id = $request->new_recurso_id;
         $atividade->inicio = Carbon::parse($request->inicio)->format('Y-m-d H:i:s');
         $atividade->fim = empty($request->fim) ? null : Carbon::parse($request->fim)->format('Y-m-d H:i:s');
+        $atividade->num_recursos = $request->new_num_recursos;
         $atividade->save();
 
-        $atividade->turmas()->attach(request('new_turma'));
-        $atividade->professores()->attach(request('new_professor'));
-        $atividade->recursos()->attach(request('new_recurso'), ['quantidade_necessaria' => request('quantidade_necessaria')]);
+        $atividade->turmas()->attach(request('new_turmas'));
+        $atividade->professores()->attach(request('new_professores'));
 
         return redirect('/atividade');
     }
@@ -128,7 +129,7 @@ class AtividadeController extends Controller
         $atividade->fim = empty($request->fim) ? null : Carbon::parse($request->fim)->format('Y-m-d H:i:s');
         $atividade->total_espectadores = $request->total_espectadores;
         $atividade->outros_espectadores = $request->outros_espectadores;
-        $atividade->recurso_id = $request->edit_recurso;
+        $atividade->recurso_id = $request->recurso_id;
         $atividade->num_recursos = $request->num_recursos;
         $atividade->observacao = $request->observacao;
         $atividade->save();
@@ -173,14 +174,14 @@ class AtividadeController extends Controller
     {
         request()->validate([
             'nome' => 'required|max:255',
-            'new_local' => 'required|max:20',
+            'new_local_id' => 'required|max:20',
             'inicio' => 'required|max:25',
             'fim' => 'nullable|max:25',
             'total_espectadores' => 'required|max:10',
             'outros_espectadores' => 'nullable|max:255',
-            'new_turma' => 'exists:turma,id',
-            'new_professor' => 'exists:professor,id',
-            'new_recurso' => 'exists:recurso,id',
+            'new_turmas' => 'exists:turma,id',
+            'new_professores' => 'exists:professor,id',
+            'new_recurso_id' => 'exists:recurso,id',
             'quantidade_necessaria' => 'nullable|max:11',
             'observacao' => 'nullable|max:255',
         ]);
