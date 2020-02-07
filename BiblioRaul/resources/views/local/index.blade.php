@@ -50,7 +50,7 @@
                                 <thead class="transparency">
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Capacidade</th>
+                                        <th>Capacidade (pessoas)</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>

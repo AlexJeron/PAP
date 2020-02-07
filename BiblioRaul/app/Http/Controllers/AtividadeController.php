@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Atividade;
 use App\Local;
 use App\Professor;
+use App\Recurso;
 use App\Turma;
 use App\User;
 use Auth;
@@ -28,7 +29,8 @@ class AtividadeController extends Controller
         $user = User::all()->sortBy('nome', SORT_LOCALE_STRING);
         $local = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
         $professor = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
-        $turma = Turma::all()->sortBy('nome', SORT_LOCALE_STRING);
+        $turma = Turma::all()->sortBy('id');
+        $recurso = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
 
         // $user = DB::table('user')->orderBy('nome')->get();
         // $local = DB::table('local')->orderBy('nome')->get();
@@ -47,7 +49,7 @@ class AtividadeController extends Controller
         //     ->whereMonth('inicio', Carbon::now()->month)
         //     ->get();
 
-        return view('atividade.index', compact('atividade', 'user', 'local', 'professor', 'turma'));
+        return view('atividade.index', compact('atividade', 'user', 'local', 'professor', 'turma', 'recurso'));
     }
 
     /**
@@ -80,14 +82,18 @@ class AtividadeController extends Controller
     public function store(Request $request)
     {
         // dd(request()->all());
-        // $this->validateAtividade();
-        $atividade = new Atividade(request(['nome', 'local_id', 'user_id', 'inicio', 'fim', 'observacao']));
+        $this->validateNewAtividade();
+
+        $atividade = new Atividade(request(['nome', 'local_id', 'user_id', 'inicio', 'fim', 'total_espectadores', 'outros_espectadores', 'observacao']));
+        $atividade->local_id = $request->new_local;
         $atividade->user_id = Auth::user()->id;
         $atividade->inicio = Carbon::parse($request->inicio)->format('Y-m-d H:i:s');
-        $atividade->fim = Carbon::parse($request->fim)->format('Y-m-d H:i:s');
+        $atividade->fim = empty($request->fim) ? null : Carbon::parse($request->fim)->format('Y-m-d H:i:s');
         $atividade->save();
 
-        // Atividade::create($this->validateAtividade());
+        $atividade->turmas()->attach(request('new_turma'));
+        $atividade->professores()->attach(request('new_professor'));
+        $atividade->recursos()->attach(request('new_recurso'), ['quantidade_necessaria' => request('quantidade_necessaria')]);
 
         return redirect('/atividade');
     }
@@ -113,27 +119,22 @@ class AtividadeController extends Controller
     public function update(Request $request)
     {
         // dd(request()->all());
-        // $validatedData = $request->validate([
-        //     'nome' => 'required|max:255',
-        //     'user_id' => 'required|max:20',
-        //     'local_id' => 'required|max:20',
-        //     'inicio' => 'required|max:25',
-        //     'fim' => 'nullable|max:25',
-        //     'observacao' => 'nullable|max:255',
-        // ]);
-        $this->validateAtividade();
+        $this->validateEditAtividade();
 
         $atividade = Atividade::findOrFail($request->id);
         $atividade->nome = $request->nome;
         $atividade->local_id = $request->local_id;
-        $atividade->user_id = $request->user_id;
         $atividade->inicio = Carbon::parse($request->inicio)->format('Y-m-d H:i:s');
-        $atividade->fim = Carbon::parse($request->fim)->format('Y-m-d H:i:s');
+        $atividade->fim = empty($request->fim) ? null : Carbon::parse($request->fim)->format('Y-m-d H:i:s');
+        $atividade->total_espectadores = $request->total_espectadores;
+        $atividade->outros_espectadores = $request->outros_espectadores;
+        $atividade->recurso_id = $request->edit_recurso;
+        $atividade->num_recursos = $request->num_recursos;
         $atividade->observacao = $request->observacao;
         $atividade->save();
 
+        $atividade->turmas()->sync(request('turmas'));
         $atividade->professores()->sync(request('professor_id'));
-        $atividade->turmas()->sync(request('turma'));
 
         return back();
     }
@@ -151,17 +152,37 @@ class AtividadeController extends Controller
         return back();
     }
 
-    protected function validateAtividade()
+    protected function validateEditAtividade()
     {
         return request()->validate([
             'nome' => 'required|max:255',
             'local_id' => 'required|max:20',
-            // 'user_id' => 'required|max:20',
             'inicio' => 'required|max:25',
             'fim' => 'nullable|max:25',
-            'observacao' => 'nullable|max:255',
-            'professor_id' => 'exists:professor,id',
+            'total_espectadores' => 'required|max:10',
+            'outros_espectadores' => 'nullable|max:255',
             'turma' => 'exists:turma,id',
+            'professor_id' => 'exists:professor,id',
+            'edit_recurso' => 'exists:recurso,id',
+            'quantidade_necessaria' => 'nullable|max:11',
+            'observacao' => 'nullable|max:255',
+        ]);
+    }
+
+    protected function validateNewAtividade()
+    {
+        request()->validate([
+            'nome' => 'required|max:255',
+            'new_local' => 'required|max:20',
+            'inicio' => 'required|max:25',
+            'fim' => 'nullable|max:25',
+            'total_espectadores' => 'required|max:10',
+            'outros_espectadores' => 'nullable|max:255',
+            'new_turma' => 'exists:turma,id',
+            'new_professor' => 'exists:professor,id',
+            'new_recurso' => 'exists:recurso,id',
+            'quantidade_necessaria' => 'nullable|max:11',
+            'observacao' => 'nullable|max:255',
         ]);
     }
 }

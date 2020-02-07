@@ -11,6 +11,6 @@ class Recurso extends Model
 
     public function atividades()
     {
-        return $this->belongsToMany(Atividade::class);
+        return $this->hasMany(Atividade::class);
     }
 }

@@ -14,7 +14,8 @@
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id" value="{{ $atividade->id }}">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Atividade') }}</label>
+                        <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Atividade') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
                             <input id="name" type="text" class="form-control @error('nome') is-invalid @enderror"
                                 name="nome" maxlength="80" autofocus required>
@@ -27,12 +28,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="local_id" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}</label>
+                        <label for="local_id" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="local_id" name="local_id">
+                            <select class="form-control selectpicker" id="local_id" name="local_id"
+                                data-live-search="true">
                                 @foreach ($local as $local)
-                                <option value="{{ $local->id }}"> {{ $local->nome }}
-                                </option>
+                                <option value="{{ $local->id }}">{{ $local->nome }}</option>
                                 @endforeach
                             </select>
 
@@ -44,25 +46,8 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="user_id"
-                            class="col-sm-2 col-form-label text-md-right">{{ __('Utilizador') }}</label>
-
-                        <div class="col-sm-10">
-                            <select id="user_id" class="form-control" name="user_id">
-                                @foreach ($user as $user)
-                                <option value="{{ $user->id }}"> {{ $user->nome }} </option>
-                                @endforeach
-                            </select>
-
-                            @error('user_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="inicio" class="col-sm-2 col-form-label text-md-right">{{ __('Início') }}</label>
+                        <label for="inicio" class="col-sm-2 col-form-label text-md-right">{{ __('Início') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-10">
                             <input id="inicio" type="datetime-local"
@@ -76,11 +61,12 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="fim" class="col-sm-2 col-form-label text-md-right">{{ __('Fim') }}</label>
+                        <label for="fim" class="col-sm-2 col-form-label text-md-right">{{ __('Fim') }}<span class="red"
+                                style="visibility: hidden; margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-10">
                             <input id="fim" type="datetime-local"
-                                class="form-control @error('fim') is-invalid @enderror" name="fim" required>
+                                class="form-control @error('fim') is-invalid @enderror" name="fim">
 
                             @error('fim')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -90,14 +76,45 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="observacao"
-                            class="col-sm-2 col-form-label text-md-right">{{ __('Observações') }}</label>
+                        <label for="total_espectadores"
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Espectadores') }}<span class="red"
+                                style="margin-right: -0.5rem">*</span></label>
 
+                        <div class="col-sm-2">
+                            <input id="total_espectadores" type="number" min="0"
+                                class="form-control @error('total_espectadores') is-invalid @enderror"
+                                name="total_espectadores" value="{{ old('total_espectadores') }}" required>
+
+                            @error('total_espectadores')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+
+                        <div class="col-sm-8">
+                            <input id="outros_espectadores" type="text"
+                                class="form-control @error('outros_espectadores') is-invalid @enderror"
+                                name="outros_espectadores" value="{{ old('outros_espectadores') }}" maxlength="80">
+
+                            @error('outros_espectadores')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="turmas" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}<span
+                                class="red" style="visibility: hidden; margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
-                            <textarea id="observacao" class="form-control @error('observacao') is-invalid @enderror"
-                                name="observacao" rows="2">{{ old('observacao') }}</textarea>
+                            <select class="form-control selectpicker" id="turmas" name="turmas[]" multiple
+                                data-live-search="true">
+                                @foreach ($turma as $turma)
+                                <option value="{{ $turma->id }}"> {{ $turma->nome }}</option>
+                                @endforeach
+                            </select>
 
-                            @error('observacao')
+                            @error('turmas')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
@@ -106,7 +123,8 @@
 
                     <div class="form-group row">
                         <label for="professor_id"
-                            class="col-sm-2 col-form-label text-md-right">{{ __('Professor') }}</label>
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Professores') }}<span class="red"
+                                style="visibility: hidden; margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
                             <select class="form-control selectpicker" id="professor_id" name="professor_id[]" multiple
                                 data-live-search="true">
@@ -121,17 +139,63 @@
 
                         </div>
                     </div>
+
                     <div class="form-group row">
-                        <label for="turma" class="col-sm-2 col-form-label text-md-right">{{ __('Turma') }}</label>
-                        <div class="col-sm-10">
-                            <select class="form-control selectpicker" id="turma" name="turma[]" multiple
+                        <label for="edit_recurso"
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Recursos') }}<span
+                                style="margin-right: -0.5rem"></span></label>
+                        <div class="col-sm-8">
+                            <select class="form-control selectpicker" id="edit_recurso" name="edit_recurso"
                                 data-live-search="true">
-                                @foreach ($turma as $turma)
-                                <option value="{{ $turma->id }}"> {{ $turma->nome }}</option>
+                                @foreach ($recurso as $recurso)
+                                <option value="{{ $recurso->id }}">{{ $recurso->nome }}</option>
                                 @endforeach
                             </select>
 
-                            @error('turma')
+                            @error('edit_recurso')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+
+                        <div class="col-sm-2">
+                            <input id="num_recursos" type="number" min="0"
+                                class="form-control @error('num_recursos') is-invalid @enderror" name="num_recursos"
+                                value="{{ old('num_recursos') }}" placeholder="Total">
+
+                            @error('num_recursos')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="observacao"
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Observações') }}<span class="red"
+                                style="visibility: hidden; margin-right: -0.5rem">*</span></label>
+
+                        <div class="col-sm-10">
+                            <textarea id="observacao" class="form-control @error('observacao') is-invalid @enderror"
+                                name="observacao" rows="1">{{ old('observacao') }}</textarea>
+
+                            @error('observacao')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="user_name" class="col-sm-2 col-form-label text-md-right">{{ __('Criada por') }}<span
+                                class="red" style="visibility: hidden; margin-right: -0.5rem">*</span></label>
+
+                        <div class="col-sm-10">
+                            <input id="user_name" type="text"
+                                class="form-control @error('user_name') is-invalid @enderror" name="user_name" required
+                                disabled>
+
+                            @error('user_name')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 

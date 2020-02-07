@@ -83,7 +83,10 @@ $(document).ready(function() {
                 }
             }
         },
-        columns: [{ width: "90%" }, { width: "10%" }],
+        columnDefs: [
+            { width: "95%", targets: 0 },
+            { width: "5%", targets: 1 }
+        ],
         columns: [{ orderable: true }, { orderable: false }]
     });
 });

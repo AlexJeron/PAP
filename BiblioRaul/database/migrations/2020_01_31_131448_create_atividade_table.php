@@ -18,9 +18,13 @@ class CreateAtividadeTable extends Migration
             $table->string('nome');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('local_id');
+            $table->unsignedBigInteger('recurso_id');
             $table->timestamp('inicio');
             $table->timestamp('fim')->nullable();
-            $table->string('observacao')->nullable();
+            $table->integer('total_espectadores');
+            $table->string('outros_espectadores')->nullable();
+            $table->integer('num_recursos')->nullable();
+            $table->text('observacao')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -31,6 +35,11 @@ class CreateAtividadeTable extends Migration
             $table->foreign('local_id')
                 ->references('id')
                 ->on('local')
+                ->onDelete('cascade');
+
+            $table->foreign('recurso_id')
+                ->references('id')
+                ->on('recurso')
                 ->onDelete('cascade');
         });
 
@@ -46,19 +55,6 @@ class CreateAtividadeTable extends Migration
             $table->foreign('professor_id')->references('id')->on('professor')->onDelete('cascade');
         });
 
-        Schema::create('atividade_espectador', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('atividade_id');
-            $table->unsignedBigInteger('espectador_id');
-            $table->integer('total');
-            $table->timestamps();
-
-            $table->unique(['atividade_id', 'espectador_id']);
-
-            $table->foreign('atividade_id')->references('id')->on('atividade')->onDelete('cascade');
-            $table->foreign('espectador_id')->references('id')->on('espectador')->onDelete('cascade');
-        });
-
         Schema::create('atividade_turma', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('atividade_id');
@@ -69,19 +65,6 @@ class CreateAtividadeTable extends Migration
 
             $table->foreign('atividade_id')->references('id')->on('atividade')->onDelete('cascade');
             $table->foreign('turma_id')->references('id')->on('turma')->onDelete('cascade');
-        });
-
-        Schema::create('atividade_recurso', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('atividade_id');
-            $table->unsignedBigInteger('recurso_id');
-            $table->integer('quantidade_necessaria');
-            $table->timestamps();
-
-            $table->unique(['atividade_id', 'recurso_id']);
-
-            $table->foreign('atividade_id')->references('id')->on('atividade')->onDelete('cascade');
-            $table->foreign('recurso_id')->references('id')->on('recurso')->onDelete('cascade');
         });
     }
 
@@ -94,8 +77,6 @@ class CreateAtividadeTable extends Migration
     {
         Schema::dropIfExists('atividade_professor');
         Schema::dropIfExists('atividade_turma');
-        Schema::dropIfExists('atividade_recurso');
-        Schema::dropIfExists('atividade_espectador');
         Schema::dropIfExists('atividade');
     }
 }

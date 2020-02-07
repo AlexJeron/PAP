@@ -10800,7 +10800,7 @@ a:focus {
 }
 
 .bg-gradient-primary {
-    background-image: linear-gradient(180deg, $sidebar-light 10%, $sidebar-dark 100%);
+    background-image: linear-gradient(180deg, $sidebar-top 10%, $sidebar-bottom 100%);
     background-size: cover;
 }
 

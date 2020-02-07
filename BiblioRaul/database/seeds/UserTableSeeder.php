@@ -15,6 +15,8 @@ class UserTableSeeder extends Seeder
             'nome' => 'Alexandre Jerónimo',
             'email' => 'alexandrejeronimo2001@gmail.com',
             'password' => '$2y$10$EGPmdQP4ezxlcEAYfHTQ0.0VhirIuqGKPjGHCzq/37i85esSB2Uue',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
     }
 }

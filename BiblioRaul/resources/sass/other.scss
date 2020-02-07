@@ -6,7 +6,11 @@
 
 #Raul {
     font-weight: 900;
-    // color: #098dd2;
+}
+
+::selection {
+    color: white;
+    background: $primary;
 }
 
 #message {
@@ -60,4 +64,13 @@ div.dt-buttons.btn-group.flex-wrap {
     color: #6e707e !important;
     border: 1px solid #d1d3e2;
     background-color: #fff;
+}
+
+::-webkit-input-placeholder {
+    opacity: 1 !important;
+    color: #6e707e !important;
+}
+
+.red {
+    color: $red;
 }

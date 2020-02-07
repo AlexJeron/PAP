@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Atividade extends Model
 {
     protected $table = 'atividade';
-    protected $fillable = ['nome', 'local_id', 'user_id', 'observacao'];
+    protected $fillable = ['nome', 'local_id', 'user_id', 'total_espectadores', 'outros_espectadores', 'observacao'];
     protected $dates = ['inicio', 'fim'];
 
     public function user()
@@ -20,23 +20,18 @@ class Atividade extends Model
         return $this->belongsTo(Local::class);
     }
 
+    public function recurso()
+    {
+        return $this->belongsTo(Recurso::class);
+    }
+
     public function professores()
     {
-        return $this->belongsToMany(Professor::class);
+        return $this->belongsToMany(Professor::class)->withTimestamps();
     }
 
     public function turmas()
     {
-        return $this->belongsToMany(Turma::class);
-    }
-
-    public function espectadores()
-    {
-        return $this->belongsToMany(Espectador::class);
-    }
-
-    public function recursos()
-    {
-        return $this->belongsToMany(Recurso::class);
+        return $this->belongsToMany(Turma::class)->withTimestamps();
     }
 }
