@@ -8,6 +8,17 @@
 
 @endsection
 
+@if(session()->has('alert'))
+<div id="message">
+    <div style="padding: 5px;">
+        <div id="inner-message" class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Já tem sessão iniciada!
+        </div>
+    </div>
+</div>
+@endif
+
 @section('content')
 
 <!-- Page Wrapper -->

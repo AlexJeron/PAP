@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Insira uma palavra-passe">
-                        <label for="password" class="lblLogin">Password</label>
+                        <label for="password" class="lblLogin">Palavra-Passe</label>
                         <span class="btn-show-pass">
                             <i class="zmdi zmdi-eye" style="margin-top:25px"></i>
                         </span>
@@ -71,9 +71,12 @@
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
                             <button type="submit" class="login100-form-btn">
-                                Login
+                                Iniciar Sessão
                             </button>
                         </div>
+                    </div>
+                    <div class="text-center">
+                        <a class="text-primary" href="/password/reset">Esqueceu-se da sua Palavra-Passe?</a>
                     </div>
                 </form>
             </div>

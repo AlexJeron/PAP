@@ -38,4 +38,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Overrides the method to ignore the remember token.
+     */
+    public function setAttribute($key, $value)
+    {
+        $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+        if (!$isRememberTokenAttribute) {
+            parent::setAttribute($key, $value);
+        }
+    }
 }
