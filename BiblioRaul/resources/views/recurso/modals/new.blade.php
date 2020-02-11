@@ -1,7 +1,7 @@
 <div class="modal fade" id="newRecursoModal" tabindex="-1" role="dialog" aria-labelledby="newRecursoModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="/recurso">
+        <form {{ request()->is('recurso') ? 'method=POST action=/recurso' : 'id=newRecursoForm' }}>
             @csrf
             <div class="modal-content">
                 <div class="modal-header">

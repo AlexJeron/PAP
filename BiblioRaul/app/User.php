@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\ResetPassword as ResetPasswordNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -48,5 +49,14 @@ class User extends Authenticatable
         if (!$isRememberTokenAttribute) {
             parent::setAttribute($key, $value);
         }
+    }
+
+    /**
+     * Overrides the method to send password reset emails.
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        // Your your own implementation.
+        $this->notify(new ResetPasswordNotification($token));
     }
 }

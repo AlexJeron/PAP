@@ -50,7 +50,7 @@ class LocalController extends Controller
     {
         Local::create($this->validateLocal());
 
-        return redirect('/local');
+        return back();
     }
 
     /**

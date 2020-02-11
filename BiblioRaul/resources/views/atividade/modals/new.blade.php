@@ -31,7 +31,7 @@
                         <label for="new_local_id" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}<span
                                 class="red" style="margin-right: -0.5rem">*</span></label>
 
-                        <div class="col-sm-10">
+                        <div class="col-sm-9 pr-0">
                             <select class="form-control selectpicker" id="new_local_id" name="new_local_id"
                                 data-live-search="true" title="Selecione um local" required>
                                 @foreach ($local as $local)
@@ -43,6 +43,11 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
+                        </div>
+                        <div class="col-sm-1 text-center mt-1 pr-0 pl-0">
+                            <button class="btn btn-primary btn-circle btn-sm" type="button" id="novoLocal"
+                                data-toggle="modal" data-target="#newLocalModal" onclick="closeModal()"><i
+                                    class="fas fa-plus"></i></button>
                         </div>
                     </div>
 
@@ -109,7 +114,7 @@
                     <div class="form-group row">
                         <label for="new_turmas" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}<span
                                 class="red" style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9 pr-0">
                             <select class="form-control selectpicker" id="new_turmas" name="new_turmas[]"
                                 title="Selecione uma ou mais turmas" multiple data-live-search="true">
                                 @foreach ($turma as $turma)
@@ -122,13 +127,18 @@
                             @enderror
 
                         </div>
+                        <div class="col-sm-1 text-center mt-1">
+                            <button class="btn btn-primary btn-circle btn-sm" type="button" id="novaTurma"
+                                data-toggle="modal" data-target="#newTurmaModal" onclick="closeModal()"><i
+                                    class="fas fa-plus"></i></button>
+                        </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="new_professores"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Professores') }}<span class="red"
                                 style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9 pr-0">
                             <select class="form-control selectpicker" id="new_professores" name="new_professores[]"
                                 title="Selecione um ou mais professores" multiple data-live-search="true">
                                 @foreach ($professor as $professor)
@@ -141,13 +151,18 @@
                             @enderror
 
                         </div>
+                        <div class="col-sm-1 text-center mt-1">
+                            <button class="btn btn-primary btn-circle btn-sm" type="button" id="novoProfessor"
+                                data-toggle="modal" data-target="#newProfessorModal" onclick="closeModal()"><i
+                                    class="fas fa-plus"></i></button>
+                        </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="new_recurso_id"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Recursos') }}<span class="red"
                                 style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-7 pr-0">
                             <select class="form-control selectpicker" id="new_recurso_id" name="new_recurso_id"
                                 title="Selecione um recurso" data-live-search="true">
                                 @foreach ($recurso as $recurso)
@@ -159,6 +174,12 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
+                        </div>
+
+                        <div class="col-sm-1 text-center mt-1">
+                            <button class="btn btn-primary btn-circle btn-sm" type="button" id="novoRecurso"
+                                data-toggle="modal" data-target="#newRecursoModal" onclick="closeModal()"><i
+                                    class="fas fa-plus"></i></button>
                         </div>
 
                         <div class="col-sm-2">
@@ -201,3 +222,8 @@
         </form>
     </div>
 </div>
+
+@include('local.modals.new')
+@include('turma.modals.new')
+@include('professor.modals.new')
+@include('recurso.modals.new')

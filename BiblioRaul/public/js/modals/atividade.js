@@ -64,3 +64,127 @@ $("#deleteAtividadeModal").on("show.bs.modal", function(event) {
     var modal = $(this);
     modal.find(".modal-body #ativ_id").val(ativ_id);
 });
+
+function closeModal() {
+    $("#newAtividadeModal").modal("hide");
+}
+
+$("#newLocalModal").on("hide.bs.modal", function() {
+    $("#newAtividadeModal").modal("show");
+});
+
+$("#newTurmaModal").on("hide.bs.modal", function() {
+    $("#newAtividadeModal").modal("show");
+});
+
+$("#newProfessorModal").on("hide.bs.modal", function() {
+    $("#newAtividadeModal").modal("show");
+});
+
+$("#newRecursoModal").on("hide.bs.modal", function() {
+    $("#newAtividadeModal").modal("show");
+});
+
+$("#newLocalForm").on("submit", function(e) {
+    e.preventDefault();
+
+    var localSelect = document.getElementById("new_local_id");
+    var localOption = document.createElement("option");
+
+    $.ajax({
+        type: "POST",
+        url: "/local",
+        data: $("#newLocalForm").serialize(),
+        success: function() {
+            $("#newLocalModal").modal("hide");
+            $("#newAtividadeModal").modal("show");
+
+            var newLocal = $("#newLocalForm").serializeArray();
+            localOption.text = newLocal["1"]["value"];
+            localSelect.add(localOption);
+            $("#new_local_id").selectpicker("refresh");
+        },
+        error: function(error) {
+            console.log(error);
+            alert("Erro: tipo de dados incorretos!");
+        }
+    });
+});
+
+$("#newTurmaForm").on("submit", function(e) {
+    e.preventDefault();
+
+    var turmaSelect = document.getElementById("new_turmas");
+    var turmaOption = document.createElement("option");
+
+    $.ajax({
+        type: "POST",
+        url: "/turma",
+        data: $("#newTurmaForm").serialize(),
+        success: function() {
+            $("#newTurmaModal").modal("hide");
+            $("#newAtividadeModal").modal("show");
+
+            var newTurma = $("#newTurmaForm").serializeArray();
+            turmaOption.text = newTurma["1"]["value"];
+            turmaSelect.add(turmaOption);
+            $("#new_turmas").selectpicker("refresh");
+        },
+        error: function(error) {
+            console.log(error);
+            alert("Erro: tipo de dados incorretos!");
+        }
+    });
+});
+
+$("#newProfessorForm").on("submit", function(e) {
+    e.preventDefault();
+
+    var professorSelect = document.getElementById("new_professores");
+    var professorOption = document.createElement("option");
+
+    $.ajax({
+        type: "POST",
+        url: "/professor",
+        data: $("#newProfessorForm").serialize(),
+        success: function() {
+            $("#newProfessorModal").modal("hide");
+            $("#newAtividadeModal").modal("show");
+
+            var newProfessor = $("#newProfessorForm").serializeArray();
+            professorOption.text = newProfessor["1"]["value"];
+            professorSelect.add(professorOption);
+            $("#new_professores").selectpicker("refresh");
+        },
+        error: function(error) {
+            console.log(error);
+            alert("Erro: tipo de dados incorretos!");
+        }
+    });
+});
+
+$("#newRecursoModal").on("submit", function(e) {
+    e.preventDefault();
+
+    var recursoSelect = document.getElementById("new_recurso_id");
+    var recursoOption = document.createElement("option");
+
+    $.ajax({
+        type: "POST",
+        url: "/recurso",
+        data: $("#newRecursoForm").serialize(),
+        success: function() {
+            $("#newRecursoModal").modal("hide");
+            $("#newAtividadeModal").modal("show");
+
+            var newRecurso = $("#newRecursoForm").serializeArray();
+            recursoOption.text = newRecurso["1"]["value"];
+            recursoSelect.add(recursoOption);
+            $("#new_recurso_id").selectpicker("refresh");
+        },
+        error: function(error) {
+            console.log(error);
+            alert("Erro: tipo de dados incorretos!");
+        }
+    });
+});
