@@ -176,3 +176,8 @@ $("#clearEditSelectRecursos").click(function() {
     $(".num_recursos").val("default");
     $("#recurso_id").selectpicker("refresh");
 });
+
+// Tooltips
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});

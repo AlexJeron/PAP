@@ -1,10 +1,8 @@
 @extends('layouts.main')
 
-@section('title')
+@section('head')
 
-<head>
-    <title>BiblioRaul - Dashboard</title>
-</head>
+<title>BiblioRaul - Dashboard</title>
 
 @endsection
 

@@ -67,11 +67,12 @@
                                     @foreach ($atividade as $atividade)
                                     <tr>
                                         <td data-target="#showAtividadeModal" @include('atividade.modals.data')
-                                            style="cursor:pointer">
-                                            {{ $atividade->inicio->format('d') . ' | ' . $atividade->inicio->formatLocalized('%A')}}
+                                            style="cursor:pointer; font-size:14px">
+                                            <b style="font-size:15px">{{ $atividade->inicio->format('d') }}</b>
+                                            {{  ' | ' . $atividade->inicio->formatLocalized('%A') }}
                                         </td>
                                         <td data-target="#showAtividadeModal" @include('atividade.modals.data')
-                                            style="cursor:pointer">
+                                            style="cursor:pointer; font-size:15px">
                                             {{ $atividade->inicio->format('H:i') }}
                                             @isset($atividade->fim)
                                             {{ "- " . $atividade->fim->format('H:i') }}
@@ -98,11 +99,14 @@
                                         <td class="text-center">
                                             <a type="button" id="btnEditAtividade" data-target="#editAtividadeModal"
                                                 @include('atividade.modals.data')>
-                                                <i class="far fa-edit" style="color:#f6993f"></i>
+                                                <i class="far fa-edit" data-toggle="tooltip" data-placement="bottom"
+                                                    title="Editar" style="color:#f6993f"></i>
                                             </a>
                                             <a type="button" data-ativ_id="{{ $atividade->id }}" data-toggle="modal"
                                                 data-target="#deleteAtividadeModal">
-                                                <i class="far fa-trash-alt" style="color:#e3342f"></i></a>
+                                                <i class="far fa-trash-alt" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Apagar"
+                                                    style="color:#e3342f"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach

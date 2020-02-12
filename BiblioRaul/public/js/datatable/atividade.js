@@ -86,9 +86,9 @@ $(document).ready(function() {
             }
         },
         columns: [
-            { width: "12%", orderable: true },
             { width: "10%", orderable: true },
-            { width: "25%", orderable: true },
+            { width: "10%", orderable: true },
+            { width: "27%", orderable: true },
             { width: "12%", orderable: true },
             { width: "10%", orderable: true },
             { width: "5%", orderable: false }
