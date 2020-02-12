@@ -31,7 +31,7 @@
                         <label for="new_local_id" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}<span
                                 class="red" style="margin-right: -0.5rem">*</span></label>
 
-                        <div class="col-sm-9 pr-0">
+                        <div class="col-sm-10">
                             <select class="form-control selectpicker" id="new_local_id" name="new_local_id"
                                 data-live-search="true" title="Selecione um local" required>
                                 @foreach ($local as $local)
@@ -43,11 +43,6 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
-                        </div>
-                        <div class="col-sm-1 text-center mt-1 pr-0 pl-0">
-                            <button class="btn btn-primary btn-circle btn-sm" type="button" id="novoLocal"
-                                data-toggle="modal" data-target="#newLocalModal" onclick="closeModal()"><i
-                                    class="fas fa-plus"></i></button>
                         </div>
                     </div>
 
@@ -87,7 +82,7 @@
                                 style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-2">
-                            <input id="total_espectadores" type="number" min="0"
+                            <input id="total_espectadores" type="number" min="1"
                                 class="form-control @error('total_espectadores') is-invalid @enderror"
                                 name="total_espectadores" value="{{ old('total_espectadores') }}" placeholder="Total"
                                 required>
@@ -102,7 +97,8 @@
                             <input id="outros_espectadores" type="text"
                                 class="form-control @error('outros_espectadores') is-invalid @enderror"
                                 name="outros_espectadores" value="{{ old('outros_espectadores') }}"
-                                placeholder="Indique outros possíveis espectadores" maxlength="80">
+                                placeholder="Indique o tipo de espectadores (ex: Alunos) [Campo Opcional]"
+                                maxlength="80">
 
                             @error('outros_espectadores')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -114,7 +110,7 @@
                     <div class="form-group row">
                         <label for="new_turmas" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}<span
                                 class="red" style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-                        <div class="col-sm-9 pr-0">
+                        <div class="col-sm-9 mr-0 pr-0">
                             <select class="form-control selectpicker" id="new_turmas" name="new_turmas[]"
                                 title="Selecione uma ou mais turmas" multiple data-live-search="true">
                                 @foreach ($turma as $turma)
@@ -127,10 +123,11 @@
                             @enderror
 
                         </div>
-                        <div class="col-sm-1 text-center mt-1">
-                            <button class="btn btn-primary btn-circle btn-sm" type="button" id="novaTurma"
-                                data-toggle="modal" data-target="#newTurmaModal" onclick="closeModal()"><i
-                                    class="fas fa-plus"></i></button>
+
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
+                            <button type="button" id="clearNewSelectTurmas" class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-eraser"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -138,7 +135,7 @@
                         <label for="new_professores"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Professores') }}<span class="red"
                                 style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-                        <div class="col-sm-9 pr-0">
+                        <div class="col-sm-9 mr-0 pr-0">
                             <select class="form-control selectpicker" id="new_professores" name="new_professores[]"
                                 title="Selecione um ou mais professores" multiple data-live-search="true">
                                 @foreach ($professor as $professor)
@@ -151,10 +148,11 @@
                             @enderror
 
                         </div>
-                        <div class="col-sm-1 text-center mt-1">
-                            <button class="btn btn-primary btn-circle btn-sm" type="button" id="novoProfessor"
-                                data-toggle="modal" data-target="#newProfessorModal" onclick="closeModal()"><i
-                                    class="fas fa-plus"></i></button>
+
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
+                            <button type="button" id="clearNewSelectProfessores" class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-eraser"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -162,7 +160,18 @@
                         <label for="new_recurso_id"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Recursos') }}<span class="red"
                                 style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-                        <div class="col-sm-7 pr-0">
+                        <div class="col-sm-2">
+                            <input id="new_num_recursos" type="number" min="1"
+                                class="form-control @error('new_num_recursos') is-invalid @enderror"
+                                name="new_num_recursos" value="{{ old('new_num_recursos') }}" placeholder="Total">
+
+                            @error('new_num_recursos')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+
+                        <div class="col-sm-7 mr-0 pr-0">
                             <select class="form-control selectpicker" id="new_recurso_id" name="new_recurso_id"
                                 title="Selecione um recurso" data-live-search="true">
                                 @foreach ($recurso as $recurso)
@@ -176,21 +185,10 @@
 
                         </div>
 
-                        <div class="col-sm-1 text-center mt-1">
-                            <button class="btn btn-primary btn-circle btn-sm" type="button" id="novoRecurso"
-                                data-toggle="modal" data-target="#newRecursoModal" onclick="closeModal()"><i
-                                    class="fas fa-plus"></i></button>
-                        </div>
-
-                        <div class="col-sm-2">
-                            <input id="new_num_recursos" type="number" min="0"
-                                class="form-control @error('new_num_recursos') is-invalid @enderror"
-                                name="new_num_recursos" value="{{ old('new_num_recursos') }}" placeholder="Total">
-
-                            @error('new_num_recursos')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
+                            <button type="button" id="clearNewSelectRecursos" class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-eraser"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -222,8 +220,3 @@
         </form>
     </div>
 </div>
-
-@include('local.modals.new')
-@include('turma.modals.new')
-@include('professor.modals.new')
-@include('recurso.modals.new')

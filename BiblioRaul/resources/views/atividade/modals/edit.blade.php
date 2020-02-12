@@ -81,7 +81,7 @@
                                 style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-2">
-                            <input id="total_espectadores" type="number" min="0"
+                            <input id="total_espectadores" type="number" min="1"
                                 class="form-control @error('total_espectadores') is-invalid @enderror"
                                 name="total_espectadores" value="{{ old('total_espectadores') }}" required>
 
@@ -94,7 +94,8 @@
                         <div class="col-sm-8">
                             <input id="outros_espectadores" type="text"
                                 class="form-control @error('outros_espectadores') is-invalid @enderror"
-                                name="outros_espectadores" value="{{ old('outros_espectadores') }}" maxlength="80">
+                                name="outros_espectadores" value="{{ old('outros_espectadores') }}"
+                                placeholder="Sem outros possíveis espectadores" maxlength="80">
 
                             @error('outros_espectadores')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -106,7 +107,7 @@
                     <div class="form-group row">
                         <label for="turmas" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}<span
                                 class="red" style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9 mr-0 pr-0">
                             <select class="form-control selectpicker" id="turmas" name="turmas[]" multiple
                                 data-live-search="true">
                                 @foreach ($turma as $turma)
@@ -119,13 +120,19 @@
                             @enderror
 
                         </div>
+
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
+                            <button type="button" id="clearEditSelectTurmas" class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-eraser"></i>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="professor_id"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Professores') }}<span class="red"
                                 style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9 mr-0 pr-0">
                             <select class="form-control selectpicker" id="professor_id" name="professor_id[]" multiple
                                 data-live-search="true">
                                 @foreach ($professor as $professor)
@@ -138,12 +145,30 @@
                             @enderror
 
                         </div>
+
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
+                            <button type="button" id="clearEditSelectProfessores"
+                                class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-eraser"></i>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="recurso_id" class="col-sm-2 col-form-label text-md-right">{{ __('Recursos') }}<span
                                 style="margin-right: -0.5rem"></span></label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-2">
+                            <input id="num_recursos" type="number" min="1"
+                                class="form-control @error('num_recursos') is-invalid @enderror" name="num_recursos"
+                                value="{{ old('num_recursos') }}" placeholder="Total">
+
+                            @error('num_recursos')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+
+                        <div class="col-sm-7 mr-0 pr-0">
                             <select class="form-control selectpicker" id="recurso_id" name="recurso_id"
                                 data-live-search="true">
                                 @foreach ($recurso as $recurso)
@@ -157,15 +182,10 @@
 
                         </div>
 
-                        <div class="col-sm-2">
-                            <input id="num_recursos" type="number" min="0"
-                                class="form-control @error('num_recursos') is-invalid @enderror" name="num_recursos"
-                                value="{{ old('num_recursos') }}" placeholder="Total">
-
-                            @error('num_recursos')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
+                            <button type="button" id="clearEditSelectRecursos" class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-eraser"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -176,7 +196,8 @@
 
                         <div class="col-sm-10">
                             <textarea id="observacao" class="form-control @error('observacao') is-invalid @enderror"
-                                name="observacao" rows="1">{{ old('observacao') }}</textarea>
+                                name="observacao" rows="1"
+                                placeholder="Sem observações">{{ old('observacao') }}</textarea>
 
                             @error('observacao')
                             <div class="invalid-feedback">{{ $message }}</div>

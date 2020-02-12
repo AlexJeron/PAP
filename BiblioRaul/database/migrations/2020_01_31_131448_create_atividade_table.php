@@ -18,7 +18,7 @@ class CreateAtividadeTable extends Migration
             $table->string('nome');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('local_id');
-            $table->unsignedBigInteger('recurso_id');
+            $table->unsignedBigInteger('recurso_id')->nullable();
             $table->timestamp('inicio');
             $table->timestamp('fim')->nullable();
             $table->integer('total_espectadores');

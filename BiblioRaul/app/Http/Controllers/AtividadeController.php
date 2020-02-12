@@ -156,16 +156,17 @@ class AtividadeController extends Controller
     protected function validateEditAtividade()
     {
         return request()->validate([
+            'id' => 'required|max:20',
             'nome' => 'required|max:255',
             'local_id' => 'required|max:20',
             'inicio' => 'required|max:25',
             'fim' => 'nullable|max:25',
             'total_espectadores' => 'required|max:10',
             'outros_espectadores' => 'nullable|max:255',
-            'turma' => 'exists:turma,id',
+            'turmas' => 'exists:turma,id',
             'professor_id' => 'exists:professor,id',
-            'edit_recurso' => 'exists:recurso,id',
-            'quantidade_necessaria' => 'nullable|max:11',
+            'num_recursos' => 'nullable|max:11',
+            'recurso_id' => 'nullable|max:20',
             'observacao' => 'nullable|max:255',
         ]);
     }
@@ -181,8 +182,8 @@ class AtividadeController extends Controller
             'outros_espectadores' => 'nullable|max:255',
             'new_turmas' => 'exists:turma,id',
             'new_professores' => 'exists:professor,id',
-            'new_recurso_id' => 'exists:recurso,id',
-            'quantidade_necessaria' => 'nullable|max:11',
+            'new_num_recursos' => 'nullable|max:11',
+            'new_recurso_id' => 'nullable|max:20',
             'observacao' => 'nullable|max:255',
         ]);
     }

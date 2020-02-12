@@ -1,7 +1,7 @@
 <div class="modal fade" id="newRecursoModal" tabindex="-1" role="dialog" aria-labelledby="newRecursoModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form {{ request()->is('recurso') ? 'method=POST action=/recurso' : 'id=newRecursoForm' }}>
+        <form method="POST" action="/recurso">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
@@ -29,9 +29,9 @@
                             class="col-sm-4 col-form-label text-md-right">{{ __('Quantidade Total') }}</label>
 
                         <div class="col-sm-8">
-                            <input id="quantidade_total" type="text"
+                            <input id="quantidade_total" type="number"
                                 class="form-control @error('quantidade_total') is-invalid @enderror"
-                                name="quantidade_total" value="{{ old('quantidade_total') }}" maxlength="80">
+                                name="quantidade_total" value="{{ old('quantidade_total') }}" min="1" max="1000000000">
 
                             @error('quantidade_total')
                             <div class="invalid-feedback">{{ $errors->first('quantidade_total') }}</div>

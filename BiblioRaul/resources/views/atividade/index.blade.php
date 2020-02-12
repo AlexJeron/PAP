@@ -34,12 +34,12 @@
                     <div class="card-header py-3">
                         <div class="row">
                             <?php
-                                $dt = Carbon::now();
+                                $mesAtual = Carbon::now();
                                 setlocale(LC_TIME, 'Portuguese');
-                                $dt = $dt->formatLocalized('%B');
+                                $mesAtual = $mesAtual->formatLocalized('%B');
                             ?>
                             <h5 class="col-9 d-flex p-2 m-0 font-weight-bold text-primary">
-                                Gerir Atividades de {{ $dt }}
+                                Gerir Atividades de {{ $mesAtual }}
                                 </h4>
                                 <div class="col-3">
                                     <button type="button"
@@ -56,43 +56,48 @@
                                 <thead class="transparency">
                                     <tr>
                                         <th>Dia</th>
+                                        <th>Hora</th>
                                         <th>Atividade</th>
                                         <th>Local</th>
-                                        <th>Turmas</th>
-                                        {{-- <th>Professores</th> --}}
+                                        <th>Recursos</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($atividade as $atividade)
                                     <tr>
-                                        <td> {{ $atividade->inicio->format('d') }} </td>
-                                        <td> {{ $atividade->nome }} </td>
-                                        <td> {{ $atividade->local->nome }} </td>
-                                        <td>
+                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                            style="cursor:pointer">
+                                            {{ $atividade->inicio->format('d') . ' | ' . $atividade->inicio->formatLocalized('%A')}}
+                                        </td>
+                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                            style="cursor:pointer">
+                                            {{ $atividade->inicio->format('H:i') }}
+                                            @isset($atividade->fim)
+                                            {{ "- " . $atividade->fim->format('H:i') }}
+                                            @endisset
+                                        </td>
+                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                            style="cursor:pointer">
+                                            {{ $atividade->nome }} </td>
+                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                            style="cursor:pointer">
+                                            {{ $atividade->local->nome }} </td>
+                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                            style="cursor:pointer">
+                                            @isset($atividade->recurso)
+                                            {{ $atividade->num_recursos . " " . $atividade->recurso->nome }}
+                                            @endisset
                                             <?php
-                                            $array = json_decode($atividade->turmas, true);
-                                            for ($i = 0; $i < count($array); $i++) {
-                                                echo($array[$i]["nome"] . " ");
-                                            }
+                                            // $array = json_decode($atividade->turmas, true);
+                                            // for ($i = 0; $i < count($array); $i++) {
+                                            //     echo($array[$i]["nome"] . " ");
+                                            // }
                                             ?>
                                         </td>
                                         <td class="text-center">
-                                            <a type="button" data-id="{{ $atividade->id }}"
-                                                data-nome="{{ $atividade->nome }}"
-                                                data-inicio="{{ $atividade->inicio->format('Y-m-d\TH:i') }}"
-                                                data-fim="{{ optional($atividade->fim)->format('Y-m-d\TH:i') }}"
-                                                data-local_id="{{ $atividade->local->id }}"
-                                                data-total_espectadores="{{ $atividade->total_espectadores }}"
-                                                data-outros_espectadores="{{ $atividade->outros_espectadores }}"
-                                                data-professores="{{ $atividade->professores }}"
-                                                data-turmas="{{ $atividade->turmas }}"
-                                                data-recurso_id="{{ $atividade->recurso->id }}"
-                                                data-num_recursos="{{ $atividade->num_recursos }}"
-                                                data-observacao="{{ $atividade->observacao }}"
-                                                data-user_id="{{ $atividade->user->id }}"
-                                                data-user_name="{{ $atividade->user->nome }}" data-toggle="modal"
-                                                data-target="#editAtividadeModal">
+                                            <a type="button" id="btnEditAtividade" data-target="#editAtividadeModal"
+                                                @include('atividade.modals.data')>
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>
                                             <a type="button" data-ativ_id="{{ $atividade->id }}" data-toggle="modal"
@@ -121,6 +126,9 @@
 
 <!-- New Atividade Modal -->
 @include('atividade.modals.new')
+
+<!-- Show Atividade Modal -->
+@include('atividade.modals.show')
 
 <!-- Edit Atividade Modal -->
 @include('atividade.modals.edit')

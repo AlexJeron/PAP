@@ -1,7 +1,7 @@
 <div class="modal fade" id="newLocalModal" tabindex="-1" role="dialog" aria-labelledby="newLocalModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form {{ request()->is('local') ? 'method=POST action=/local' : 'id=newLocalForm' }}>
+        <form method="POST" action="/local">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">

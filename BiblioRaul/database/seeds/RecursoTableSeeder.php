@@ -11,12 +11,20 @@ class RecursoTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('recurso')->insert([
-            'nome' => 'Tablet',
-            'quantidade_total' => 20,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        ]);
-
+        $recursos = [
+            [
+                'nome' => 'Tablet',
+                'quantidade_total' => 15,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'nome' => 'Computador',
+                'quantidade_total' => 20,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+        ];
+        DB::table('recurso')->insert($recursos);
     }
 }

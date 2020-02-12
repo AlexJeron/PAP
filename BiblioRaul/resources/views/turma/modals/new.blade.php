@@ -1,7 +1,7 @@
 <div class="modal fade" id="newTurmaModal" tabindex="-1" role="dialog" aria-labelledby="newTurmaModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
-        <form {{ request()->is('turma') ? 'method=POST action=/turma' : 'id=newTurmaForm' }}>
+        <form method="POST" action="/turma">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">

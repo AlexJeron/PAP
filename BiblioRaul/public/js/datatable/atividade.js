@@ -18,21 +18,21 @@ $(document).ready(function() {
                 text: "Copiar",
                 className: "btn btn-sm btn-primary btn-shadow-sm",
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5]
+                    columns: [0, 1, 2, 3, 4]
                 }
             },
             {
                 extend: "excel",
                 className: "btn btn-sm btn-primary btn-shadow-sm",
                 exportOptions: {
-                    columns: [0, 1]
+                    columns: [0, 1, 2, 3, 4]
                 }
             },
             {
                 extend: "pdf",
                 className: "btn btn-sm btn-primary btn-shadow-sm",
                 exportOptions: {
-                    columns: [0, 1]
+                    columns: [0, 1, 2, 3, 4]
                 }
             },
             {
@@ -40,7 +40,7 @@ $(document).ready(function() {
                 text: "Imprimir",
                 className: "btn btn-sm btn-primary btn-shadow-sm",
                 exportOptions: {
-                    columns: [0, 1]
+                    columns: [0, 1, 2, 3, 4]
                 }
             },
             {
@@ -86,18 +86,12 @@ $(document).ready(function() {
             }
         },
         columns: [
-            { width: "16%" },
-            { width: "16%" },
-            { width: "16%" },
-            { width: "16%" },
-            { width: "15%" }
-        ],
-        columns: [
-            { orderable: true },
-            { orderable: true },
-            { orderable: true },
-            { orderable: true },
-            { orderable: false }
+            { width: "12%", orderable: true },
+            { width: "10%", orderable: true },
+            { width: "25%", orderable: true },
+            { width: "12%", orderable: true },
+            { width: "10%", orderable: true },
+            { width: "5%", orderable: false }
         ]
     });
 });

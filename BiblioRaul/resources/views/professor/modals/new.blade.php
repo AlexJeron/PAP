@@ -1,7 +1,7 @@
 <div class="modal fade" id="newProfessorModal" tabindex="-1" role="dialog" aria-labelledby="newProfessorModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form {{ request()->is('professor') ? 'method=POST action=/professor' : 'id=newProfessorForm' }}>
+        <form method="POST" action="/professor">
             @csrf
 
             <div class="modal-content">
