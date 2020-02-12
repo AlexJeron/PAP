@@ -6,7 +6,7 @@
             @method('PUT')
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editAtividadeModalLabel">Editar Atividade</h5>
+                    <h4 class="modal-title" id="editAtividadeModalLabel">Editar Atividade</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -80,7 +80,7 @@
                             class="col-sm-2 col-form-label text-md-right">{{ __('Espectadores') }}<span class="red"
                                 style="margin-right: -0.5rem">*</span></label>
 
-                        <div class="col-sm-2">
+                        <div class="col-sm-2" style="margin-right: -0.3rem">
                             <input id="total_espectadores" type="number" min="1"
                                 class="form-control @error('total_espectadores') is-invalid @enderror"
                                 name="total_espectadores" value="{{ old('total_espectadores') }}" required>
@@ -91,7 +91,7 @@
 
                         </div>
 
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 pl-0">
                             <input id="outros_espectadores" type="text"
                                 class="form-control @error('outros_espectadores') is-invalid @enderror"
                                 name="outros_espectadores" value="{{ old('outros_espectadores') }}"
@@ -121,8 +121,8 @@
 
                         </div>
 
-                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
-                            <button type="button" id="clearEditSelectTurmas" class="btn btn-info btn-circle btn-sm">
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 mr-n1" style="margin-left:-1.6rem">
+                            <button type="button" id="clearEditSelectTurmas" class="btn btn-primary btn-circle btn-sm">
                                 <i class="fas fa-eraser"></i>
                             </button>
                         </div>
@@ -146,9 +146,9 @@
 
                         </div>
 
-                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 mr-n1" style="margin-left:-1.6rem">
                             <button type="button" id="clearEditSelectProfessores"
-                                class="btn btn-info btn-circle btn-sm">
+                                class="btn btn-primary btn-circle btn-sm">
                                 <i class="fas fa-eraser"></i>
                             </button>
                         </div>
@@ -159,8 +159,8 @@
                                 style="margin-right: -0.5rem"></span></label>
                         <div class="col-sm-2">
                             <input id="num_recursos" type="number" min="1"
-                                class="form-control @error('num_recursos') is-invalid @enderror" name="num_recursos"
-                                value="{{ old('num_recursos') }}" placeholder="Total">
+                                class="form-control num_recursos @error('num_recursos') is-invalid @enderror"
+                                name="num_recursos" value="{{ old('num_recursos') }}" placeholder="Total">
 
                             @error('num_recursos')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -168,7 +168,7 @@
 
                         </div>
 
-                        <div class="col-sm-7 mr-0 pr-0">
+                        <div class="col-sm-7 pl-0 pr-0" style="margin-left:-0.3rem">
                             <select class="form-control selectpicker" id="recurso_id" name="recurso_id"
                                 data-live-search="true">
                                 @foreach ($recurso as $recurso)
@@ -182,8 +182,9 @@
 
                         </div>
 
-                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 ml-1 mr-n1">
-                            <button type="button" id="clearEditSelectRecursos" class="btn btn-info btn-circle btn-sm">
+                        <div class="col-sm-1 text-center pl-0 pr-2 pt-1 mr-n1" style="margin-left:-1.3rem">
+                            <button type="button" id="clearEditSelectRecursos"
+                                class="btn btn-primary btn-circle btn-sm">
                                 <i class="fas fa-eraser"></i>
                             </button>
                         </div>
@@ -212,8 +213,8 @@
 
                         <div class="col-sm-10">
                             <input id="user_name" type="text"
-                                class="form-control @error('user_name') is-invalid @enderror" name="user_name" required
-                                disabled>
+                                class="form-control @error('user_name') is-invalid @enderror" name="user_name"
+                                style="border:none" required disabled>
 
                             @error('user_name')
                             <div class="invalid-feedback">{{ $message }}</div>

@@ -74,3 +74,95 @@ div.dt-buttons.btn-group.flex-wrap {
 .red {
     color: $red;
 }
+
+.selectpicker-show {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.bootstrap-select.disabled,
+.bootstrap-select>.disabled {
+    cursor: default !important;
+    outline: none !important;
+}
+
+.bootstrap-select .btn:focus {
+    outline: none !important;
+}
+
+.form-control {
+    width: 95%;
+    color: #5b5b5b;
+    border: 1px solid #d1d3e288;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #f0f2f8bf;
+}
+
+.bootstrap-select>.dropdown-toggle {
+    width: 95%;
+    border: 1px solid #d1d3e261;
+}
+
+.bootstrap-select>.dropdown-toggle.bs-placeholder {
+    border: 1px solid #d1d3e261;
+}
+
+.modal-title {
+    color: #5b5b5b;
+    font-weight: bold;
+}
+
+.modal-header {
+    border-bottom: none;
+    padding: 2rem 3.4rem 0.5rem;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-body {
+    padding: 0.7rem 1rem;
+}
+
+.modal-content {
+    box-shadow: 0.35rem 0.15rem 1.75rem 0.1rem rgba(58, 59, 69, 0.30) !important;
+    border: none;
+}
+
+.modal-backdrop {
+    background: rgba(58, 59, 69, 0.70);
+}
+
+.form-show {
+    background-color: transparent !important;
+    border-bottom: 1px solid #c1c2cc4d;
+    color: #5b5b5b;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    padding: 0;
+    width: 95%;
+}
+
+#show_observacao {
+    background-color: transparent !important;
+    border-bottom: 1px solid #c1c2cc4d;
+    color: #5b5b5b;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0px;
+    text-indent: 1px;
+    padding: 0.5rem 0;
+    width: 95%;
+}

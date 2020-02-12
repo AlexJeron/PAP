@@ -27,18 +27,18 @@ $("#editAtividadeModal").on("show.bs.modal", function(event) {
     $(".selectpicker").selectpicker("refresh");
 
     // Select Professores
-    var profArray = [];
+    var profIdArray = [];
     for (i = 0; i < professores.length; i++) {
-        profArray.push(professores[i].id);
+        profIdArray.push(professores[i].id);
     }
-    $("#professor_id").selectpicker("val", profArray);
+    $("#professor_id").selectpicker("val", profIdArray);
 
     // Select Turmas
-    var turmaArray = [];
+    var turmaIdArray = [];
     for (i = 0; i < turmas.length; i++) {
-        turmaArray.push(turmas[i].id);
+        turmaIdArray.push(turmas[i].id);
     }
-    $("#turmas").selectpicker("val", turmaArray);
+    $("#turmas").selectpicker("val", turmaIdArray);
 
     var modal = $(this);
     modal.find(".modal-body #id").val(id);
@@ -65,7 +65,7 @@ $("#showAtividadeModal").on("show.bs.modal", function(event) {
     var inicio = button.data("inicio");
     var fim = button.data("fim");
     var local_nome = button.data("local_nome");
-    var recurso_id = button.data("recurso_id");
+    var recurso_nome = button.data("recurso_nome");
     var num_recursos = button.data("num_recursos");
     var total_espectadores = button.data("total_espectadores");
     var outros_espectadores = button.data("outros_espectadores");
@@ -86,19 +86,35 @@ $("#showAtividadeModal").on("show.bs.modal", function(event) {
     $("select[name=recurso_id]").val(recurso_id);
     $(".selectpicker").selectpicker("refresh");
 
-    // Select Professores
-    var profArray = [];
-    for (i = 0; i < professores.length; i++) {
-        profArray.push(professores[i].id);
-    }
-    $("#professor_id").selectpicker("val", profArray);
+    // Select e Input (show) Professores
+    var profIdArray = [];
+    var profNomeArray = [];
 
-    // Select Turmas
-    var turmaArray = [];
-    for (i = 0; i < turmas.length; i++) {
-        turmaArray.push(turmas[i].id);
+    for (i = 0; i < professores.length; i++) {
+        profIdArray.push(professores[i].id);
     }
-    $("#turmas").selectpicker("val", turmaArray);
+
+    for (i = 0; i < professores.length; i++) {
+        profNomeArray.push(professores[i].nome);
+    }
+
+    $("#show_professor_id").selectpicker("val", profIdArray);
+    $("#show_professor_id").val(profNomeArray.join(", "));
+
+    // Select e Input (show) Turmas
+    var turmaIdArray = [];
+    var turmaNomeArray = [];
+
+    for (i = 0; i < turmas.length; i++) {
+        turmaIdArray.push(turmas[i].id);
+    }
+
+    for (i = 0; i < turmas.length; i++) {
+        turmaNomeArray.push(turmas[i].nome);
+    }
+
+    $("#show_turmas").selectpicker("val", turmaIdArray);
+    $("#show_turmas").val(turmaNomeArray.join(", "));
 
     var modal = $(this);
     modal.find(".modal-body #id").val(id);
@@ -106,15 +122,19 @@ $("#showAtividadeModal").on("show.bs.modal", function(event) {
     modal.find(".modal-body #inicio").val(inicio);
     modal.find(".modal-body #fim").val(fim);
     modal.find(".modal-body #local_nome").val(local_nome);
-    modal.find(".modal-body #recurso_id").val(recurso_id);
+    modal.find(".modal-body #recurso_nome").val(recurso_nome);
     modal.find(".modal-body #num_recursos").val(num_recursos);
-    modal.find(".modal-body #observacao").val(observacao);
+    modal.find(".modal-body #show_observacao").val(observacao);
     modal.find(".modal-body #total_espectadores").val(total_espectadores);
     modal.find(".modal-body #outros_espectadores").val(outros_espectadores);
     modal.find(".modal-body #user_name").val(user_name);
 
     document.getElementById("local_nome").value = local_nome;
-    document.getElementById("recurso_id").value = recurso_id;
+    if (recurso_nome != undefined) {
+        document.getElementById("recurso_nome").value = recurso_nome;
+    } else {
+        document.getElementById("recurso_nome").value = "Nenhum recurso";
+    }
     document.getElementById("user_name").value = user_name;
 });
 
@@ -137,6 +157,7 @@ $("#clearNewSelectProfessores").click(function() {
 
 $("#clearNewSelectRecursos").click(function() {
     $("#new_recurso_id").val("default");
+    $("#new_num_recursos").val("default");
     $("#new_recurso_id").selectpicker("refresh");
 });
 
@@ -152,5 +173,6 @@ $("#clearEditSelectProfessores").click(function() {
 
 $("#clearEditSelectRecursos").click(function() {
     $("#recurso_id").val("default");
+    $(".num_recursos").val("default");
     $("#recurso_id").selectpicker("refresh");
 });
