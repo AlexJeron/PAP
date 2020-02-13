@@ -50,4 +50,4 @@ Route::resource('local', 'LocalController')->middleware('auth');
 Route::resource('recurso', 'RecursoController')->middleware('auth');
 
 // Atividade
-Route::resource('atividade', 'AtividadeController')->middleware('auth');
+Route::resource('atividades', 'AtividadeController')->middleware('auth');

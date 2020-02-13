@@ -1,7 +1,7 @@
 <div class="modal fade" id="newAtividadeModal" tabindex="-1" role="dialog" aria-labelledby="newAtividadeModalLabel"
     data-keyboard="false" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <form method="POST" action="/atividade">
+        <form method="POST" action="/atividades">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">

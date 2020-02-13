@@ -1,7 +1,7 @@
 <div class="modal fade" id="editAtividadeModal" tabindex="-1" role="dialog" aria-labelledby="editAtividadeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <form method="POST" action="/atividade/{{ $atividade->id }}">
+        <form method="POST" action="/atividades/{{ $atividade->id }}">
             @csrf
             @method('PUT')
             <div class="modal-content">
