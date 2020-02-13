@@ -19,37 +19,114 @@ class AtividadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Mostrar as atividades do mês atual [Eloquent]
-        $atividade = Atividade::latest()
-            ->whereMonth('inicio', Carbon::now()->month)
-            ->get();
-        setlocale(LC_COLLATE, 'pt-PT.utf8');
-        $user = User::all()->sortBy('nome', SORT_LOCALE_STRING);
-        $local = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
-        $professor = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
-        $turma = Turma::all()->sortBy('id');
-        $recurso = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
+        if ($request->has('month')) {
+            // dd(request()->all());
 
-        // $user = DB::table('user')->orderBy('nome')->get();
-        // $local = DB::table('local')->orderBy('nome')->get();
+            switch ($request->month) {
+                case "janeiro":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 1)
+                        ->get();
+                    break;
+                case "fevereiro":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 2)
+                        ->get();
+                    break;
+                case "março":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 3)
+                        ->get();
+                    break;
+                case "abril":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 4)
+                        ->get();
+                    break;
+                case "maio":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 5)
+                        ->get();
+                    break;
+                case "junho":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 6)
+                        ->get();
+                    break;
+                case "julho":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 7)
+                        ->get();
+                    break;
+                case "agosto":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 8)
+                        ->get();
+                    break;
+                case "setembro":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 9)
+                        ->get();
+                    break;
+                case "outubro":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 10)
+                        ->get();
+                    break;
+                case "novembro":
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 11)
+                        ->get();
+                    break;
+                default:
+                    $atividade = Atividade::latest()
+                        ->whereMonth('inicio', 12)
+                        ->get();
+                    break;
+            }
 
-        // $local = Atividade::latest()
-        //     ->from('atividade', 'local')
-        //     ->where('atividade.local_id', '=', 'local.id');
-        // $local = Atividade::where('atividade.local_id', '=', 'local.id');
+            setlocale(LC_COLLATE, 'pt-PT.utf8');
+            $user = User::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $local = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $professor = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $turma = Turma::all()->sortBy('id');
+            $recurso = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
 
-        // [Query Builder]
-        // $atividade = DB::table('atividade')
-        //     ->select('atividade.id', 'atividade.nome', 'local.nome AS local', DB::raw('DATE_FORMAT(inicio, "%d") AS inicio'), 'fim', 'observacao')
-        //     ->join('local', 'local_id', '=', 'local.id')
-        // // ->join('atividade_espectador', 'atividade.id', '=', 'atividade_espectador.atividade_id')
-        // // ->join('espectador', 'espectador.id', '=', 'atividade_espectador.espectador_id')
-        //     ->whereMonth('inicio', Carbon::now()->month)
-        //     ->get();
+            return view('atividades.index', compact('atividade', 'user', 'local', 'professor', 'turma', 'recurso'));
+        } else {
+            // dd(request()->all());
 
-        return view('atividades.index', compact('atividade', 'user', 'local', 'professor', 'turma', 'recurso'));
+            // Mostrar as atividades do mês atual [Eloquent]
+            $atividade = Atividade::latest()
+                ->whereMonth('inicio', Carbon::now()->month)
+                ->get();
+            setlocale(LC_COLLATE, 'pt-PT.utf8');
+            $user = User::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $local = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $professor = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $turma = Turma::all()->sortBy('id');
+            $recurso = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
+
+            // $user = DB::table('user')->orderBy('nome')->get();
+            // $local = DB::table('local')->orderBy('nome')->get();
+
+            // $local = Atividade::latest()
+            //     ->from('atividade', 'local')
+            //     ->where('atividade.local_id', '=', 'local.id');
+            // $local = Atividade::where('atividade.local_id', '=', 'local.id');
+
+            // [Query Builder]
+            // $atividade = DB::table('atividade')
+            //     ->select('atividade.id', 'atividade.nome', 'local.nome AS local', DB::raw('DATE_FORMAT(inicio, "%d") AS inicio'), 'fim', 'observacao')
+            //     ->join('local', 'local_id', '=', 'local.id')
+            // // ->join('atividade_espectador', 'atividade.id', '=', 'atividade_espectador.atividade_id')
+            // // ->join('espectador', 'espectador.id', '=', 'atividade_espectador.espectador_id')
+            //     ->whereMonth('inicio', Carbon::now()->month)
+            //     ->get();
+            return view('atividades.index', compact('atividade', 'user', 'local', 'professor', 'turma', 'recurso'));
+        }
     }
 
     /**

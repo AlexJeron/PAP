@@ -18809,6 +18809,20 @@ div.dt-buttons.btn-group.flex-wrap {
   width: 95%;
 }
 
+.datepicker {
+  top: 150px !important;
+}
+
+#month {
+  font-size: 1.25rem;
+  background-color: transparent;
+  height: 1.6rem;
+  cursor: pointer;
+  /* border: none; */
+  margin-left: 0.5rem;
+  padding: 0;
+}
+
 /* The switch - the box around the slider */
 
 .switch {

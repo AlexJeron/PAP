@@ -29,8 +29,8 @@
     </div>
 
     <!-- Nav Item - Atividades -->
-    <li class="{{ request()->is('atividade') ? 'nav-item active' : 'nav-item' }}">
-        <a class="nav-link" href="atividade">
+    <li class="{{ request()->is('atividades') ? 'nav-item active' : 'nav-item' }}">
+        <a class="nav-link" href="atividades">
             <i class="fas fa-calendar-alt"></i>
             <span>Atividades</span>
         </a>

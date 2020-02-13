@@ -8,7 +8,8 @@
     href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fh-3.1.6/kt-2.5.1/r-2.2.3/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.css" />
 <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css" />
-
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 @endsection
 
 @section('content')
@@ -34,20 +35,33 @@
                     <div class="card-header py-3">
                         <div class="row">
                             <?php
-                                $mesAtual = Carbon::now();
-                                setlocale(LC_TIME, 'Portuguese');
-                                $mesAtual = $mesAtual->formatLocalized('%B');
+                                $currentMonth = Carbon::now();
+                                setlocale(LC_TIME, 'Portuguese.UTF-8');
+                                $currentMonth = $currentMonth->formatLocalized('%B');
                             ?>
-                            <h5 class="col-9 d-flex p-2 m-0 font-weight-bold text-primary">
-                                Gerir Atividades de {{ $mesAtual }}
-                                </h4>
-                                <div class="col-3">
-                                    <button type="button"
-                                        class="float-right d-flex d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                                        style="margin-top:0.3rem" data-toggle="modal" data-target="#newAtividadeModal">
-                                        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Adicionar
-                                        Atividade</button>
-                                </div>
+
+                            <h5 class="col-8 d-flex p-2 m-0 font-weight-bold text-primary">
+                                Gerir Atividades de
+                                <form method="GET" action="/atividades">
+                                    <div class="input-append date" id="datepicker">
+                                        <input type="text" class="form-control text-primary font-weight-bold" id="month"
+                                            name="month" onchange="form.submit()" readonly>
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </h5>
+
+                            <div class="col-3">
+                                <button type="button"
+                                    class="float-right d-flex d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                    style="margin-top:0.3rem" data-toggle="modal" data-target="#newAtividadeModal">
+                                    <i class="fas fa-plus-circle fa-sm text-white-50"></i> Adicionar
+                                    Atividade</button>
+                            </div>
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -163,8 +177,31 @@
 <!-- Bootstrap JS -->
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<!-- Firefox Compatibility -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
 <!-- Custom JS -->
+<script>
+    // var currentMonth = JSON.parse("{{ json_encode($currentMonth) }}");
+    var currentMonth = {!! json_encode($currentMonth); !!};
+    var selectedMonth = {!! json_encode(app('request')->input('month')); !!}
+    $("#month").click(function() {
+        // console.log(currentMonth);
+        // console.trace(selectedMonth)
+    });
+</script>
 <script src="/js/modals/atividade.js"></script>
+
+<!-- Bootstrap datepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt.min.js">
+</script>
+
+<!-- Bootstrap-Select -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>
 <script src="{{ asset('js/bootstrap-select-pt_PT.js') }}"></script>
 @endsection
