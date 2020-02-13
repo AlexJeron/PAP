@@ -66,24 +66,24 @@
                                 <tbody>
                                     @foreach ($atividade as $atividade)
                                     <tr>
-                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                        <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer">
                                             {{ $atividade->inicio->format('d') . ' | ' . $atividade->inicio->formatLocalized('%A')}}
                                         </td>
-                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                        <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer">
                                             {{ $atividade->inicio->format('H:i') }}
                                             @isset($atividade->fim)
                                             {{ "- " . $atividade->fim->format('H:i') }}
                                             @endisset
                                         </td>
-                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                        <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer">
                                             {{ $atividade->nome }} </td>
-                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                        <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer">
                                             {{ $atividade->local->nome }} </td>
-                                        <td data-target="#showAtividadeModal" @include('atividade.modals.data')
+                                        <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer">
                                             @isset($atividade->recurso)
                                             {{ $atividade->num_recursos . " " . $atividade->recurso->nome }}
@@ -97,7 +97,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a type="button" id="btnEditAtividade" data-target="#editAtividadeModal"
-                                                @include('atividade.modals.data')>
+                                                @include('atividades.modals.data')>
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>
                                             <a type="button" data-ativ_id="{{ $atividade->id }}" data-toggle="modal"
@@ -125,16 +125,16 @@
 <!-- End of Page Wrapper -->
 
 <!-- New Atividade Modal -->
-@include('atividade.modals.new')
+@include('atividades.modals.new')
 
 <!-- Show Atividade Modal -->
-@include('atividade.modals.show')
+@include('atividades.modals.show')
 
 <!-- Edit Atividade Modal -->
-@include('atividade.modals.edit')
+@include('atividades.modals.edit')
 
 <!-- Delete Atividade Modal -->
-@include('atividade.modals.delete')
+@include('atividades.modals.delete')
 
 @include('layouts.logout-modal')
 

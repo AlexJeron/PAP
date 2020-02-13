@@ -49,7 +49,7 @@ class AtividadeController extends Controller
         //     ->whereMonth('inicio', Carbon::now()->month)
         //     ->get();
 
-        return view('atividade.index', compact('atividade', 'user', 'local', 'professor', 'turma', 'recurso'));
+        return view('atividades.index', compact('atividade', 'user', 'local', 'professor', 'turma', 'recurso'));
     }
 
     /**
@@ -60,7 +60,7 @@ class AtividadeController extends Controller
      */
     public function show(Atividade $atividade)
     {
-        return view('atividade.show', compact('atividade'));
+        return view('atividades.show', compact('atividade'));
     }
 
     /**
@@ -70,7 +70,7 @@ class AtividadeController extends Controller
      */
     public function create()
     {
-        return view('atividade.create');
+        return view('atividades.create');
     }
 
     /**
@@ -96,7 +96,7 @@ class AtividadeController extends Controller
         $atividade->turmas()->attach(request('new_turmas'));
         $atividade->professores()->attach(request('new_professores'));
 
-        return redirect('/atividade');
+        return redirect('/atividades');
     }
 
     /**
@@ -107,7 +107,7 @@ class AtividadeController extends Controller
      */
     public function edit(Atividade $atividade)
     {
-        return view('atividade.edit', compact('atividade'));
+        return view('atividades.edit', compact('atividade'));
     }
 
     /**
