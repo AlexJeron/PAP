@@ -35,30 +35,34 @@
                     <div class="card-header py-3">
                         <div class="row">
                             <?php
-                                $currentMonth = Carbon::now();
+                                $currentDate = Carbon::now();
                                 setlocale(LC_TIME, 'Portuguese.UTF-8');
-                                $currentMonth = $currentMonth->formatLocalized('%B');
+                                if(!strpos($_SERVER['REQUEST_URI'], 'year_month') !== false) {
+                                    $currentMonth = $currentDate->format('m');
+                                    $currentYear = $currentDate->formatLocalized('%Y');
+                                }
+                                $selectedDate = app('request')->input('year_month');
+                                $selectedDate = Carbon::parse($selectedDate);
                             ?>
 
-                            <h5 class="col-5 d-flex p-2 m-0 font-weight-bold text-primary">
-                                Gerir Atividades de
-                            </h5>
-
-                            <div class="col-2">
-                                {{-- <form method="GET" action="/atividades"> --}}
-                                <input type="text" class="form-control date-range-filter" id="from_date"
-                                    name="from_date" {{-- onchange="form.submit()" --}}>
-                                {{-- </form> --}}
+                            <div class="col-7">
+                                <h5 class="d-flex p-2 m-0 font-weight-bold text-primary">
+                                    Gerir Atividades de
+                                    <form class="form-date" method="GET" action="/atividades">
+                                        <div class="input-icons">
+                                            <i class="fa fa-calendar icon"></i>
+                                            <input type="text"
+                                                class="form-control date-range-filter d-flex p-2 m-0 font-weight-bold text-primary"
+                                                id="year_month" name="year_month"
+                                                placeholder="{{ $selectedDate->formatLocalized('%B %Y') }}"
+                                                onfocus="(this.type='month', this.value='{{ $selectedDate->format('Y-m') }}')"
+                                                onchange="form.submit()">
+                                        </div>
+                                    </form>
+                                </h5>
                             </div>
 
-                            <div class="col-2">
-                                {{-- <form method="GET" action="/atividades"> --}}
-                                <input type="text" class="form-control date-range-filter" id="to_date" name="to_date"
-                                    {{-- onchange="form.submit()" --}}>
-                                {{-- </form> --}}
-                            </div>
-
-                            <div class="col-3">
+                            <div class="col-5">
                                 <button type="button"
                                     class="float-right d-flex d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                     style="margin-top:0.3rem" data-toggle="modal" data-target="#newAtividadeModal">
@@ -85,11 +89,15 @@
                                 <tbody>
                                     @foreach ($atividade as $atividade)
                                     <tr>
-                                        <td type="hidden">{{ $atividade->inicio->format('d/m/Y') }}</td>
+                                        <td data-target="#showAtividadeModal" @include('atividades.modals.data')
+                                            style="cursor:pointer; font-size:14px">
+                                            <b style="font-size:15px">{{ $atividade->inicio->format('d-m-Y') }}</b>
+                                            {{  ' | ' . $atividade->inicio->formatLocalized('%a') }}
+                                        </td>
                                         <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer; font-size:14px">
                                             <b style="font-size:15px">{{ $atividade->inicio->format('d') }}</b>
-                                            {{-- {{  ' | ' . $atividade->inicio->formatLocalized('%A') }} --}}
+                                            {{  ' | ' . $atividade->inicio->formatLocalized('%A') }}
                                         </td>
                                         <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer; font-size:15px">
@@ -171,7 +179,12 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Datatables custom script -->
+@if(strpos($_SERVER['REQUEST_URI'], 'year_month') !== false)
+<script src="/js/datatable/atividade-year_month.js"></script>
+@else
 <script src="/js/datatable/atividade.js"></script>
+@endif
+
 
 <!-- DataTables CDN -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>

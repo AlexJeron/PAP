@@ -18823,6 +18823,61 @@ div.dt-buttons.btn-group.flex-wrap {
   padding: 0;
 }
 
+.date-range-filter {
+  padding: 0 !important;
+  background: transparent;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.form-date {
+  margin-bottom: -1rem;
+  margin-top: -0.6rem;
+  margin-left: 0.3rem;
+}
+
+.date-range-filter::-webkit-input-placeholder {
+  color: #0083ca !important;
+}
+
+.date-range-filter::-moz-placeholder {
+  color: #0083ca !important;
+}
+
+.date-range-filter:-ms-input-placeholder {
+  color: #0083ca !important;
+}
+
+.date-range-filter::-ms-input-placeholder {
+  color: #0083ca !important;
+}
+
+.date-range-filter::placeholder {
+  color: #0083ca !important;
+}
+
+.input-icons i {
+  position: absolute;
+  margin-left: 8.2rem;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+}
+
+.year_month {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
 /* The switch - the box around the slider */
 
 .switch {

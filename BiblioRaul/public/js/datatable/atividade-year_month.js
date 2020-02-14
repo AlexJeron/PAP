@@ -86,8 +86,12 @@ $(document).ready(function() {
             }
         },
         columns: [
-            { width: "10%", orderable: true, visible: true },
-            { width: "10%", orderable: true, visible: false },
+            {
+                width: "0%",
+                orderable: false,
+                visible: false
+            },
+            { width: "10%", orderable: true },
             { width: "10%", orderable: true },
             { width: "27%", orderable: true },
             { width: "12%", orderable: true },
@@ -96,6 +100,7 @@ $(document).ready(function() {
         ]
     });
 });
+
 // Remove DataTables' default classes
 $(document).ready(function() {
     $("button").removeClass("btn-secondary");
