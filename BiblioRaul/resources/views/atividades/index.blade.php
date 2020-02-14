@@ -40,19 +40,23 @@
                                 $currentMonth = $currentMonth->formatLocalized('%B');
                             ?>
 
-                            <h5 class="col-8 d-flex p-2 m-0 font-weight-bold text-primary">
+                            <h5 class="col-5 d-flex p-2 m-0 font-weight-bold text-primary">
                                 Gerir Atividades de
-                                <form method="GET" action="/atividades">
-                                    <div class="input-append date" id="datepicker">
-                                        <input type="text" class="form-control text-primary font-weight-bold" id="month"
-                                            name="month" onchange="form.submit()" readonly>
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </div>
-                                    </div>
-
-                                </form>
                             </h5>
+
+                            <div class="col-2">
+                                {{-- <form method="GET" action="/atividades"> --}}
+                                <input type="text" class="form-control date-range-filter" id="from_date"
+                                    name="from_date" {{-- onchange="form.submit()" --}}>
+                                {{-- </form> --}}
+                            </div>
+
+                            <div class="col-2">
+                                {{-- <form method="GET" action="/atividades"> --}}
+                                <input type="text" class="form-control date-range-filter" id="to_date" name="to_date"
+                                    {{-- onchange="form.submit()" --}}>
+                                {{-- </form> --}}
+                            </div>
 
                             <div class="col-3">
                                 <button type="button"
@@ -69,6 +73,7 @@
                             <table class="table zebra" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="transparency">
                                     <tr>
+                                        <th type="hidden">Data</th>
                                         <th>Dia</th>
                                         <th>Hora</th>
                                         <th>Atividade</th>
@@ -80,10 +85,11 @@
                                 <tbody>
                                     @foreach ($atividade as $atividade)
                                     <tr>
+                                        <td type="hidden">{{ $atividade->inicio->format('d/m/Y') }}</td>
                                         <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer; font-size:14px">
                                             <b style="font-size:15px">{{ $atividade->inicio->format('d') }}</b>
-                                            {{  ' | ' . $atividade->inicio->formatLocalized('%A') }}
+                                            {{-- {{  ' | ' . $atividade->inicio->formatLocalized('%A') }} --}}
                                         </td>
                                         <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer; font-size:15px">
@@ -185,15 +191,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 <!-- Custom JS -->
-<script>
-    // var currentMonth = JSON.parse("{{ json_encode($currentMonth) }}");
-    var currentMonth = {!! json_encode($currentMonth); !!};
-    var selectedMonth = {!! json_encode(app('request')->input('month')); !!}
-    $("#month").click(function() {
-        // console.log(currentMonth);
-        // console.trace(selectedMonth)
-    });
-</script>
 <script src="/js/modals/atividade.js"></script>
 
 <!-- Bootstrap datepicker -->

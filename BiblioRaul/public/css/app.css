@@ -18818,7 +18818,7 @@ div.dt-buttons.btn-group.flex-wrap {
   background-color: transparent;
   height: 1.6rem;
   cursor: pointer;
-  /* border: none; */
+  border: none;
   margin-left: 0.5rem;
   padding: 0;
 }

@@ -181,37 +181,3 @@ $("#clearEditSelectRecursos").click(function() {
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
-
-$(document).ready(function() {
-    if (!Modernizr.inputtypes["datetime-local"]) {
-        $("input[type=datetime-local]").datetimepicker();
-    }
-    $("#datepicker").datepicker({
-        language: "pt",
-        // viewmode: "months",
-        // minviewMode: "months",
-        format: {
-            toDisplay: function(date, format, language) {
-                var d = new Date(date);
-                d.setDate(d.getDate());
-                return d.toLocaleString("pt-PT", { month: "long" });
-            },
-            toValue: function(date, format, language) {
-                var d = new Date(date);
-                d.setDate(d.getDate());
-                return new Date(d);
-            }
-        },
-        autoclose: "true",
-        startView: "months",
-        minViewMode: "months"
-    });
-});
-
-$("#month").focusout(function() {
-    $("#month").val(selectedMonth);
-});
-
-$(document).ready(function() {
-    $("#month").val(selectedMonth);
-});

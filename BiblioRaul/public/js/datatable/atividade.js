@@ -1,6 +1,6 @@
 // Call the DataTables jQuery plugin
 $(document).ready(function() {
-    $("#dataTable").DataTable({
+    var table = $("#dataTable").DataTable({
         dom: "Bfrtip",
         colReorder: true,
         fixedHeader: true,
@@ -86,6 +86,11 @@ $(document).ready(function() {
             }
         },
         columns: [
+            {
+                width: "0%",
+                orderable: false,
+                visible: true
+            },
             { width: "10%", orderable: true },
             { width: "10%", orderable: true },
             { width: "27%", orderable: true },
@@ -94,6 +99,58 @@ $(document).ready(function() {
             { width: "5%", orderable: false }
         ]
     });
+
+    // Date range filter
+    minDateFilter = "";
+    maxDateFilter = "";
+
+    $.fn.dataTableExt.afnFiltering.push(function(settings, data, dataIndex) {
+        if (typeof data._date == "undefined") {
+            data._date = new Date(data[0]).getTime();
+        }
+
+        if (minDateFilter && !isNaN(minDateFilter)) {
+            if (data._date < minDateFilter) {
+                return false;
+            }
+        }
+
+        if (maxDateFilter && !isNaN(maxDateFilter)) {
+            if (data._date > maxDateFilter) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+
+    $("#from_date")
+        .datepicker({
+            format: "dd/mm/yyyy",
+            showOn: "button",
+            onSelect: function(date) {
+                minDateFilter = new Date(date).getTime();
+                table.draw();
+            }
+        })
+        .keyup(function() {
+            minDateFilter = new Date(this.value).getTime();
+            table.draw();
+        });
+
+    $("#to_date")
+        .datepicker({
+            format: "dd/mm/yyyy",
+            showOn: "button",
+            onSelect: function(date) {
+                maxDateFilter = new Date(date).getTime();
+                table.draw();
+            }
+        })
+        .keyup(function() {
+            maxDateFilter = new Date(this.value).getTime();
+            table.draw();
+        });
 });
 
 // Remove DataTables' default classes
