@@ -5,7 +5,7 @@
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="newTurmaModalLabel">Registar Turma</h5>
+                    <h5 class="modal-title" id="newTurmaModalLabel" style="margin-left: -2.1rem;">Registar Turma</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

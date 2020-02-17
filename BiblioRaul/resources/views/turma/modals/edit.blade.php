@@ -6,8 +6,9 @@
             @method('PUT')
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editTurmaModalLabel">Editar Turma</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="editTurmaModalLabel" style="margin-left: -2.1rem;">Editar Turma</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="margin-right: -2.5rem;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>

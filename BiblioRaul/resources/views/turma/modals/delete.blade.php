@@ -11,7 +11,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="padding-left:3.4rem">
                     <input type="hidden" name="class_id" id="turma_id" value="">
                     Tem a certeza que deseja apagar este registo?
                 </div>

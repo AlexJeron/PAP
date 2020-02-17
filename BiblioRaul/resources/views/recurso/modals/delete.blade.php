@@ -11,8 +11,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <input type="hidden" name="recurso_id" id="recurso_id" value="">
+                <div class="modal-body" style="padding-left:3.4rem">
+                    <input type="hidden" name="recurso_id" id="recurso_id">
                     Tem a certeza que deseja apagar este recurso?
                 </div>
                 <div class="modal-footer">

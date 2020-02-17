@@ -7,7 +7,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editProfessorModalLabel">Editar Professor</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="margin-right: -2.5rem;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>

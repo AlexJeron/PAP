@@ -6,8 +6,9 @@
             @method('PUT')
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editUserModalLabel">Editar Utilizador</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="editUserModalLabel" style="margin-left: -1.5rem;">Editar Utilizador</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="margin-right: -2.5rem;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
