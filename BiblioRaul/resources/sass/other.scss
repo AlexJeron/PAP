@@ -176,7 +176,46 @@ div.dt-buttons.btn-group.flex-wrap {
     background-color: transparent;
     height: 1.6rem;
     cursor: pointer;
-    /* border: none; */
+    border: none;
     margin-left: 0.5rem;
     padding: 0;
+}
+
+.date-range-filter {
+    padding: 0 !important;
+    background: transparent;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-date {
+    margin-bottom: -1rem;
+    margin-top: -0.6rem;
+    margin-left: 0.3rem;
+}
+
+.date-range-filter::placeholder {
+    color: $primary !important;
+}
+
+.input-icons i {
+    position: absolute;
+    margin-left: 8.2rem;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+
+.year_month {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
 }

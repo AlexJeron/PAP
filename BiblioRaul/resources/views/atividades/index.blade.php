@@ -35,26 +35,34 @@
                     <div class="card-header py-3">
                         <div class="row">
                             <?php
-                                $currentMonth = Carbon::now();
+                                $currentDate = Carbon::now();
                                 setlocale(LC_TIME, 'Portuguese.UTF-8');
-                                $currentMonth = $currentMonth->formatLocalized('%B');
+                                if(!strpos($_SERVER['REQUEST_URI'], 'year_month') !== false) {
+                                    $currentMonth = $currentDate->format('m');
+                                    $currentYear = $currentDate->formatLocalized('%Y');
+                                }
+                                $selectedDate = app('request')->input('year_month');
+                                $selectedDate = Carbon::parse($selectedDate);
                             ?>
 
-                            <h5 class="col-8 d-flex p-2 m-0 font-weight-bold text-primary">
-                                Gerir Atividades de
-                                <form method="GET" action="/atividades">
-                                    <div class="input-append date" id="datepicker">
-                                        <input type="text" class="form-control text-primary font-weight-bold" id="month"
-                                            name="month" onchange="form.submit()" readonly>
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-th"></span>
+                            <div class="col-7">
+                                <h5 class="d-flex p-2 m-0 font-weight-bold text-primary">
+                                    Gerir Atividades de
+                                    <form class="form-date" method="GET" action="/atividades">
+                                        <div class="input-icons">
+                                            <i class="fa fa-calendar icon" id="calendar-icon"
+                                                style="cursor:pointer;"></i>
+                                            <input type="text" id="year_month" name="year_month"
+                                                class="form-control date-range-filter d-flex p-2 m-0 font-weight-bold text-primary"
+                                                placeholder="{{ $selectedDate->formatLocalized('%B %Y') }}"
+                                                onfocus="(this.type='month', this.value='{{ $selectedDate->format('Y-m') }}')"
+                                                onchange="form.submit()">
                                         </div>
-                                    </div>
+                                    </form>
+                                </h5>
+                            </div>
 
-                                </form>
-                            </h5>
-
-                            <div class="col-3">
+                            <div class="col-5">
                                 <button type="button"
                                     class="float-right d-flex d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                     style="margin-top:0.3rem" data-toggle="modal" data-target="#newAtividadeModal">
@@ -69,6 +77,7 @@
                             <table class="table zebra" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="transparency">
                                     <tr>
+                                        <th type="hidden">Data</th>
                                         <th>Dia</th>
                                         <th>Hora</th>
                                         <th>Atividade</th>
@@ -80,6 +89,11 @@
                                 <tbody>
                                     @foreach ($atividade as $atividade)
                                     <tr>
+                                        <td data-target="#showAtividadeModal" @include('atividades.modals.data')
+                                            style="cursor:pointer; font-size:14px">
+                                            <b style="font-size:15px">{{ $atividade->inicio->format('d-m-Y') }}</b>
+                                            {{  ' | ' . $atividade->inicio->formatLocalized('%a') }}
+                                        </td>
                                         <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer; font-size:14px">
                                             <b style="font-size:15px">{{ $atividade->inicio->format('d') }}</b>
@@ -165,7 +179,11 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Datatables custom script -->
+@if(strpos($_SERVER['REQUEST_URI'], 'year_month') !== false)
+<script src="/js/datatable/atividade-year_month.js"></script>
+@else
 <script src="/js/datatable/atividade.js"></script>
+@endif
 
 <!-- DataTables CDN -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
@@ -185,15 +203,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 <!-- Custom JS -->
-<script>
-    // var currentMonth = JSON.parse("{{ json_encode($currentMonth) }}");
-    var currentMonth = {!! json_encode($currentMonth); !!};
-    var selectedMonth = {!! json_encode(app('request')->input('month')); !!}
-    $("#month").click(function() {
-        // console.log(currentMonth);
-        // console.trace(selectedMonth)
-    });
-</script>
 <script src="/js/modals/atividade.js"></script>
 
 <!-- Bootstrap datepicker -->
