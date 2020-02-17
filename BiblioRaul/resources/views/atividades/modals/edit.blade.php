@@ -122,7 +122,7 @@
                         </div>
 
                         <div class="col-sm-1 text-center pl-0 pr-2 pt-1 mr-n1" style="margin-left:-1.6rem">
-                            <button type="button" id="clearEditSelectTurmas" class="btn btn-primary btn-circle btn-sm">
+                            <button type="button" id="clearEditSelectTurmas" class="eraser">
                                 <i class="fas fa-eraser"></i>
                             </button>
                         </div>
@@ -147,8 +147,7 @@
                         </div>
 
                         <div class="col-sm-1 text-center pl-0 pr-2 pt-1 mr-n1" style="margin-left:-1.6rem">
-                            <button type="button" id="clearEditSelectProfessores"
-                                class="btn btn-primary btn-circle btn-sm">
+                            <button type="button" id="clearEditSelectProfessores" class="eraser">
                                 <i class="fas fa-eraser"></i>
                             </button>
                         </div>
@@ -183,8 +182,7 @@
                         </div>
 
                         <div class="col-sm-1 text-center pl-0 pr-2 pt-1 mr-n1" style="margin-left:-1.3rem">
-                            <button type="button" id="clearEditSelectRecursos"
-                                class="btn btn-primary btn-circle btn-sm">
+                            <button type="button" id="clearEditSelectRecursos" class="eraser">
                                 <i class="fas fa-eraser"></i>
                             </button>
                         </div>

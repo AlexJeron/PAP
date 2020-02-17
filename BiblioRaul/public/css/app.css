@@ -18823,18 +18823,19 @@ div.dt-buttons.btn-group.flex-wrap {
   padding: 0;
 }
 
+.form-date {
+  margin-bottom: -1rem;
+  margin-top: -0.6rem;
+  margin-left: 0.3rem;
+}
+
 .date-range-filter {
   padding: 0 !important;
   background: transparent;
   font-size: 20px;
   border: none;
   cursor: pointer;
-}
-
-.form-date {
-  margin-bottom: -1rem;
-  margin-top: -0.6rem;
-  margin-left: 0.3rem;
+  margin-left: 1.4rem;
 }
 
 .date-range-filter::-webkit-input-placeholder {
@@ -18859,7 +18860,7 @@ div.dt-buttons.btn-group.flex-wrap {
 
 .input-icons i {
   position: absolute;
-  margin-left: 8.2rem;
+  margin-left: -0.6rem;
 }
 
 .input-icons {
@@ -18876,6 +18877,12 @@ div.dt-buttons.btn-group.flex-wrap {
   width: 100%;
   padding: 10px;
   text-align: center;
+}
+
+.eraser {
+  background: transparent;
+  border: none;
+  color: #0083ca;
 }
 
 /* The switch - the box around the slider */

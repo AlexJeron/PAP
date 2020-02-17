@@ -8,8 +8,6 @@
     href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fh-3.1.6/kt-2.5.1/r-2.2.3/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.css" />
 <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css" />
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 @endsection
 
 @section('content')
@@ -33,7 +31,7 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <div class="row">
+                        <div class="row" style="margin-bottom: -0.3rem">
                             <?php
                                 $currentDate = Carbon::now();
                                 setlocale(LC_TIME, 'Portuguese.UTF-8');
@@ -50,10 +48,10 @@
                                     Gerir Atividades de
                                     <form class="form-date" method="GET" action="/atividades">
                                         <div class="input-icons">
-                                            <i class="fa fa-calendar icon" id="calendar-icon"
+                                            <i class="fa fa-calendar-alt icon" id="calendar-icon"
                                                 style="cursor:pointer;"></i>
                                             <input type="text" id="year_month" name="year_month"
-                                                class="form-control date-range-filter d-flex p-2 m-0 font-weight-bold text-primary"
+                                                class="form-control date-range-filter d-flex p-2 font-weight-bold text-primary"
                                                 placeholder="{{ $selectedDate->formatLocalized('%B %Y') }}"
                                                 onfocus="(this.type='month', this.value='{{ $selectedDate->format('Y-m') }}')"
                                                 onchange="form.submit()">
@@ -159,6 +157,8 @@
 <!-- New Atividade Modal -->
 @include('atividades.modals.new')
 
+@isset($atividade->id)
+
 <!-- Show Atividade Modal -->
 @include('atividades.modals.show')
 
@@ -167,6 +167,8 @@
 
 <!-- Delete Atividade Modal -->
 @include('atividades.modals.delete')
+
+@endisset
 
 @include('layouts.logout-modal')
 
@@ -204,11 +206,6 @@
 
 <!-- Custom JS -->
 <script src="/js/modals/atividade.js"></script>
-
-<!-- Bootstrap datepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt.min.js">
-</script>
 
 <!-- Bootstrap-Select -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>
