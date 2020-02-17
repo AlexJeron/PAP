@@ -50,10 +50,10 @@
                                     Gerir Atividades de
                                     <form class="form-date" method="GET" action="/atividades">
                                         <div class="input-icons">
-                                            <i class="fa fa-calendar icon"></i>
-                                            <input type="text"
+                                            <i class="fa fa-calendar icon" id="calendar-icon"
+                                                style="cursor:pointer;"></i>
+                                            <input type="text" id="year_month" name="year_month"
                                                 class="form-control date-range-filter d-flex p-2 m-0 font-weight-bold text-primary"
-                                                id="year_month" name="year_month"
                                                 placeholder="{{ $selectedDate->formatLocalized('%B %Y') }}"
                                                 onfocus="(this.type='month', this.value='{{ $selectedDate->format('Y-m') }}')"
                                                 onchange="form.submit()">
@@ -184,7 +184,6 @@
 @else
 <script src="/js/datatable/atividade.js"></script>
 @endif
-
 
 <!-- DataTables CDN -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>

@@ -181,3 +181,9 @@ $("#clearEditSelectRecursos").click(function() {
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+// Data
+$("#calendar-icon").click(function() {
+    $("#year_month").focus();
+    // $("#year_month").datepicker("show");
+});
