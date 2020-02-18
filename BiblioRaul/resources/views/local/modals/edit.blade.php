@@ -28,7 +28,7 @@
 
                     <div class="form-group row">
                         <label for="capacidade"
-                            class="col-sm-3 col-form-label text-md-right">{{ __('Capacidade total') }}</label>
+                            class="col-sm-3 col-form-label text-md-right">{{ __('Capacidade') }}</label>
 
                         <div class="col-sm-9">
                             <input id="capacidade" type="text"
