@@ -26,7 +26,7 @@
     @yield('content')
 </body>
 <!-- App -->
-<script src="/js/app.js"></script>
+{{-- <script src="/js/app.js"></script> --}}
 
 <!-- JQuery -->
 <script src="vendor/jquery/jquery.min.js"></script>

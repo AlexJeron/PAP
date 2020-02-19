@@ -5,9 +5,9 @@
  */
 
 require("./bootstrap");
-require("chart.js");
+// require("chart.js");
 
-window.Vue = require("vue");
+Vue = require("vue");
 
 /**
  * The following block of code may be used to automatically register your
