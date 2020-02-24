@@ -15,7 +15,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id" value="{{ $atividade->id }}">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Atividade') }}<span
+                        <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Nome') }}<span
                                 class="red" style="margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
                             <input id="name" type="text" class="form-control @error('nome') is-invalid @enderror"

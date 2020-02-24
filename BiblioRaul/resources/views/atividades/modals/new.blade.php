@@ -13,7 +13,7 @@
                 <div class="modal-body">
 
                     <div class="form-group row">
-                        <label for="nome" class="col-sm-2 col-form-label text-md-right">{{ __('Atividade') }}<span
+                        <label for="nome" class="col-sm-2 col-form-label text-md-right">{{ __('Nome') }}<span
                                 class="red" style="margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
                             <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror"
@@ -150,8 +150,7 @@
                         </div>
 
                         <div class="col-sm-1 text-center pl-0 pr-2 pt-1 mr-n1" style="margin-left:-1.6rem">
-                            <button type="button" id="clearNewSelectProfessores"
-                                class="eraser">
+                            <button type="button" id="clearNewSelectProfessores" class="eraser">
                                 <i class="fas fa-eraser"></i>
                             </button>
                         </div>

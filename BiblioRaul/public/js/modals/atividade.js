@@ -1,4 +1,4 @@
-$('#editAtividadeModal').on('show.bs.modal', (event) => {
+$('#editAtividadeModal').on('show.bs.modal', function data(event) {
   const button = $(event.relatedTarget);
   const id = button.data('id');
   const nome = button.data('nome');
@@ -58,7 +58,7 @@ $('#editAtividadeModal').on('show.bs.modal', (event) => {
   document.getElementById('user_name').value = userName;
 });
 
-$('#showAtividadeModal').on('show.bs.modal', (event) => {
+$('#showAtividadeModal').on('show.bs.modal', function data(event) {
   const button = $(event.relatedTarget);
   const id = button.data('id');
   const nome = button.data('nome');
@@ -101,9 +101,6 @@ $('#showAtividadeModal').on('show.bs.modal', (event) => {
   $('#show_professor_id').selectpicker('val', profIdArray);
   document.getElementById('show_professor_id').value = profNomeArray.join(', ');
 
-  $('#show_professor_id').selectpicker('val', profIdArray);
-  $('#show_professor_id').val(profNomeArray.join(', '));
-
   // Select e Input (show) Turmas
   const turmaIdArray = [];
   const turmaNomeArray = [];
@@ -140,7 +137,7 @@ $('#showAtividadeModal').on('show.bs.modal', (event) => {
   document.getElementById('user_name').value = userName;
 });
 
-$('#deleteAtividadeModal').on('show.bs.modal', (event) => {
+$('#deleteAtividadeModal').on('show.bs.modal', function data(event) {
   const button = $(event.relatedTarget);
   const ativId = button.data('ativ_id');
   const modal = $(this);
@@ -185,6 +182,6 @@ $(() => {
 });
 
 // Data
-$('#chevron-icon').click(() => {
+$('#calendar-icon').click(() => {
   $('#year_month').focus();
 });

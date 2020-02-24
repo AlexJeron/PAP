@@ -3,11 +3,10 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon">
-            <img src="/img/Logo.png" alt="BiblioRaul" style="height:35px">
+            {{-- <img src="/img/Logo.png" alt="BiblioRaul" style="height:35px"> --}}
         </div>
         <div class="sidebar-brand-text mx-3" id="BiblioRaul">Biblio<span id="Raul">Raul</span></div>
     </a>
-    <!-- <img src="/img/BiblioRaul.png" alt="BiblioRaul" width="100%" height="3%"> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
