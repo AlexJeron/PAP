@@ -1,7 +1,7 @@
 <div class="modal fade" id="editLocalModal" tabindex="-1" role="dialog" aria-labelledby="editLocalModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="/local/{{ $local->id }}">
+        <form method="POST" action="/locais/{{ $local->id }}">
             @csrf
             @method('PUT')
             <div class="modal-content">

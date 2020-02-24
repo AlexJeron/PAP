@@ -1,7 +1,7 @@
 <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="{{ route('user.destroy', 'delete') }}">
+        <form method="POST" action="{{ route('users.destroy', 'delete') }}">
             @method('DELETE')
             @csrf
             <div class="modal-content">

@@ -1,7 +1,7 @@
 <div class="modal fade" id="newProfessorModal" tabindex="-1" role="dialog" aria-labelledby="newProfessorModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="/professor">
+        <form method="POST" action="/professores">
             @csrf
 
             <div class="modal-content">

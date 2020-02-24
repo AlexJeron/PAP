@@ -1,7 +1,7 @@
 <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <form method="POST" action="/user">
+        <form method="POST" action="/users">
             @csrf
             <div class="modal-content" style="width:80%; margin:auto">
                 <div class="modal-header">

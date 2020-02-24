@@ -1,7 +1,7 @@
 <div class="modal fade" id="deleteTurmaModal" tabindex="-1" role="dialog" aria-labelledby="deleteTurmaModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="{{ route('turma.destroy', 'delete') }}">
+        <form method="POST" action="{{ route('turmas.destroy', 'delete') }}">
             @method('DELETE')
             @csrf
             <div class="modal-content">

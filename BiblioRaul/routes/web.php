@@ -35,19 +35,19 @@ Auth::routes(['register' => false]);
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // Professor
-Route::resource('professor', 'ProfessorController')->middleware('auth');
+Route::resource('professores', 'ProfessorController', ['parameters' => ['professores' => 'professor']])->middleware('auth');
 
 // User
-Route::resource('user', 'UserController')->middleware('auth');
+Route::resource('users', 'UserController')->middleware('auth');
 
 // Turma
-Route::resource('turma', 'TurmaController')->middleware('auth');
+Route::resource('turmas', 'TurmaController')->middleware('auth');
 
 // Local
-Route::resource('local', 'LocalController')->middleware('auth');
+Route::resource('locais', 'LocalController', ['parameters' => ['locais' => 'local']])->middleware('auth');
 
 // Recurso
-Route::resource('recurso', 'RecursoController')->middleware('auth');
+Route::resource('recursos', 'RecursoController')->middleware('auth');
 
 // Atividade
 Route::resource('atividades', 'AtividadeController')->middleware('auth');
