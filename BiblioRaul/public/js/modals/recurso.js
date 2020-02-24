@@ -1,17 +1,17 @@
-$("#editRecursoModal").on("show.bs.modal", function(event) {
-    var button = $(event.relatedTarget);
-    var id = button.data("id");
-    var nome = button.data("nome");
-    var quantidade_total = button.data("quantidade_total");
-    var modal = $(this);
-    modal.find(".modal-body #id").val(id);
-    modal.find(".modal-body #name").val(nome);
-    modal.find(".modal-body #quantidade_total").val(quantidade_total);
+$('#editRecursoModal').on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const id = button.data('id');
+  const nome = button.data('nome');
+  const quantidadeTotal = button.data('quantidade_total');
+  const modal = $(this);
+  modal.find('.modal-body #id').val(id);
+  modal.find('.modal-body #name').val(nome);
+  modal.find('.modal-body #quantidade_total').val(quantidadeTotal);
 });
 
-$("#deleteRecursoModal").on("show.bs.modal", function(event) {
-    var button = $(event.relatedTarget);
-    var recurso_id = button.data("recurso_id");
-    var modal = $(this);
-    modal.find(".modal-body #recurso_id").val(recurso_id);
+$('#deleteRecursoModal').on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const recursoId = button.data('recurso_id');
+  const modal = $(this);
+  modal.find('.modal-body #recurso_id').val(recursoId);
 });

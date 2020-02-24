@@ -48,13 +48,14 @@
                                     Gerir Atividades de
                                     <form class="form-date" method="GET" action="/atividades">
                                         <div class="input-icons">
-                                            <i class="fa fa-calendar-alt icon" id="calendar-icon"
+                                            <i class="fas fa-chevron-circle-down" id="chevron-icon"
                                                 style="cursor:pointer;"></i>
                                             <input type="text" id="year_month" name="year_month"
                                                 class="form-control date-range-filter d-flex p-2 font-weight-bold text-primary"
                                                 placeholder="{{ $selectedDate->formatLocalized('%B %Y') }}"
                                                 onfocus="(this.type='month', this.value='{{ $selectedDate->format('Y-m') }}')"
-                                                onchange="form.submit()">
+                                                onchange="form.submit()"
+                                                onfocusout="(this.type='text'), this.value='{{ $selectedDate->formatLocalized('%B %Y') }}'">
                                         </div>
                                     </form>
                                 </h5>

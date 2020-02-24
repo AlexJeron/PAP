@@ -61,8 +61,8 @@ $(document).ready(() => {
       sZeroRecords: 'Nenhum registo encontrado',
       sSearch: 'Pesquisar',
       oPaginate: {
-        sNext: 'Próximo',
-        sPrevious: 'Anterior',
+        sNext: '<i class="fas fa-chevron-right"></i>',
+        sPrevious: '<i class="fas fa-chevron-left"></i>',
         sFirst: 'Primeiro',
         sLast: 'Último',
       },

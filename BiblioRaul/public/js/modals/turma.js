@@ -1,15 +1,15 @@
-$("#editTurmaModal").on("show.bs.modal", function(event) {
-    var button = $(event.relatedTarget);
-    var id = button.data("id");
-    var nome = button.data("nome");
-    var modal = $(this);
-    modal.find(".modal-body #id").val(id);
-    modal.find(".modal-body #nome").val(nome);
+$('#editTurmaModal').on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const id = button.data('id');
+  const nome = button.data('nome');
+  const modal = $(this);
+  modal.find('.modal-body #id').val(id);
+  modal.find('.modal-body #nome').val(nome);
 });
 
-$("#deleteTurmaModal").on("show.bs.modal", function(event) {
-    var button = $(event.relatedTarget);
-    var turma_id = button.data("turma_id");
-    var modal = $(this);
-    modal.find(".modal-body #turma_id").val(turma_id);
+$('#deleteTurmaModal').on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const turmaId = button.data('turma_id');
+  const modal = $(this);
+  modal.find('.modal-body #turma_id').val(turmaId);
 });

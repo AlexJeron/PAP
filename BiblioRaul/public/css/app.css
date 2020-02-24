@@ -11257,7 +11257,7 @@ input[type=button].btn-block {
 }
 
 .page-item.disabled .page-link {
-  color: #858796;
+  color: #85879670;
   pointer-events: none;
   cursor: auto;
   background-color: #fff;
@@ -18883,6 +18883,11 @@ div.dt-buttons.btn-group.flex-wrap {
   background: transparent;
   border: none;
   color: #0083ca;
+}
+
+#chevron-icon {
+  margin-top: 0.7rem;
+  margin-left: -0.1rem;
 }
 
 /* The switch - the box around the slider */

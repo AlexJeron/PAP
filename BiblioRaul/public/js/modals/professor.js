@@ -1,17 +1,17 @@
-$("#editProfessorModal").on("show.bs.modal", function(event) {
-    var button = $(event.relatedTarget);
-    var id = button.data("id");
-    var nome = button.data("nome");
-    var email = button.data("email");
-    var modal = $(this);
-    modal.find(".modal-body #id").val(id);
-    modal.find(".modal-body #name").val(nome);
-    modal.find(".modal-body #email").val(email);
+$('#editProfessorModal').on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const id = button.data('id');
+  const nome = button.data('nome');
+  const email = button.data('email');
+  const modal = $(this);
+  modal.find('.modal-body #id').val(id);
+  modal.find('.modal-body #name').val(nome);
+  modal.find('.modal-body #email').val(email);
 });
 
-$("#deleteProfessorModal").on("show.bs.modal", function(event) {
-    var button = $(event.relatedTarget);
-    var prof_id = button.data("prof_id");
-    var modal = $(this);
-    modal.find(".modal-body #prof_id").val(prof_id);
+$('#deleteProfessorModal').on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const profId = button.data('prof_id');
+  const modal = $(this);
+  modal.find('.modal-body #prof_id').val(profId);
 });

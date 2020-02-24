@@ -1,17 +1,17 @@
-$("#editUserModal").on("show.bs.modal", function(event) {
-    var button = $(event.relatedTarget);
-    var id = button.data("id");
-    var nome = button.data("nome");
-    var email = button.data("email");
-    var modal = $(this);
-    modal.find(".modal-body #id").val(id);
-    modal.find(".modal-body #name").val(nome);
-    modal.find(".modal-body #email").val(email);
+$('#editUserModal').on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const id = button.data('id');
+  const nome = button.data('nome');
+  const email = button.data('email');
+  const modal = $(this);
+  modal.find('.modal-body #id').val(id);
+  modal.find('.modal-body #name').val(nome);
+  modal.find('.modal-body #email').val(email);
 });
 
-$("#deleteUserModal").on("show.bs.modal", function(event) {
-    var button = $(event.relatedTarget);
-    var user_id = button.data("user_id");
-    var modal = $(this);
-    modal.find(".modal-body #user_id").val(user_id);
+$('#deleteUserModal').on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const userId = button.data('user_id');
+  const modal = $(this);
+  modal.find('.modal-body #user_id').val(userId);
 });
