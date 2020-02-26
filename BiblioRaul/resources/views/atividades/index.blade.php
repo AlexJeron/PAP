@@ -48,7 +48,8 @@
                                     Gerir Atividades de
                                     <form class="form-date" method="GET" action="/atividades">
                                         <div class="input-icons">
-                                            <i class="fas fa-chevron-circle-down" id="chevron-icon"></i>
+                                            <i class="fas fa-chevron-circle-down" id="chevron-icon"
+                                                onclick="focusDataInput()"></i>
                                             <input type="text" id="year_month" name="year_month"
                                                 class="form-control date-range-filter d-flex p-2 font-weight-bold text-primary"
                                                 placeholder="{{ $selectedDate->formatLocalized('%B %Y') }}"

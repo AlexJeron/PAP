@@ -185,3 +185,9 @@ $(() => {
 $('#calendar-icon').click(() => {
   $('#year_month').focus();
 });
+
+// Focus data on click
+// eslint-disable-next-line no-unused-vars
+function focusDataInput() {
+  document.getElementById('year_month').focus();
+}
