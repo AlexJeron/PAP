@@ -18892,6 +18892,14 @@ div.dt-buttons.btn-group.flex-wrap {
   margin-left: 0rem;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.tooltip {
+  pointer-events: none;
+}
+
 /* The switch - the box around the slider */
 
 .switch {

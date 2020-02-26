@@ -85,12 +85,12 @@ $(document).ready(() => {
       },
     },
     columns: [
-      { width: '15%', orderable: true, visible: true },
+      { width: '12%', orderable: true, visible: true },
       { orderable: true, visible: false },
       { width: '10%', orderable: true },
       { width: '30%', orderable: true },
       { width: '12%', orderable: true },
-      { width: '10%', orderable: true },
+      { width: '12%', orderable: true },
       { width: '7%', orderable: false },
     ],
     drawCallback() {

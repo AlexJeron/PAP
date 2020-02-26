@@ -233,3 +233,11 @@ div.dt-buttons.btn-group.flex-wrap {
     margin-top: 0.9rem;
     margin-left: 0rem;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.tooltip {
+    pointer-events: none;
+}

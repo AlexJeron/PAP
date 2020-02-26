@@ -176,10 +176,10 @@ $('#clearEditSelectRecursos').click(() => {
   $('#recurso_id').selectpicker('refresh');
 });
 
-// Tooltips
-// $(() => {
-//   $('[data-toggle="tooltip"]').tooltip();
-// });
+// Tooltips;
+$(() => {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
 // Data
 $('#calendar-icon').click(() => {
@@ -187,6 +187,12 @@ $('#calendar-icon').click(() => {
 });
 
 // Focus data on click
+// eslint-disable-next-line no-unused-vars
+function clearDataInput() {
+  document.getElementById('year_month').value = '';
+  document.atividades.submit();
+}
+
 // eslint-disable-next-line no-unused-vars
 function focusDataInput() {
   document.getElementById('year_month').focus();

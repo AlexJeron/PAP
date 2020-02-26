@@ -24,7 +24,7 @@ class AtividadeController extends Controller
         // Date format
         setlocale(LC_COLLATE, 'pt-PT.utf8');
 
-        if ($request->has('year_month')) {
+        if ($request->has('year_month=2')) {
             // Show current month's activities [Eloquent]
 
             // dd(request()->all());
