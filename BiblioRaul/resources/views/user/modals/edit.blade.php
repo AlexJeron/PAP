@@ -31,8 +31,8 @@
                         <label for="email" class="col-sm-2 col-form-label text-md-right">{{ __('Email') }}</label>
 
                         <div class="col-sm-10">
-                            <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ $user->nome }}" maxlength="80">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ $user->nome }}" maxlength="80" required>
 
                             @error('email')
                             <div class="invalid-feedback">{{ $errors->first('email') }}</div>

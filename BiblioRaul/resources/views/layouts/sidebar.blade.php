@@ -28,8 +28,12 @@
     </div>
 
     <!-- Nav Item - Atividades -->
+    <?php
+    $currentDate = Carbon::now()->format('Y-m');
+    // dd($currentDate);
+    ?>
     <li class="{{ request()->is('atividades') ? 'nav-item active' : 'nav-item' }}">
-        <a class="nav-link" href="atividades">
+        <a class="nav-link" href="atividades?year_month={{ $currentDate }}">
             <i class="fas fa-calendar-alt"></i>
             <span>Atividades</span>
         </a>
@@ -93,11 +97,6 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
 
 </ul>
 <!-- End of Sidebar -->

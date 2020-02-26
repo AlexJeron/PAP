@@ -17,7 +17,7 @@
 
                         <div class="col-sm-9">
                             <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror"
-                                name="nome" value="{{ old('nome') }}" maxlength="80">
+                                name="nome" value="{{ old('nome') }}" maxlength="80" required>
 
                             @error('nome')
                             <div class="invalid-feedback">{{ $message }}</div>

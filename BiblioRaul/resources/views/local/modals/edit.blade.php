@@ -31,7 +31,7 @@
                             class="col-sm-3 col-form-label text-md-right">{{ __('Capacidade') }}</label>
 
                         <div class="col-sm-9">
-                            <input id="capacidade" type="text"
+                            <input id="capacidade" type="number"
                                 class="form-control @error('capacidade') is-invalid @enderror" name="capacidade"
                                 value="{{ $local->capacidade }}" maxlength="80">
 

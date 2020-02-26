@@ -1,4 +1,4 @@
-$('#editRecursoModal').on('show.bs.modal', (event) => {
+$('#editRecursoModal').on('show.bs.modal', function data(event) {
   const button = $(event.relatedTarget);
   const id = button.data('id');
   const nome = button.data('nome');
@@ -9,7 +9,7 @@ $('#editRecursoModal').on('show.bs.modal', (event) => {
   modal.find('.modal-body #quantidade_total').val(quantidadeTotal);
 });
 
-$('#deleteRecursoModal').on('show.bs.modal', (event) => {
+$('#deleteRecursoModal').on('show.bs.modal', function data(event) {
   const button = $(event.relatedTarget);
   const recursoId = button.data('recurso_id');
   const modal = $(this);

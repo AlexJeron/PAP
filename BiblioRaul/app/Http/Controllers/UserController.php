@@ -15,30 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::latest()->get();
+        $users = User::latest()->get();
 
-        return view('user.index', ['user' => $user]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        return view('user.show', compact('user'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('user.create');
+        return view('user.index', ['users' => $users]);
     }
 
     /**
@@ -50,11 +29,7 @@ class UserController extends Controller
     public function store()
     {
         // Validation
-        request()->validate([
-            'nome' => 'required|max:255',
-            'email' => 'required|max:255',
-            'password' => 'required|max:255',
-        ]);
+        $this->validateStoreUser();
 
         // Hashing the password
         $hashedPassword = Hash::make(request('password'));
@@ -67,18 +42,7 @@ class UserController extends Controller
         $user->save();
 
         // Redirecting the view
-        return redirect('/user');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        return view('user.edit', compact('user'));
+        return back();
     }
 
     /**
@@ -90,12 +54,8 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $validatedData = $request->validate([
-            'nome' => 'required|max:255',
-            'email' => 'nullable|max:255',
-        ]);
-
         $user = User::findOrFail($request->id);
+        $this->validateUpdateUser($user);
         $user->update($request->all());
 
         return back();
@@ -114,12 +74,20 @@ class UserController extends Controller
         return back();
     }
 
-    protected function validateUser()
+    protected function validateStoreUser()
     {
         return request()->validate([
             'nome' => 'required|max:255',
-            'email' => 'required|max:255',
-            'password' => 'required|max:255',
+            'email' => 'required|unique:user|email|max:255',
+            'password' => 'required|max:255|confirmed',
+        ]);
+    }
+
+    protected function validateUpdateUser(User $user)
+    {
+        return request()->validate([
+            'nome' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:user,email,' . $user->id,
         ]);
     }
 }

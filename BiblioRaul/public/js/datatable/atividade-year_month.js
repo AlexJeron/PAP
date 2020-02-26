@@ -1,13 +1,11 @@
 // Call the DataTables jQuery plugin
 $(document).ready(() => {
-  $('#dataTable').DataTable({
+  const table = $('#dataTable').DataTable({
     dom: 'Bfrtip',
     colReorder: true,
     fixedHeader: true,
     responsive: true,
     sScrollX: '100%',
-    // keys: true,
-    // select: true,
     lengthMenu: [
       [10, 15, 20, -1],
       ['10 linhas', '15 linhas', '20 linhas', 'Mostrar tudo'],
@@ -90,14 +88,21 @@ $(document).ready(() => {
         orderable: false,
         visible: false,
       },
-      { width: '10%', orderable: true },
-      { width: '10%', orderable: true },
-      { width: '27%', orderable: true },
-      { width: '12%', orderable: true },
-      { width: '10%', orderable: true },
+      { width: '15%', orderable: true },
+      { width: '13%', orderable: true },
+      { width: '35%', orderable: true },
+      { width: '15%', orderable: true },
+      { width: '15%', orderable: true },
       { width: '5%', orderable: false },
     ],
+    drawCallback() {
+      const pagination = $(this)
+        .closest('.dataTables_wrapper')
+        .find('.dataTables_paginate');
+      pagination.toggle(this.api().page.info().pages > 1);
+    },
   });
+  table.columns.adjust().draw();
 });
 
 // Remove DataTables' default classes

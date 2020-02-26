@@ -14,30 +14,8 @@ class TurmaController extends Controller
      */
     public function index()
     {
-        $turma = Turma::latest()->get();
-
-        return view('turma.index', ['turma' => $turma]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Turma  $turma
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Turma $turma)
-    {
-        return view('turma.show', compact('turma'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('turma.create');
+        $turmas = Turma::latest()->get();
+        return view('turma.index', ['turmas' => $turmas]);
     }
 
     /**
@@ -49,19 +27,7 @@ class TurmaController extends Controller
     public function store()
     {
         Turma::create($this->validateTurma());
-
-        return redirect('/turma');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Turma  $turma
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Turma $turma)
-    {
-        return view('turma.edit', compact('turma'));
+        return back();
     }
 
     /**
@@ -73,10 +39,7 @@ class TurmaController extends Controller
      */
     public function update(Request $request)
     {
-        $validatedData = $request->validate([
-            'nome' => 'required|max:10',
-        ]);
-
+        $this->validateTurma();
         $turma = Turma::findOrFail($request->id);
         $turma->update($request->all());
 
@@ -99,7 +62,7 @@ class TurmaController extends Controller
     protected function validateTurma()
     {
         return request()->validate([
-            'nome' => 'required|max:10',
+            'nome' => 'required|unique:turma|max:10',
         ]);
     }
 }

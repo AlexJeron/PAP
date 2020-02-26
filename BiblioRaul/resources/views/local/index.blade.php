@@ -55,7 +55,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($local as $local)
+                                    @foreach ($locais as $local)
                                     <tr>
                                         <td> {{ $local->nome }} </td>
                                         <td> {{ $local->capacidade }} </td>

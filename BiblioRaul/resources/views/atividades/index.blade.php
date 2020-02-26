@@ -45,10 +45,12 @@
 
                             <div class="col-7">
                                 <h5 class="d-flex p-2 m-0 font-weight-bold text-primary">
+                                    @if(strpos($_SERVER['REQUEST_URI'], 'year_month') !== false)
                                     Gerir Atividades de
                                     <form class="form-date" method="GET" action="/atividades">
                                         <div class="input-icons">
                                             <i class="fas fa-chevron-circle-down" id="chevron-icon"
+                                                data-toggle="tooltip" data-placement="bottom" title="Filtrar por mês"
                                                 onclick="focusDataInput()"></i>
                                             <input type="text" id="year_month" name="year_month"
                                                 class="form-control date-range-filter d-flex p-2 font-weight-bold text-primary"
@@ -58,6 +60,20 @@
                                                 onfocusout="(this.type='text'), this.value='{{ $selectedDate->formatLocalized('%B %Y') }}'">
                                         </div>
                                     </form>
+                                    @else
+                                    Gerir Todas as Atividades
+                                    <form class="form-date" method="GET" action="/atividades">
+                                        <div class="input-icons">
+                                            <i class="fas fa-chevron-circle-down" id="chevron-icon"
+                                                data-toggle="tooltip" data-placement="bottom" title="Filtrar por mês"
+                                                onclick="focusDataInput()"></i>
+                                            <input type="text" id="year_month" name="year_month"
+                                                class="form-control date-range-filter d-flex p-2 font-weight-bold text-primary"
+                                                onfocus="(this.type='month')" onchange="form.submit()"
+                                                onfocusout="(this.type='text'), this.value='{{ $selectedDate->formatLocalized('%B %Y') }}'">
+                                        </div>
+                                    </form>
+                                    @endif
                                 </h5>
                             </div>
 
@@ -86,7 +102,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($atividade as $atividade)
+                                    @foreach ($atividades as $atividade)
                                     <tr>
                                         <td data-target="#showAtividadeModal" @include('atividades.modals.data')
                                             style="cursor:pointer; font-size:14px">
@@ -182,6 +198,7 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Datatables custom script -->
+<!-- If month-year specified, show specified month-year's activities, else show all activities -->
 @if(strpos($_SERVER['REQUEST_URI'], 'year_month') !== false)
 <script src="/js/datatable/atividade-year_month.js"></script>
 @else

@@ -55,7 +55,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($recurso as $recurso)
+                                    @foreach ($recursos as $recurso)
                                     <tr>
                                         <td> {{ $recurso->nome }} </td>
                                         <td> {{ $recurso->quantidade_total }} </td>

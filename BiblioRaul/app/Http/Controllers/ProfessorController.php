@@ -14,30 +14,8 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        $professor = Professor::latest()->get();
-
-        return view('professor.index', ['professor' => $professor]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Professor  $professor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Professor $professor)
-    {
-        return view('professor.show', compact('professor'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('professor.create');
+        $professores = Professor::latest()->get();
+        return view('professor.index', ['professores' => $professores]);
     }
 
     /**
@@ -49,23 +27,7 @@ class ProfessorController extends Controller
     public function store()
     {
         Professor::create($this->validateProfessor());
-
-        return redirect('/professor');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Professor  $professor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Professor $professor)
-    {
-        return view('professor.edit', compact('professor'));
-        /**
-         * ou
-         *
-         * return view('professor.edit', ['professor' => $professor]); */
+        return back();
     }
 
     /**
@@ -77,12 +39,7 @@ class ProfessorController extends Controller
      */
     public function update(Request $request)
     {
-        // $professor->update($this->validateProfessor());
-        // return redirect('/professor/' . $professor->id);
-        $validatedData = $request->validate([
-            'nome' => 'required|max:255',
-            'email' => 'nullable|max:255',
-        ]);
+        $this->validateProfessor();
 
         $professor = Professor::findOrFail($request->id);
         $professor->update($request->all());

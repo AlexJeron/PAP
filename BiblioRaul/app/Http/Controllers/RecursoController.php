@@ -14,30 +14,8 @@ class RecursoController extends Controller
      */
     public function index()
     {
-        $recurso = Recurso::latest()->get();
-
-        return view('recurso.index', ['recurso' => $recurso]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Recurso  $recurso
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Recurso $recurso)
-    {
-        return view('recurso.show', compact('recurso'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('recurso.create');
+        $recursos = Recurso::latest()->get();
+        return view('recurso.index', ['recursos' => $recursos]);
     }
 
     /**
@@ -48,21 +26,8 @@ class RecursoController extends Controller
      */
     public function store()
     {
-        Recurso::create($this->validateRecurso());
-
-        return redirect('/recurso');
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Recurso  $recurso
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Recurso $recurso)
-    {
-        return view('recurso.edit', compact('recurso'));
+        Recurso::create($this->validateStoreRecurso());
+        return back();
     }
 
     /**
@@ -74,16 +39,11 @@ class RecursoController extends Controller
      */
     public function update(Request $request)
     {
-        $validatedData = $request->validate([
-            'nome' => 'required|max:255',
-            'quantidade_total' => 'nullable|max:255',
-        ]);
-
         $recurso = Recurso::findOrFail($request->id);
+        $this->validateUpdateRecurso($recurso);
         $recurso->update($request->all());
 
         return back();
-
     }
 
     /**
@@ -99,11 +59,19 @@ class RecursoController extends Controller
         return back();
     }
 
-    protected function validateRecurso()
+    protected function validateStoreRecurso()
     {
         return request()->validate([
-            'nome' => 'required|max:255',
-            'quantidade_total' => 'nullable|max:255',
+            'nome' => 'required|unique:recurso|max:255',
+            'quantidade_total' => 'nullable|numeric|max:255',
+        ]);
+    }
+
+    protected function validateUpdateRecurso(Recurso $recurso)
+    {
+        return request()->validate([
+            'nome' => 'required|max:255|unique:recurso,nome,' . $recurso->id,
+            'quantidade_total' => 'nullable|numeric|max:255',
         ]);
     }
 }

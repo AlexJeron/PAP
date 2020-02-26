@@ -1,4 +1,4 @@
-$('#editProfessorModal').on('show.bs.modal', (event) => {
+$('#editProfessorModal').on('show.bs.modal', function data(event) {
   const button = $(event.relatedTarget);
   const id = button.data('id');
   const nome = button.data('nome');
@@ -9,7 +9,7 @@ $('#editProfessorModal').on('show.bs.modal', (event) => {
   modal.find('.modal-body #email').val(email);
 });
 
-$('#deleteProfessorModal').on('show.bs.modal', (event) => {
+$('#deleteProfessorModal').on('show.bs.modal', function data(event) {
   const button = $(event.relatedTarget);
   const profId = button.data('prof_id');
   const modal = $(this);

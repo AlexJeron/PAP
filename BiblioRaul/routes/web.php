@@ -23,11 +23,6 @@ Route::get('/template', function () {
     return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
 })->middleware('auth');
 
-// Login Page
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
-
 // Auth
 Auth::routes(['register' => false]);
 

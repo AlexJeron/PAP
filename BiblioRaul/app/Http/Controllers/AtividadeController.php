@@ -21,59 +21,36 @@ class AtividadeController extends Controller
      */
     public function index(Request $request)
     {
+        // Date format
         setlocale(LC_COLLATE, 'pt-PT.utf8');
 
         if ($request->has('year_month')) {
-
-            // Mostrar as atividades do mês atual [Eloquent]
+            // Show current month's activities [Eloquent]
 
             // dd(request()->all());
             $this->validateYearMonth();
-            $atividade = Atividade::latest()
+            $atividades = Atividade::latest()
                 ->whereMonth('inicio', Carbon::parse($request->year_month)->format('m'))
                 ->whereYear('inicio', Carbon::parse($request->year_month)->format('Y'))
                 ->get();
 
-            $user = User::all()->sortBy('nome', SORT_LOCALE_STRING);
-            $local = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
-            $professor = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
-            $turma = Turma::all()->sortBy('id');
-            $recurso = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
-
+            $users = User::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $locais = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $professores = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $turmas = Turma::all()->sortBy('id');
+            $recursos = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
         } else {
-            $atividade = Atividade::latest()
-                ->get();
+            // Show all activities
+            $atividades = Atividade::latest()->get();
 
-            $user = User::all()->sortBy('nome', SORT_LOCALE_STRING);
-            $local = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
-            $professor = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
-            $turma = Turma::all()->sortBy('id');
-            $recurso = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
-
+            $users = User::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $locais = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $professores = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
+            $turmas = Turma::all()->sortBy('id');
+            $recursos = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
         }
 
-        return view('atividades.index', compact('atividade', 'user', 'local', 'professor', 'turma', 'recurso'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Atividade  $atividade
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Atividade $atividade)
-    {
-        return view('atividades.show', compact('atividade'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('atividades.create');
+        return view('atividades.index', compact('atividades', 'users', 'locais', 'professores', 'turmas', 'recursos'));
     }
 
     /**
@@ -99,18 +76,7 @@ class AtividadeController extends Controller
         $atividade->turmas()->attach(request('new_turmas'));
         $atividade->professores()->attach(request('new_professores'));
 
-        return redirect('/atividades');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Atividade  $atividade
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Atividade $atividade)
-    {
-        return view('atividades.edit', compact('atividade'));
+        return back();
     }
 
     /**

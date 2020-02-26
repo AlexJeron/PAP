@@ -85,14 +85,20 @@ $(document).ready(() => {
       },
     },
     columns: [
-      { width: '10%', orderable: true, visible: true },
-      { width: '10%', orderable: true, visible: false },
+      { width: '15%', orderable: true, visible: true },
+      { orderable: true, visible: false },
       { width: '10%', orderable: true },
-      { width: '27%', orderable: true },
+      { width: '30%', orderable: true },
       { width: '12%', orderable: true },
       { width: '10%', orderable: true },
-      { width: '5%', orderable: false },
+      { width: '7%', orderable: false },
     ],
+    drawCallback() {
+      const pagination = $(this)
+        .closest('.dataTables_wrapper')
+        .find('.dataTables_paginate');
+      pagination.toggle(this.api().page.info().pages > 1);
+    },
   });
 });
 

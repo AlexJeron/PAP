@@ -34,7 +34,7 @@
                         <div class="col-sm-10">
                             <select class="form-control selectpicker" id="new_local_id" name="new_local_id"
                                 data-live-search="true" title="Selecione um local" required>
-                                @foreach ($local as $local)
+                                @foreach ($locais as $local)
                                 <option value="{{ $local->id }}">{{ $local->nome }}</option>
                                 @endforeach
                             </select>
@@ -113,7 +113,7 @@
                         <div class="col-sm-9 mr-0 pr-0">
                             <select class="form-control selectpicker" id="new_turmas" name="new_turmas[]"
                                 title="Selecione uma ou mais turmas" multiple data-live-search="true">
-                                @foreach ($turma as $turma)
+                                @foreach ($turmas as $turma)
                                 <option value="{{ $turma->id }}"> {{ $turma->nome }}</option>
                                 @endforeach
                             </select>
@@ -138,7 +138,7 @@
                         <div class="col-sm-9 mr-0 pr-0">
                             <select class="form-control selectpicker" id="new_professores" name="new_professores[]"
                                 title="Selecione um ou mais professores" multiple data-live-search="true">
-                                @foreach ($professor as $professor)
+                                @foreach ($professores as $professor)
                                 <option value="{{ $professor->id }}"> {{ $professor->nome }}</option>
                                 @endforeach
                             </select>
@@ -174,7 +174,7 @@
                         <div class="col-sm-7 pl-0 pr-0" style="margin-left:-0.3rem">
                             <select class="form-control selectpicker" id="new_recurso_id" name="new_recurso_id"
                                 title="Selecione um recurso" data-live-search="true">
-                                @foreach ($recurso as $recurso)
+                                @foreach ($recursos as $recurso)
                                 <option value="{{ $recurso->id }}"> {{ $recurso->nome }}</option>
                                 @endforeach
                             </select>

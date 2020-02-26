@@ -58,7 +58,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($turma as $turma)
+                                    @foreach ($turmas as $turma)
                                     <tr>
                                         <td> {{ $turma->nome }} </td>
                                         <td class="text-center">

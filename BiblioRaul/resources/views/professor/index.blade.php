@@ -42,26 +42,21 @@
                                         Professor</button>
                                 </div>
                         </div>
-                        {{-- <h5 class="m-0 font-weight-bold text-primary"> --}}
-
-                        {{-- </h5> --}}
-
                     </div>
+
                     <div class="card-body">
                         <div class="table table-clear">
                             <table class="table zebra" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="transparency">
                                     <tr>
-                                        {{-- <th>#</th> --}}
                                         <th>Nome</th>
                                         <th>Email</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($professor as $professor)
+                                    @foreach ($professores as $professor)
                                     <tr>
-                                        {{-- <td> {{ $professor->id }} </td> --}}
                                         <td> {{ $professor->nome }} </td>
                                         <td> {{ $professor->email }} </td>
                                         <td class="text-center">
