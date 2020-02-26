@@ -50,7 +50,8 @@
                                     <form class="form-date" method="GET" action="/atividades" name="atividades">
                                         <div class="input-icons">
                                             <i class="fas fa-eraser" id="chevron-icon" data-toggle="tooltip"
-                                                data-placement="bottom" title="Limpar Seleção"
+                                                data-placement="bottom" data-html="true"
+                                                title="Limpar Seleção e <br> Listar Todas as Atividades"
                                                 onclick="clearDataInput()">
                                             </i>
                                             <input type="text" id="year_month" name="year_month"
