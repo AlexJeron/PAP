@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-// use Carbon\Carbon;
+use Carbon\Carbon;
 
 class Atividade extends Model
 {
@@ -35,20 +35,4 @@ class Atividade extends Model
     {
         return $this->belongsToMany(Turma::class)->withTimestamps();
     }
-
-    // public function getInicioAttribute($value)
-    // {
-    //     $dateStart = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
-    //     $timeStart = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
-
-    //     return $this->start = ($timeStart == '00:00:00' ? $dateStart : $value);
-    // }
-
-    // public function getFimAttribute($value)
-    // {
-    //     $dateEnd = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
-    //     $timeEnd = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
-
-    //     return $this->end= ($timeEnd == '00:00:00' ? $dateEnd: $value);
-    // }
 }
