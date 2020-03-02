@@ -17,6 +17,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/load-atividades', 'AtividadeController@loadAtividades')->name('loadAtividades');
+Route::get('/update-atividade', 'AtividadeController@update')->name('updateAtividade');
 
 // Dashboard template
 Route::get('/template', function () {
