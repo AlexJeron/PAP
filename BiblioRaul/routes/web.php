@@ -16,12 +16,19 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware('auth');
 
+Route::get('/load-atividades', 'AtividadeController@loadAtividades')->name('loadAtividades');
+
 // Dashboard template
 Route::get('/template', function () {
     $professores = App\Professor::take(3)->latest()->get();
     $users = App\User::take(3)->latest()->get();
     return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
 })->middleware('auth');
+
+// Reports
+Route::get('/relatorios', function () {
+    return view('master');
+})->middleware('auth')->name('relatorios');
 
 // Auth
 Auth::routes(['register' => false]);

@@ -86,10 +86,10 @@
             </div>
         </div>
     </li>
-
+    
     <!-- Nav Item - Relatórios -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li class="{{ request()->is('relatorios') ? 'nav-item active' : 'nav-item' }}">
+        <a class="nav-link" href="relatorios">
             <i class="fas fa-list-alt"></i>
             <span>Relatórios</span>
         </a>

@@ -53,6 +53,12 @@ class AtividadeController extends Controller
         return view('atividades.index', compact('atividades', 'users', 'locais', 'professores', 'turmas', 'recursos'));
     }
 
+    public function loadAtividades()
+    {
+        $atividades = Atividade::selectRaw('nome AS title, inicio AS start, fim AS end')->get();
+        return response()->json($atividades);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
