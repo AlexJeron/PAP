@@ -42,7 +42,6 @@ class AtividadeController extends Controller
         } else {
             // Show all activities
             $atividades = Atividade::latest()->get();
-
             $users = User::all()->sortBy('nome', SORT_LOCALE_STRING);
             $locais = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
             $professores = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);

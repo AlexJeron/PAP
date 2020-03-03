@@ -18900,6 +18900,32 @@ body::-webkit-scrollbar {
   pointer-events: none;
 }
 
+.calendar-delete-atividade {
+  color: #ff615c;
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 17px;
+}
+
+.calendar-delete-atividade:hover {
+  color: #ff615c;
+  border-color: #ff615c;
+  border-radius: 0.25rem;
+}
+
+.calendar-edit-atividade {
+  color: #ffb700;
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 17px;
+}
+
+.calendar-edit-atividade:hover {
+  color: #ffb700;
+  border-color: #ffb700;
+  border-radius: 0.25rem;
+}
+
 /* The switch - the box around the slider */
 
 .switch {

@@ -6,6 +6,8 @@
 <title>BiblioRaul - Dashboard</title>
 
 <!-- FullCalendar -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <link href='{{ asset('assets/fullcalendar/packages/core/main.css')}}' rel='stylesheet' />
 <link href='{{ asset('assets/fullcalendar/packages/daygrid/main.css')}}' rel='stylesheet' />
 <link href='{{ asset('assets/fullcalendar/packages/timegrid/main.css')}}' rel='stylesheet' />
@@ -13,7 +15,9 @@
 <link href="{{ asset('assets/fullcalendar/css/calendar.css')}}" rel='stylesheet' />
 <link href="{{ asset('assets/fullcalendar/packages/bootstrap/main.css')}}" rel='stylesheet' />
 
-<meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- Bootstrap Select -->
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css" />
 @endsection
 
 @if(session()->has('alert'))
@@ -82,7 +86,8 @@
 </div>
 <!-- End of Page Wrapper -->
 
-@include('atividades.modals.show')
+@include('dashboard.modals.show')
+@include('dashboard.modals.new')
 @include('layouts.logout-modal')
 
 @endsection
@@ -115,4 +120,7 @@
 <!-- MomentJS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
+<!-- Bootstrap-Select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('js/bootstrap-select-pt_PT.js') }}"></script>
 @endsection

@@ -41,8 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
     locale: 'pt',
     themeSystem: 'bootstrap',
     // defaultView: 'timeGridWeek',
-    navLinks: 'true',
-    eventLimit: 'true',
+    selectable: true,
+    navLinks: true,
+    eventLimit: true,
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar
     eventDurationEditable: false,
@@ -77,9 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
         sendAtividade(routeAtividades('updateAtividade'), newAtividade);
       }
     },
+    // eslint-disable-next-line no-unused-vars
     eventClick: (element) => {
       $('#showAtividadeModal').modal('show');
-      $('#showAtividadeModal button.atividade-delete').css('display', 'flex');
+      $('#showAtividadeModal .modal-title').text('Consultar Atividade');
+    },
+    // eslint-disable-next-line no-unused-vars
+    select: (element) => {
+      $('#newAtividadeModal').modal('show');
+      $('#newAtividadeModal .modal-title').text('Adicionar Atividade');
     },
     // eslint-disable-next-line no-undef
     events: routeAtividades('loadAtividades'),

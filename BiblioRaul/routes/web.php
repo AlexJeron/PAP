@@ -12,15 +12,30 @@
  */
 
 // Main Dashboard
+
+use App\Atividade;
+use App\User;
+use App\Local;
+use App\Professor;
+use App\Turma;
+use App\Recurso;
+
 Route::get('/', function () {
-    return view('dashboard');
+    $atividades = Atividade::latest()->get();
+    $users = User::all()->sortBy('nome', SORT_LOCALE_STRING);
+    $locais = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
+    $professores = Professor::all()->sortBy('nome', SORT_LOCALE_STRING);
+    $turmas = Turma::all()->sortBy('id');
+    $recursos = Recurso::all()->sortBy('nome', SORT_LOCALE_STRING);
+
+    return view('dashboard.index', compact('atividades', 'users', 'locais', 'professores', 'turmas', 'recursos'));
 })->middleware('auth');
 
 // Dashboard template
 Route::get('/template', function () {
     $professores = App\Professor::take(3)->latest()->get();
     $users = App\User::take(3)->latest()->get();
-    return view('dashboard-template', ['professores' => $professores, 'users' => $users]);
+    return view('dashboard.dashboard-template', ['professores' => $professores, 'users' => $users]);
 })->middleware('auth');
 
 // Reports
