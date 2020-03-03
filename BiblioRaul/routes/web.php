@@ -16,9 +16,6 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware('auth');
 
-Route::get('/load-atividades', 'AtividadeController@loadAtividades')->name('loadAtividades');
-Route::get('/update-atividade', 'AtividadeController@update')->name('updateAtividade');
-
 // Dashboard template
 Route::get('/template', function () {
     $professores = App\Professor::take(3)->latest()->get();
@@ -54,3 +51,5 @@ Route::resource('recursos', 'RecursoController')->middleware('auth');
 
 // Atividade
 Route::resource('atividades', 'AtividadeController')->middleware('auth');
+Route::get('/load-atividades', 'AtividadeController@ajaxLoad')->name('loadAtividades');
+Route::put('/update-atividade', 'AtividadeController@ajaxUpdate')->name('updateAtividade');

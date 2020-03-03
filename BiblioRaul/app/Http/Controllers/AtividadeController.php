@@ -53,12 +53,6 @@ class AtividadeController extends Controller
         return view('atividades.index', compact('atividades', 'users', 'locais', 'professores', 'turmas', 'recursos'));
     }
 
-    public function loadAtividades()
-    {
-        $atividades = Atividade::selectRaw('nome AS title, inicio AS start, fim AS end')->get();
-        return response()->json($atividades);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -95,6 +89,7 @@ class AtividadeController extends Controller
     public function update(Request $request)
     {
         // dd(request()->all());
+        var_dump(request()->all());
         $this->validateEditAtividade();
 
         $atividade = Atividade::findOrFail($request->id);
@@ -126,6 +121,22 @@ class AtividadeController extends Controller
         $atividade = Atividade::findOrFail($request->atividade_id);
         $atividade->delete();
         return back();
+    }
+
+    public function ajaxLoad()
+    {
+        $atividades = Atividade::selectRaw('id, nome AS title, inicio AS start, fim AS end')->get();
+        return response()->json($atividades);
+    }
+
+    public function ajaxUpdate(Request $request)
+    {
+        $atividade = Atividade::where('id', $request->id)->first();
+        $atividade->inicio = $request->start;
+        if ($request->end) {
+            $atividade->fim = $request->end;
+        }
+        $atividade->save();
     }
 
     protected function validateEditAtividade()

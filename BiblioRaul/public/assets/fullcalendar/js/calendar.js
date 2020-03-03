@@ -55,16 +55,31 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     eventDrop: (element) => {
       const start = moment(element.event.start).format('YYYY-MM-DD HH:mm:ss');
-      const end = moment(element.event.end).format('YYYY-MM-DD HH:mm:ss');
-
-      const newAtividade = {
-        id: element.event.id,
-        start,
-        end,
-      };
-
-      // eslint-disable-next-line no-undef
-      sendAtividade(routeAtividades(''), newAtividade);
+      // If there's an end date
+      if (element.event.end) {
+        const end = moment(element.event.end).format('YYYY-MM-DD HH:mm:ss');
+        const newAtividade = {
+          _method: 'PUT',
+          id: element.event.id,
+          start,
+          end,
+        };
+        // eslint-disable-next-line no-undef
+        sendAtividade(routeAtividades('updateAtividade'), newAtividade);
+        // If there's no end date
+      } else {
+        const newAtividade = {
+          _method: 'PUT',
+          id: element.event.id,
+          start,
+        };
+        // eslint-disable-next-line no-undef
+        sendAtividade(routeAtividades('updateAtividade'), newAtividade);
+      }
+    },
+    eventClick: (element) => {
+      $('#showAtividadeModal').modal('show');
+      $('#showAtividadeModal button.atividade-delete').css('display', 'flex');
     },
     // eslint-disable-next-line no-undef
     events: routeAtividades('loadAtividades'),

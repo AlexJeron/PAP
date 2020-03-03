@@ -1,8 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-function routeAtividades(route) {
-  return document.getElementById('calendar').dataset[route];
-}
-
 $(() => {
   $.ajaxSetup({
     headers: {
@@ -11,12 +6,16 @@ $(() => {
   });
 });
 
+// eslint-disable-next-line no-unused-vars
 function sendAtividade(route, data_) {
   $.ajax({
+    // headers: {
+    //   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    // },
     url: route,
     data: data_,
     // eslint-disable-next-line no-undef
-    method: POST,
+    method: 'POST',
     dataType: 'json',
     success: (json) => {
       if (json) {
@@ -24,4 +23,9 @@ function sendAtividade(route, data_) {
       }
     },
   });
+}
+
+// eslint-disable-next-line no-unused-vars
+function routeAtividades(route) {
+  return document.getElementById('calendar').dataset[route];
 }

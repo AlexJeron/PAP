@@ -62,8 +62,9 @@
                         <label for='drop-remove'>remove after drop</label>
                     </p>
                 </div>
-
-                <div id='calendar' data-load-atividades="{{ route('loadAtividades') }}"></div>
+                <div id='calendar' data-load-atividades="{{ route('loadAtividades') }}"
+                    data-update-atividade="{{ route('updateAtividade') }}">
+                </div>
 
                 <div style='clear:both'></div>
 
@@ -81,10 +82,14 @@
 </div>
 <!-- End of Page Wrapper -->
 
+@include('atividades.modals.show')
 @include('layouts.logout-modal')
 
+@endsection
+
+@section('scripts')
+
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -109,4 +114,5 @@
 
 <!-- MomentJS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
 @endsection
