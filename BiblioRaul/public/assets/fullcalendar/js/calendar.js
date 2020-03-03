@@ -82,6 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
     eventClick: (element) => {
       $('#showAtividadeModal').modal('show');
       $('#showAtividadeModal .modal-title').text('Consultar Atividade');
+
+      const { title } = element.event;
+      $('#showAtividadeModal input[id="name"]').val(title);
+
+      const start = moment(element.event.start).format('YYYY-MM-DDTHH:mm');
+      const end = moment(element.event.end).format('YYYY-MM-DDTHH:mm');
+
+      $('#showAtividadeModal input[name="inicio"]').val(start);
+      $('#showAtividadeModal input[name="fim"]').val(end);
     },
     // eslint-disable-next-line no-unused-vars
     select: (element) => {
