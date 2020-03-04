@@ -81,11 +81,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // eslint-disable-next-line no-unused-vars
     eventClick: (element) => {
       // eslint-disable-next-line no-undef
-      resetForm(document.getElementById('form_atividade'));
       $('#showAtividadeModal').modal('show');
-      document.getElementById('showAtividadeModal').getElementsByClassName('modal-title').text = 'Consultar Atividade';
+
+      // Change Modal's Title
+      const showAtividadeModal = document.getElementById('showAtividadeModal');
+      showAtividadeModal.getElementsByClassName('modal-title').text = 'Consultar Atividade';
+
+      // Change Inputs CSS
+      const formAtividadeInputs = document.getElementById('form_atividade').getElementsByTagName('input');
+      const formAtividadeTextArea = document.getElementById('form_atividade').getElementsByTagName('textarea');
+
+      const colSm1 = document.getElementsByClassName('num-col-sm-1');
+      const colSm9 = document.getElementsByClassName('num-col-sm-9');
+
+      Array.from(formAtividadeInputs).forEach((el) => {
+        el.classList.add('form-show');
+      });
+
+      Array.from(formAtividadeTextArea).forEach((el) => {
+        el.classList.add('form-show-observacao');
+      });
+
+      Array.from(colSm1).forEach((el) => {
+        el.classList.remove('col-sm-2');
+        el.classList.add('col-sm-1');
+      });
+
+      Array.from(colSm9).forEach((el) => {
+        el.classList.remove('col-sm-8');
+        el.classList.add('col-sm-9');
+      });
+
       console.dir(element);
 
+      // Fill Modal's Inputs with Data from the DB
       const { title, id } = element.event;
       const local = element.event.extendedProps.local.nome;
       const recurso = element.event.extendedProps.recurso.nome;
@@ -123,10 +152,39 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('total_recursos').value = totalRecursos;
       document.getElementById('observacao').value = observacao;
     },
-    // eslint-disable-next-line no-unused-vars
-    select: (element) => {
-      $('#newAtividadeModal').modal('show');
-      $('#newAtividadeModal .modal-title').text('Adicionar Atividade');
+    select: () => {
+      // eslint-disable-next-line no-undef
+      resetForm(document.getElementById('form_atividade'));
+
+      // Change Modal's Title
+      $('#showAtividadeModal').modal('show');
+      $('#showAtividadeModal .modal-title').text('Adicionar Atividade');
+
+      // Change Inputs CSS
+      const formAtividadeInputs = document.getElementById('form_atividade').getElementsByTagName('input');
+      const formAtividadeTextArea = document.getElementById('form_atividade').getElementsByTagName('textarea');
+
+      Array.from(formAtividadeInputs).forEach((el) => {
+        el.classList.remove('form-show');
+        el.disabled = false;
+      });
+
+      Array.from(formAtividadeTextArea).forEach((el) => {
+        el.classList.remove('form-show-observacao');
+      });
+
+      const colSm1 = document.getElementsByClassName('num-col-sm-1');
+      const colSm9 = document.getElementsByClassName('num-col-sm-9');
+
+      Array.from(colSm1).forEach((el) => {
+        el.classList.remove('col-sm-1');
+        el.classList.add('col-sm-2');
+      });
+
+      Array.from(colSm9).forEach((el) => {
+        el.classList.remove('col-sm-9');
+        el.classList.add('col-sm-8');
+      });
     },
     // eslint-disable-next-line no-undef
     events: routeAtividades('loadAtividades'),
