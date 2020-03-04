@@ -125,9 +125,8 @@ class AtividadeController extends Controller
     public function ajaxLoad()
     {
         $atividades = Atividade::with('local', 'recurso', 'professores', 'turmas')
-            ->select(\DB::raw('id, nome AS title, local_id, recurso_id, inicio AS start, fim AS end, total_espectadores AS totalEspectadores, outros_espectadores AS outrosEspectadores, num_recursos, observacao'))
+            ->select(\DB::raw('id, nome AS title, local_id, recurso_id, inicio AS start, fim AS end, total_espectadores AS totalEspectadores, outros_espectadores AS outrosEspectadores, num_recursos AS totalRecursos, observacao'))
             ->get();
-        // dd($atividades);
         return response()->json($atividades);
     }
 

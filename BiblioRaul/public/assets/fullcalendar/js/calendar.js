@@ -80,12 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     // eslint-disable-next-line no-unused-vars
     eventClick: (element) => {
+      // eslint-disable-next-line no-undef
+      resetForm(document.getElementById('form_atividade'));
       $('#showAtividadeModal').modal('show');
-      $('#showAtividadeModal .modal-title').text('Consultar Atividade');
+      document.getElementById('showAtividadeModal').getElementsByClassName('modal-title').text = 'Consultar Atividade';
       console.dir(element);
 
-      const { title } = element.event;
+      const { title, id } = element.event;
       const local = element.event.extendedProps.local.nome;
+      const recurso = element.event.extendedProps.recurso.nome;
       const start = moment(element.event.start).format('YYYY-MM-DDTHH:mm');
       const end = moment(element.event.end).format('YYYY-MM-DDTHH:mm');
       const {
@@ -93,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         outrosEspectadores,
         turmas,
         professores,
-        numRecursos,
+        totalRecursos,
         observacao,
       } = element.event.extendedProps;
 
@@ -107,15 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
         turmaNomeArray.push(turmas[index].nome);
       });
 
+      document.getElementById('id').value = id;
       document.getElementById('name').value = title;
-      document.getElementById('local_nome').value = local;
+      document.getElementById('local').value = local;
+      document.getElementById('nome_recurso').value = recurso;
       document.getElementById('inicio').value = start;
       document.getElementById('fim').value = end;
       document.getElementById('total_espectadores').value = totalEspectadores;
       document.getElementById('outros_espectadores').value = outrosEspectadores;
-      document.getElementById('turmas_show').value = turmaNomeArray.join(', ');
-      document.getElementById('professores_show').value = profNomeArray.join(', ');
-      document.getElementById('num_recursos').value = numRecursos;
+      document.getElementById('turmas').value = turmaNomeArray.join(', ');
+      document.getElementById('professores').value = profNomeArray.join(', ');
+      document.getElementById('total_recursos').value = totalRecursos;
       document.getElementById('observacao').value = observacao;
     },
     // eslint-disable-next-line no-unused-vars

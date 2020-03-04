@@ -29,3 +29,8 @@ function sendAtividade(route, data_) {
 function routeAtividades(route) {
   return document.getElementById('calendar').dataset[route];
 }
+
+function resetForm(form) {
+  form.reset();
+  // document.form_atividade.reset();
+}
