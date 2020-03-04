@@ -58,19 +58,19 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="show_turmas" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}</label>
+                    <label for="turmas_show" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}</label>
                     <div class="col-sm-10">
-                        <input id="show_turmas" type="text" class="form-control form-show" name="show_turmas"
+                        <input id="turmas_show" type="text" class="form-control form-show" name="turmas_show"
                             placeholder="Sem turmas" maxlength="80" disabled>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="show_professor_id"
+                    <label for="professores_show"
                         class="col-sm-2 col-form-label text-md-right">{{ __('Professores') }}</label>
                     <div class="col-sm-10">
-                        <input id="show_professor_id" type="text" class="form-control form-show"
-                            name="show_professor_id" placeholder="Sem professores" maxlength="80" disabled>
+                        <input id="professores_show" type="text" class="form-control form-show" name="professores_show"
+                            placeholder="Sem professores" maxlength="80" disabled>
                     </div>
                 </div>
 

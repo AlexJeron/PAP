@@ -82,15 +82,41 @@ document.addEventListener('DOMContentLoaded', () => {
     eventClick: (element) => {
       $('#showAtividadeModal').modal('show');
       $('#showAtividadeModal .modal-title').text('Consultar Atividade');
+      console.dir(element);
 
       const { title } = element.event;
-      $('#showAtividadeModal input[id="name"]').val(title);
-
+      const local = element.event.extendedProps.local.nome;
       const start = moment(element.event.start).format('YYYY-MM-DDTHH:mm');
       const end = moment(element.event.end).format('YYYY-MM-DDTHH:mm');
+      const {
+        totalEspectadores,
+        outrosEspectadores,
+        turmas,
+        professores,
+        numRecursos,
+        observacao,
+      } = element.event.extendedProps;
 
-      $('#showAtividadeModal input[name="inicio"]').val(start);
-      $('#showAtividadeModal input[name="fim"]').val(end);
+      const profNomeArray = [];
+      professores.forEach((elem, index) => {
+        profNomeArray.push(professores[index].nome);
+      });
+
+      const turmaNomeArray = [];
+      turmas.forEach((elem, index) => {
+        turmaNomeArray.push(turmas[index].nome);
+      });
+
+      document.getElementById('name').value = title;
+      document.getElementById('local_nome').value = local;
+      document.getElementById('inicio').value = start;
+      document.getElementById('fim').value = end;
+      document.getElementById('total_espectadores').value = totalEspectadores;
+      document.getElementById('outros_espectadores').value = outrosEspectadores;
+      document.getElementById('turmas_show').value = turmaNomeArray.join(', ');
+      document.getElementById('professores_show').value = profNomeArray.join(', ');
+      document.getElementById('num_recursos').value = numRecursos;
+      document.getElementById('observacao').value = observacao;
     },
     // eslint-disable-next-line no-unused-vars
     select: (element) => {
