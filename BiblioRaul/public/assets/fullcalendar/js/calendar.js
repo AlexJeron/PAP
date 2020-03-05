@@ -166,17 +166,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Hide selects and show inactive inputs
       const localInput = document.getElementById('local_input');
-      const turmasInput2 = document.getElementById('turmas_input');
 
       localInput.type = 'text';
       localInput.value = localNome;
       localInput.disabled = true;
-      $('.btn, .dropdown-toggle, .disabled, .btn-light').addClass('d-none');
 
-      turmasInput2.type = 'text';
-      turmasInput2.value = turmaNomeArray;
-      turmasInput2.disabled = true;
-      $('btn dropdown-toggle bs-placeholder btn-light').addClass('d-none');
+      inputTurmas.type = 'text';
+      inputTurmas.value = turmaNomeArray;
+      inputTurmas.disabled = true;
+      $('.select-picker-div').addClass('d-none');
 
       inputId.value = id;
       inputName.value = title;
@@ -224,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const inputFim = document.getElementById('fim');
       const inputTotalEspectadores = document.getElementById('total_espectadores');
       const inputOutrosEspectadores = document.getElementById('outros_espectadores');
-      const inputTurmas = document.getElementById('turmas');
+      const inputTurmas = document.getElementById('turmas_input');
       const inputProfessores = document.getElementById('professores');
       const inputTotalRecursos = document.getElementById('total_recursos');
       const inputNomeRecurso = document.getElementById('nome_recurso');
@@ -278,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
       turmasInput.type = 'hidden';
       turmasInput.value = '';
 
-      $('.btn, .dropdown-toggle, .d-none, .btn-light, .bs-placeholder').removeClass('d-none');
+      $('.select-picker-div').removeClass('d-none');
     },
     // eslint-disable-next-line no-undef
     events: routeAtividades('loadAtividades'),
