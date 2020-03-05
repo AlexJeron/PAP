@@ -2818,9 +2818,14 @@ fieldset:disabled a.btn {
 
 .btn-light.disabled,
 .btn-light:disabled {
-    color: #3a3b45;
-    background-color: #f8f9fc;
-    border-color: #f8f9fc;
+    color: #5b5b5b !important;
+    opacity: 1;
+    background-color: transparent;
+    border: 1px solid #d1d3e288;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
 }
 
 .btn-light:not(:disabled):not(.disabled):active,

@@ -16,8 +16,7 @@
 <link href="{{ asset('assets/fullcalendar/packages/bootstrap/main.css')}}" rel='stylesheet' />
 
 <!-- Bootstrap Select -->
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css" />
+<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}" />
 @endsection
 
 @if(session()->has('alert'))
@@ -121,6 +120,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 <!-- Bootstrap-Select -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-select-pt_PT.js') }}"></script>
 @endsection

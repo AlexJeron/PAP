@@ -78,16 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
         sendAtividade(routeAtividades('updateAtividade'), newAtividade);
       }
     },
-    // eslint-disable-next-line no-unused-vars
     eventClick: (element) => {
-      // eslint-disable-next-line no-undef
-      $('#showAtividadeModal').modal('show');
+      // Show Modal and change its title
+      const modal = $('#showAtividadeModal');
+      modal.modal('show');
+      modal.find('.modal-title').text('Consultar Atividade');
 
-      // Change Modal's Title
-      const showAtividadeModal = document.getElementById('showAtividadeModal');
-      showAtividadeModal.getElementsByClassName('modal-title').text = 'Consultar Atividade';
-
-      // Change Inputs CSS
+      // Change Inputs' CSS
       const formAtividadeInputs = document.getElementById('form_atividade').getElementsByTagName('input');
       const formAtividadeTextArea = document.getElementById('form_atividade').getElementsByTagName('textarea');
 
@@ -115,11 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.dir(element);
 
       // Fill Modal's Inputs with Data from the DB
-      const { title, id } = element.event;
-      const local = element.event.extendedProps.local.nome;
-      const recurso = element.event.extendedProps.recurso.nome;
-      const start = moment(element.event.start).format('YYYY-MM-DDTHH:mm');
-      const end = moment(element.event.end).format('YYYY-MM-DDTHH:mm');
       const {
         totalEspectadores,
         outrosEspectadores,
@@ -128,41 +120,123 @@ document.addEventListener('DOMContentLoaded', () => {
         totalRecursos,
         observacao,
       } = element.event.extendedProps;
+      const { title, id } = element.event;
+      const localId = element.event.extendedProps.local.id.toString();
+      const localNome = element.event.extendedProps.local.nome;
+      const recurso = element.event.extendedProps.recurso.nome;
+      const start = moment(element.event.start).format('YYYY-MM-DDTHH:mm');
+      const end = moment(element.event.end).format('YYYY-MM-DDTHH:mm');
 
-      const profNomeArray = [];
+      // Form Inputs
+      const inputId = document.getElementById('id');
+      const inputName = document.getElementById('name');
+      const inputInicio = document.getElementById('inicio');
+      const inputFim = document.getElementById('fim');
+      const inputTotalEspectadores = document.getElementById('total_espectadores');
+      const inputOutrosEspectadores = document.getElementById('outros_espectadores');
+      const inputTurmas = document.getElementById('turmas_input');
+      const inputProfessores = document.getElementById('professores');
+      const inputTotalRecursos = document.getElementById('total_recursos');
+      const inputNomeRecurso = document.getElementById('nome_recurso');
+      const inputObservacao = document.getElementById('observacao');
+      const btnEdit = document.getElementById('edit_atividade');
+      const btnDelete = document.getElementById('delete_atividade');
+
+      // Bootstrap-selects
+      $('select[name=local_select]').val(localId);
+      $('select[name=local_select]').attr('disabled', true);
+      $('.selectpicker').selectpicker('refresh');
+
+      let profNomeArray = [];
+      let turmaNomeArray = [];
+
+      btnEdit.hidden = false;
+      btnDelete.hidden = false;
+
       professores.forEach((elem, index) => {
         profNomeArray.push(professores[index].nome);
       });
 
-      const turmaNomeArray = [];
       turmas.forEach((elem, index) => {
         turmaNomeArray.push(turmas[index].nome);
       });
 
-      document.getElementById('id').value = id;
-      document.getElementById('name').value = title;
-      document.getElementById('local').value = local;
-      document.getElementById('nome_recurso').value = recurso;
-      document.getElementById('inicio').value = start;
-      document.getElementById('fim').value = end;
-      document.getElementById('total_espectadores').value = totalEspectadores;
-      document.getElementById('outros_espectadores').value = outrosEspectadores;
-      document.getElementById('turmas').value = turmaNomeArray.join(', ');
-      document.getElementById('professores').value = profNomeArray.join(', ');
-      document.getElementById('total_recursos').value = totalRecursos;
-      document.getElementById('observacao').value = observacao;
+      turmaNomeArray = turmaNomeArray.join(', ');
+      profNomeArray = profNomeArray.join(', ');
+
+      // Hide selects and show inactive inputs
+      const localInput = document.getElementById('local_input');
+      const turmasInput2 = document.getElementById('turmas_input');
+
+      localInput.type = 'text';
+      localInput.value = localNome;
+      localInput.disabled = true;
+      $('.btn, .dropdown-toggle, .disabled, .btn-light').addClass('d-none');
+
+      turmasInput2.type = 'text';
+      turmasInput2.value = turmaNomeArray;
+      turmasInput2.disabled = true;
+      $('btn dropdown-toggle bs-placeholder btn-light').addClass('d-none');
+
+      inputId.value = id;
+      inputName.value = title;
+      inputInicio.value = start;
+      inputFim.value = end;
+      inputTotalEspectadores.value = totalEspectadores;
+      inputOutrosEspectadores.value = outrosEspectadores;
+      inputTurmas.value = turmaNomeArray;
+      inputProfessores.value = profNomeArray;
+      inputTotalRecursos.value = totalRecursos;
+      inputNomeRecurso.value = recurso;
+      inputObservacao.value = observacao;
+
+      inputName.disabled = true;
+      inputInicio.disabled = true;
+      inputFim.disabled = true;
+      inputTotalEspectadores.disabled = true;
+      inputOutrosEspectadores.disabled = true;
+      inputTurmas.disabled = true;
+      inputProfessores.disabled = true;
+      inputTotalRecursos.disabled = true;
+      inputNomeRecurso.disabled = true;
+      inputObservacao.disabled = true;
     },
     select: () => {
       // eslint-disable-next-line no-undef
       resetForm(document.getElementById('form_atividade'));
 
-      // Change Modal's Title
-      $('#showAtividadeModal').modal('show');
-      $('#showAtividadeModal .modal-title').text('Adicionar Atividade');
+      // Show Modal and change its title
+      const modal = $('#showAtividadeModal');
+      modal.modal('show');
+      modal.find('.modal-title').text('Adicionar Atividade');
 
       // Change Inputs CSS
       const formAtividadeInputs = document.getElementById('form_atividade').getElementsByTagName('input');
       const formAtividadeTextArea = document.getElementById('form_atividade').getElementsByTagName('textarea');
+      const btnEdit = document.getElementById('edit_atividade');
+      const btnDelete = document.getElementById('delete_atividade');
+      const colSm1 = document.getElementsByClassName('num-col-sm-1');
+      const colSm9 = document.getElementsByClassName('num-col-sm-9');
+
+      // Form Inputs
+      const inputName = document.getElementById('name');
+      const inputInicio = document.getElementById('inicio');
+      const inputFim = document.getElementById('fim');
+      const inputTotalEspectadores = document.getElementById('total_espectadores');
+      const inputOutrosEspectadores = document.getElementById('outros_espectadores');
+      const inputTurmas = document.getElementById('turmas');
+      const inputProfessores = document.getElementById('professores');
+      const inputTotalRecursos = document.getElementById('total_recursos');
+      const inputNomeRecurso = document.getElementById('nome_recurso');
+      const inputObservacao = document.getElementById('observacao');
+
+      btnEdit.hidden = true;
+      btnDelete.hidden = true;
+
+      // Bootstrap-selects
+      $('select[name=local_select]').val('');
+      $('select[name=local_select]').removeAttr('disabled');
+      $('.selectpicker').selectpicker('refresh');
 
       Array.from(formAtividadeInputs).forEach((el) => {
         el.classList.remove('form-show');
@@ -173,9 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.remove('form-show-observacao');
       });
 
-      const colSm1 = document.getElementsByClassName('num-col-sm-1');
-      const colSm9 = document.getElementsByClassName('num-col-sm-9');
-
       Array.from(colSm1).forEach((el) => {
         el.classList.remove('col-sm-1');
         el.classList.add('col-sm-2');
@@ -185,6 +256,29 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.remove('col-sm-9');
         el.classList.add('col-sm-8');
       });
+
+      inputName.disabled = false;
+      inputInicio.disabled = false;
+      inputFim.disabled = false;
+      inputTotalEspectadores.disabled = false;
+      inputOutrosEspectadores.disabled = false;
+      inputTurmas.disabled = false;
+      inputProfessores.disabled = false;
+      inputTotalRecursos.disabled = false;
+      inputNomeRecurso.disabled = false;
+      inputObservacao.disabled = false;
+
+      // Hide inputs and show selects
+      const localInput = document.getElementById('local_input');
+      const turmasInput = document.getElementById('turmas_input');
+
+      localInput.type = 'hidden';
+      localInput.value = '';
+
+      turmasInput.type = 'hidden';
+      turmasInput.value = '';
+
+      $('.btn, .dropdown-toggle, .d-none, .btn-light, .bs-placeholder').removeClass('d-none');
     },
     // eslint-disable-next-line no-undef
     events: routeAtividades('loadAtividades'),

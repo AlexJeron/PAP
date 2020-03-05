@@ -54,18 +54,6 @@ div.dt-buttons.btn-group.flex-wrap {
     border-top: 0px solid #e3e6f0;
 }
 
-.bootstrap-select>.dropdown-toggle.bs-placeholder {
-    color: #6e707e !important;
-    border: 1px solid #d1d3e2;
-    background-color: #fff;
-}
-
-.bootstrap-select>.dropdown-toggle {
-    color: #6e707e !important;
-    border: 1px solid #d1d3e2;
-    background-color: #fff;
-}
-
 ::-webkit-input-placeholder {
     opacity: 1 !important;
     color: #6e707e !important;
@@ -73,23 +61,6 @@ div.dt-buttons.btn-group.flex-wrap {
 
 .red {
     color: $red;
-}
-
-.selectpicker-show {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
-}
-
-.bootstrap-select.disabled,
-.bootstrap-select>.disabled {
-    cursor: default !important;
-    outline: none !important;
-}
-
-.bootstrap-select .btn:focus {
-    outline: none !important;
 }
 
 .form-control {
@@ -101,15 +72,6 @@ div.dt-buttons.btn-group.flex-wrap {
 .form-control:disabled,
 .form-control[readonly] {
     background-color: #f0f2f8bf;
-}
-
-.bootstrap-select>.dropdown-toggle {
-    width: 95%;
-    border: 1px solid #d1d3e261;
-}
-
-.bootstrap-select>.dropdown-toggle.bs-placeholder {
-    border: 1px solid #d1d3e261;
 }
 
 .modal-title {
@@ -242,28 +204,30 @@ body::-webkit-scrollbar {
     pointer-events: none;
 }
 
-.calendar-delete-atividade {
-    color: #ff615c;
-    background-color: transparent;
-    border-color: transparent;
-    font-size: 17px;
+#delete_atividade {
+    &:hover {
+        background-color: #d50f0f;
+    }
+
+    svg {
+        display: inline-block;
+        vertical-align: middle;
+        fill: #fff;
+        margin-right: 0.25em;
+        margin-top: -0.15em;
+    }
 }
 
-.calendar-delete-atividade:hover {
-    color: #ff615c;
-    border-color: #ff615c;
-    border-radius: 0.25rem;
-}
+#edit_atividade {
+    &:hover {
+        background-color: #efb92f;
+    }
 
-.calendar-edit-atividade {
-    color: #ffb700;
-    background-color: transparent;
-    border-color: transparent;
-    font-size: 17px;
-}
-
-.calendar-edit-atividade:hover {
-    color: #ffb700;
-    border-color: #ffb700;
-    border-radius: 0.25rem;
+    svg {
+        display: inline-block;
+        vertical-align: middle;
+        fill: #fff;
+        margin-right: 0.25em;
+        margin-top: -0.15em;
+    }
 }
