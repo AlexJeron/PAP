@@ -161,9 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // eslint-disable-next-line no-undef
       changeFormToDisplayMode();
     },
-    select: () => {
+    select: (element) => {
       // eslint-disable-next-line no-undef
       resetForm(document.getElementById('form_atividade'));
+
+      start = moment(element.start).format('YYYY-MM-DDTHH:mm');
+      end = moment(element.start).format('YYYY-MM-DDTHH:mm');
 
       // eslint-disable-next-line no-undef
       changeFormToEditMode();

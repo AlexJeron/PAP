@@ -10,8 +10,7 @@
     href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fh-3.1.6/kt-2.5.1/r-2.2.3/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.css" />
 
 <!-- Bootstrap Select -->
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css" />
+<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}" />
 
 @endsection
 
@@ -71,7 +70,7 @@
                                     Gerir Todas as Atividades
                                     <form class="form-date" method="GET" action="/atividades">
                                         <div class="input-icons">
-                                            <i class="fas fa-chevron-circle-down" id="chevron-icon" datatoggle="tooltip"
+                                            <i class="fas fa-filter" id="chevron-icon" datatoggle="tooltip"
                                                 data-placement="bottom" title="Filtrar por mês"
                                                 onclick="focusDataInput()"></i>
                                             <input type="text" id="year_month" name="year_month"
@@ -233,6 +232,6 @@
 <script src="/js/modals/atividade.js"></script>
 
 <!-- Bootstrap-Select -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-select-pt_PT.js') }}"></script>
 @endsection

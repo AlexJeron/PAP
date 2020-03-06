@@ -214,6 +214,10 @@ function changeFormToEditMode() {
   inputRecurso.value = '';
 
   $('.select-picker-div').removeClass('d-none');
+
+  inputInicio.value = start;
+  inputFim.value = end;
+  console.log(start);
 }
 
 function cancelButtonClick() {

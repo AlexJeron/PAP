@@ -97,8 +97,7 @@
                             <input id="outros_espectadores" type="text"
                                 class="form-control @error('outros_espectadores') is-invalid @enderror"
                                 name="outros_espectadores" value="{{ old('outros_espectadores') }}"
-                                placeholder="Indique o tipo de espectadores (ex: Alunos) [Campo Opcional]"
-                                maxlength="80">
+                                placeholder="Tipo de espectadores (ex: Alunos) [Campo Opcional]" maxlength="80">
 
                             @error('outros_espectadores')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -200,7 +199,7 @@
                         <div class="col-sm-10">
                             <textarea id="observacao" class="form-control @error('observacao') is-invalid @enderror"
                                 name="observacao" placeholder="Indique possíveis observações"
-                                rows="1">{{ old('observacao') }}</textarea>
+                                rows="2">{{ old('observacao') }}</textarea>
 
                             @error('observacao')
                             <div class="invalid-feedback">{{ $message }}</div>
