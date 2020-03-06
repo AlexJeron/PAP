@@ -47,30 +47,21 @@
             @include('layouts.topbar')
 
             <!-- Begin Page Content -->
-            <div id='wrap'>
+            <div class="container-fluid">
 
-                <div id='external-events'>
-                    <h4>Draggable Events</h4>
-
-                    <div id='external-events-list'>
-                        <div class='fc-event'>My Event 1</div>
-                        <div class='fc-event'>My Event 2</div>
-                        <div class='fc-event'>My Event 3</div>
-                        <div class='fc-event'>My Event 4</div>
-                        <div class='fc-event'>My Event 5</div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="d-flex p-2 m-0 font-weight-bold text-primary">Calendário de Atividades</h5>
                     </div>
+                    <div class="card-body">
+                        <div id='calendar' data-load-atividades="{{ route('loadAtividades') }}"
+                            data-update-atividade="{{ route('updateAtividade') }}">
+                        </div>
 
-                    <p>
-                        <input type='checkbox' id='drop-remove' />
-                        <label for='drop-remove'>remove after drop</label>
-                    </p>
+                        <div style='clear:both'></div>
+
+                    </div>
                 </div>
-                <div id='calendar' data-load-atividades="{{ route('loadAtividades') }}"
-                    data-update-atividade="{{ route('updateAtividade') }}">
-                </div>
-
-                <div style='clear:both'></div>
-
             </div>
             <!-- /.container-fluid -->
 

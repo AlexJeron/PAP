@@ -71,14 +71,14 @@
                     <div class="form-group row">
                         <label for="turmas" class="col-sm-2 col-form-label text-md-right">{{ __('Turmas') }}</label>
                         <div class="col-sm-10">
-                            <select class="form-control selectpicker" id="new_turmas" name="new_turmas[]"
+                            <select class="form-control selectpicker" id="turmas_select" name="turmas_select[]"
                                 title="Selecione uma ou mais turmas" multiple data-live-search="true">
                                 @foreach ($turmas as $turma)
                                 <option value="{{ $turma->id }}"> {{ $turma->nome }}</option>
                                 @endforeach
                             </select>
 
-                            @error('new_turmas')
+                            @error('turmas_select')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                             <input id="turmas_input" name="turmas_input" type="hidden" class="form-control"
@@ -90,7 +90,19 @@
                         <label for="professores"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Professores') }}</label>
                         <div class="col-sm-10">
-                            <input id="professores" type="text" class="form-control" name="professores"
+                            <select class="form-control selectpicker" id="professores_select"
+                                name="professores_select[]" title="Selecione um ou mais professores" multiple
+                                data-live-search="true">
+                                @foreach ($professores as $professor)
+                                <option value="{{ $professor->id }}"> {{ $professor->nome }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('professores_select')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                            <input id="professores_input" name="professores_input" type="hidden" class="form-control"
                                 placeholder="Sem professores" maxlength="80" disabled>
                         </div>
                     </div>
@@ -104,7 +116,18 @@
                         </div>
 
                         <div class="col-sm-9 pl-0 num-col-sm-9">
-                            <input id="nome_recurso" type="text" class="form-control" name="nome_recurso"
+                            <select class="form-control selectpicker" id="recurso_select" name="recurso_select"
+                                title="Selecione um recurso" data-live-search="true">
+                                @foreach ($recursos as $recurso)
+                                <option value="{{ $recurso->id }}"> {{ $recurso->nome }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('recurso_select')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                            <input id="recurso_input" name="recurso_input" type="hidden" class="form-control"
                                 placeholder="Nenhum recurso" maxlength="80" disabled>
                         </div>
                     </div>
@@ -114,13 +137,14 @@
                             class="col-sm-2 col-form-label text-md-right">{{ __('Observações') }}</label>
 
                         <div class="col-sm-10">
-                            <textarea id="observacao" class="form-control" name="observacao" rows="1"
+                            <textarea id="observacao" class="form-control" name="observacao" rows="2"
                                 placeholder="Sem observações" disabled></textarea>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn" data-dismiss="modal">Fechar</button>
+                        <button type="button" id="close_atividade" class="btn" data-dismiss="modal">Fechar</button>
+                        <button type="button" id="cancel_atividade" class="btn">Cancelar</button>
                         <button type="button" id="delete_atividade" class="btn btn-danger">
                             <svg aria-hidden="true" viewBox="0 0 448 512" width="16" height="16">
                                 <path fill="currentColor"
@@ -136,6 +160,14 @@
                                 </path>
                             </svg>
                             Editar
+                        </button>
+                        <button type="button" id="save_atividade" class="btn btn-primary">
+                            <svg aria-hidden="true" viewBox="0 0 448 512" width="17" height="17">
+                                <path fill="currentColor"
+                                    d="M433.941 129.941l-83.882-83.882A48 48 0 0 0 316.118 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V163.882a48 48 0 0 0-14.059-33.941zM224 416c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64s64 28.654 64 64c0 35.346-28.654 64-64 64zm96-304.52V212c0 6.627-5.373 12-12 12H76c-6.627 0-12-5.373-12-12V108c0-6.627 5.373-12 12-12h228.52c3.183 0 6.235 1.264 8.485 3.515l3.48 3.48A11.996 11.996 0 0 1 320 111.48z">
+                                </path>
+                            </svg>
+                            Guardar
                         </button>
                     </div>
                 </form>

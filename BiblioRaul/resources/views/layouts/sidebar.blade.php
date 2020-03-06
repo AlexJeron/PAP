@@ -35,7 +35,7 @@
     <li class="{{ request()->is('atividades') ? 'nav-item active' : 'nav-item' }}">
         <a class="nav-link" href="atividades?year_month={{ $currentDate }}">
             <i class="fas fa-calendar-alt"></i>
-            <span>Atividades</span>
+            <span>Tabela de Atividades</span>
         </a>
     </li>
 
@@ -86,7 +86,7 @@
             </div>
         </div>
     </li>
-    
+
     <!-- Nav Item - Relatórios -->
     <li class="{{ request()->is('relatorios') ? 'nav-item active' : 'nav-item' }}">
         <a class="nav-link" href="relatorios">

@@ -42,5 +42,18 @@ body {
 
 #calendar {
   float: right;
-  width: 900px;
+  width: 100%;
+}
+
+.calendar-toolbar {
+  padding: 0.75rem 1.25rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+#calendar_title {
+  color: #0083ca;
+  font-weight: 600;
 }
