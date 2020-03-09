@@ -68,3 +68,4 @@ Route::resource('recursos', 'RecursoController')->middleware('auth');
 Route::resource('atividades', 'AtividadeController')->middleware('auth');
 Route::get('/load-atividades', 'AtividadeController@ajaxLoad')->name('loadAtividades');
 Route::put('/update-atividade', 'AtividadeController@ajaxUpdate')->name('updateAtividade');
+Route::post('/store-atividade', 'AtividadeController@store')->name('storeAtividade');

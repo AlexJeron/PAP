@@ -39,7 +39,7 @@
                             <?php
                                 $currentDate = Carbon::now();
                                 setlocale(LC_TIME, 'Portuguese.UTF-8');
-                                if(!strpos($_SERVER['REQUEST_URI'], 'year_month=2') !== false) {
+                                if(!strpos($_SERVER['REQUEST_URI'], 'year_month') !== false) {
                                     $currentMonth = $currentDate->format('m');
                                     $currentYear = $currentDate->formatLocalized('%Y');
                                 }
@@ -49,14 +49,14 @@
 
                             <div class="col-7">
                                 <h5 class="d-flex p-2 m-0 font-weight-bold text-primary">
-                                    @if(strpos($_SERVER['REQUEST_URI'], 'year_month=2') !== false)
+                                    @if(strpos($_SERVER['REQUEST_URI'], 'year_month') !== false)
                                     Gerir Atividades de
                                     <form class="form-date" method="GET" action="/atividades" name="atividades">
                                         <div class="input-icons">
                                             <i class="fas fa-eraser" id="chevron-icon" data-toggle="tooltip"
                                                 data-placement="bottom" data-html="true"
                                                 title="Limpar Seleção e <br> Listar Todas as Atividades"
-                                                onclick="clearDataInput()">
+                                                onclick="clearDateInput()">
                                             </i>
                                             <input type="text" id="year_month" name="year_month"
                                                 class="form-control date-range-filter d-flex p-2 font-weight-bold text-primary"
@@ -72,7 +72,7 @@
                                         <div class="input-icons">
                                             <i class="fas fa-filter" id="chevron-icon" datatoggle="tooltip"
                                                 data-placement="bottom" title="Filtrar por mês"
-                                                onclick="focusDataInput()"></i>
+                                                onclick="focusDateInput()"></i>
                                             <input type="text" id="year_month" name="year_month"
                                                 class="form-control date-range-filter d-flex p-2 font-weight-bold text-primary"
                                                 onfocus="(this.type='month')" onchange="form.submit()"
@@ -205,7 +205,7 @@
 
 <!-- Datatables custom script -->
 <!-- If month-year specified, show specified month-year's activities, else show all activities -->
-@if(strpos($_SERVER['REQUEST_URI'], 'year_month=2') !== false)
+@if(strpos($_SERVER['REQUEST_URI'], 'year_month') !== false)
 <script src="/js/datatable/atividade-year_month.js"></script>
 @else
 <script src="/js/datatable/atividade.js"></script>

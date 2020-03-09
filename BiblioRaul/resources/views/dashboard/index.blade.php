@@ -55,7 +55,8 @@
                     </div>
                     <div class="card-body">
                         <div id='calendar' data-load-atividades="{{ route('loadAtividades') }}"
-                            data-update-atividade="{{ route('updateAtividade') }}">
+                            data-update-atividade="{{ route('updateAtividade') }}"
+                            data-store-atividade="{{ route('storeAtividade') }}">
                         </div>
 
                         <div style='clear:both'></div>
@@ -78,6 +79,7 @@
 
 @include('dashboard.modals.show')
 @include('dashboard.modals.new')
+@include('dashboard.modals.delete')
 @include('layouts.logout-modal')
 
 @endsection

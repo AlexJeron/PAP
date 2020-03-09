@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const modal = $('#showAtividadeModal');
 
 const inputId = document.getElementById('id');
@@ -25,18 +26,27 @@ const formAtividadeTextArea = document.getElementById('form_atividade').getEleme
 const colSm1 = document.getElementsByClassName('num-col-sm-1');
 const colSm9 = document.getElementsByClassName('num-col-sm-9');
 
+let profIdArray = [];
 let profNomeArray = [];
+let turmaIdArray = [];
 let turmaNomeArray = [];
 
+let route;
 let id;
 let title;
+let localId;
 let localNome;
-let recurso;
+let localSelect;
 let totalEspectadores;
 let outrosEspectadores;
 let turmas;
+let turmasSelect;
 let professores;
+let professoresSelect;
 let totalRecursos;
+let recursoId;
+let recursoNome;
+let recursoSelect;
 let observacao;
 let start;
 let end;
@@ -111,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
           end,
         };
         // eslint-disable-next-line no-undef
-        sendAtividade(routeAtividades('updateAtividade'), newAtividade);
+        sendEvent(routeEvents('updateAtividade'), newAtividade);
         // If there's no end date
       } else {
         const newAtividade = {
@@ -120,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
           start,
         };
         // eslint-disable-next-line no-undef
-        sendAtividade(routeAtividades('updateAtividade'), newAtividade);
+        sendEvent(routeEvents('updateAtividade'), newAtividade);
       }
     },
     eventClick: (element) => {
@@ -128,27 +138,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Fill Modal's Inputs with Data from the DB
       // const localId = element.event.extendedProps.local.id.toString();
-      totalEspectadores = element.event.extendedProps.totalEspectadores;
-      outrosEspectadores = element.event.extendedProps.outrosEspectadores;
+      totalEspectadores = element.event.extendedProps.total_espectadores;
+      outrosEspectadores = element.event.extendedProps.outros_espectadores;
       turmas = element.event.extendedProps.turmas;
       professores = element.event.extendedProps.professores;
-      totalRecursos = element.event.extendedProps.totalRecursos;
+      totalRecursos = element.event.extendedProps.total_recursos;
       observacao = element.event.extendedProps.observacao;
       id = element.event.id;
       title = element.event.title;
+      localId = element.event.extendedProps.local.id;
       localNome = element.event.extendedProps.local.nome;
-      recurso = element.event.extendedProps.recurso.nome;
+      recursoId = element.event.extendedProps.recurso.id;
+      recursoNome = element.event.extendedProps.recurso.nome;
       start = moment(element.event.start).format('YYYY-MM-DDTHH:mm');
       end = moment(element.event.end).format('YYYY-MM-DDTHH:mm');
 
+      profIdArray = [];
       profNomeArray = [];
+      turmaIdArray = [];
       turmaNomeArray = [];
 
       professores.forEach((elem, index) => {
+        profIdArray.push(professores[index].id);
         profNomeArray.push(professores[index].nome);
       });
 
       turmas.forEach((elem, index) => {
+        turmaIdArray.push(turmas[index].id);
         turmaNomeArray.push(turmas[index].nome);
       });
 
@@ -160,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // eslint-disable-next-line no-undef
       btnCancel.addEventListener('click', () => cancelButtonClick());
       // eslint-disable-next-line no-undef
-      changeFormToDisplayMode();
+      openModalAndChangeToDisplayMode();
     },
     select: (element) => {
       // eslint-disable-next-line no-undef
@@ -169,11 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
       start = moment(element.start).format('YYYY-MM-DDTHH:mm');
       end = moment(element.start).format('YYYY-MM-DDTHH:mm');
 
+      modal.modal('show');
+
       // eslint-disable-next-line no-undef
-      changeFormToEditMode();
+      changeModalToEditMode();
     },
     // eslint-disable-next-line no-undef
-    events: routeAtividades('loadAtividades'),
+    events: routeEvents('loadAtividades'),
   });
 
   calendar.render();

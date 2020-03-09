@@ -181,19 +181,20 @@ $(() => {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
-// Data
+// Date
 $('#calendar-icon').click(() => {
   $('#year_month').focus();
 });
 
-// Focus data on click
+// Focus date on click
 // eslint-disable-next-line no-unused-vars
-function clearDataInput() {
-  document.getElementById('year_month').value = '';
-  document.atividades.submit();
+function clearDateInput() {
+  window.location.replace('atividades');
+  // document.getElementById('year_month').value = '';
+  // document.atividades.submit();
 }
 
 // eslint-disable-next-line no-unused-vars
-function focusDataInput() {
+function focusDateInput() {
   document.getElementById('year_month').focus();
 }

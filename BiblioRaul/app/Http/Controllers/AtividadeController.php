@@ -24,15 +24,15 @@ class AtividadeController extends Controller
         // Date format
         setlocale(LC_COLLATE, 'pt-PT.utf8');
 
-        if ($request->has('year_month=2')) {
+        if ($request->has('year_month')) {
             // Show current month's activities [Eloquent]
 
             // dd(request()->all());
             $this->validateYearMonth();
             $atividades = Atividade::latest()
-                ->whereMonth('inicio', Carbon::parse($request->year_month)->format('m'))
-                ->whereYear('inicio', Carbon::parse($request->year_month)->format('Y'))
-                ->get();
+            ->whereMonth('inicio', Carbon::parse($request->year_month)->format('m'))
+            ->whereYear('inicio', Carbon::parse($request->year_month)->format('Y'))
+            ->get();
 
             $users = User::all()->sortBy('nome', SORT_LOCALE_STRING);
             $locais = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
@@ -125,19 +125,59 @@ class AtividadeController extends Controller
     public function ajaxLoad()
     {
         $atividades = Atividade::with('local', 'recurso', 'professores', 'turmas')
-            ->select(\DB::raw('id, nome AS title, local_id, recurso_id, inicio AS start, fim AS end, total_espectadores AS totalEspectadores, outros_espectadores AS outrosEspectadores, num_recursos AS totalRecursos, observacao'))
+            ->select(\DB::raw('id, nome AS title, local_id, recurso_id, inicio AS start, fim AS end, total_espectadores, outros_espectadores, num_recursos AS total_recursos, observacao'))
             ->get();
         return response()->json($atividades);
     }
 
     public function ajaxUpdate(Request $request)
     {
-        $atividade = Atividade::where('id', $request->id)->first();
-        $atividade->inicio = $request->start;
-        if ($request->end) {
-            $atividade->fim = $request->end;
+        if ($request->has('title')) {
+            // dd(request()->all());
+            // var_dump(request()->all());
+            $this->validateAjaxUpdate();
+
+            $atividade = Atividade::findOrFail($request->id);
+            $atividade->nome = $request->title;
+            $atividade->local_id = $request->local_id;
+            $atividade->inicio = Carbon::parse($request->start)->format('Y-m-d H:i:s');
+            $atividade->fim = empty($request->end) ? null : Carbon::parse($request->end)->format('Y-m-d H:i:s');
+            $atividade->total_espectadores = $request->total_espectadores;
+            $atividade->outros_espectadores = $request->outros_espectadores;
+            $atividade->recurso_id = $request->recurso_id;
+            $atividade->num_recursos = $request->total_recursos;
+            $atividade->observacao = $request->observacao;
+            $atividade->save();
+            // dd($request->title);
+
+            $atividade->turmas()->sync(request('turmas'));
+            $atividade->professores()->sync(request('professores'));
+        } else {
+            $atividade = Atividade::where('id', $request->id)->first();
+            $atividade->inicio = $request->start;
+            if ($request->end) {
+                $atividade->fim = $request->end;
+            }
+            $atividade->save();
         }
-        $atividade->save();
+    }
+
+    protected function validateAjaxUpdate()
+    {
+        return request()->validate([
+            'id' => 'required|max:20',
+            'title' => 'required|max:255',
+            'local_id' => 'required|max:20',
+            'start' => 'required|max:25',
+            'end' => 'nullable|max:25',
+            'total_espectadores' => 'required|max:10',
+            'outros_espectadores' => 'nullable|max:255',
+            'turmas' => 'exists:turma,id',
+            'professores' => 'exists:professor,id',
+            'total_recursos' => 'nullable|max:11',
+            'recurso_id' => 'nullable|max:20',
+            'observacao' => 'nullable|max:255',
+        ]);
     }
 
     protected function validateEditAtividade()

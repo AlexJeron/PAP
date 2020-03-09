@@ -4,7 +4,7 @@
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon">
             {{-- <img src="/img/Logo.png" alt="BiblioRaul" style="height:35px"> --}}
-            <svg aria-hidden="true" viewBox="0 0 263.49 374" width="46" height="46">
+            <svg aria-hidden="true" viewBox="0 0 263.49 374" width="36" height="36">
                 <circle cx="71.97" cy="103.82" r="44.58" fill="#fff" />
                 <circle cx="192.7" cy="103.82" r="44.58" fill="#fff" />
                 <circle cx="71.97" cy="103.82" r="44.58" fill="#fff" />
@@ -20,7 +20,7 @@
                 <path fill="#fff" d="M131.85 185.47l17.27-32.7h-34.54l17.27 32.7z" />
             </svg>
         </div>
-        <div class="sidebar-brand-text mx-3" id="BiblioRaul">Biblio<span id="Raul">Raul</span></div>
+        <div class="sidebar-brand-text mx-1" id="BiblioRaul">Biblio<span id="Raul">Raul</span></div>
     </a>
 
     <!-- Divider -->

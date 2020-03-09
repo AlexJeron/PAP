@@ -1,14 +1,12 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-$(() => {
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    },
-  });
-});
 
-function sendAtividade(route, data_) {
+function routeEvents(route) {
+  return document.getElementById('calendar').dataset[route];
+}
+
+function sendEvent(route, data_) {
   $.ajax({
     url: route,
     data: data_,
@@ -22,9 +20,44 @@ function sendAtividade(route, data_) {
   });
 }
 
-function routeAtividades(route) {
-  return document.getElementById('calendar').dataset[route];
-}
+$(() => {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    },
+  });
+  $('.save-event').click(() => {
+    localSelect = document.getElementById('local_select');
+    turmasSelect = $('#turmas_select').val();
+    professoresSelect = $('#professores_select').val();
+    recursoSelect = document.getElementById('recurso_select');
+    // console.log({ localSelect, turmasSelect, professoresSelect, recursoSelect });
+
+    const Event = {
+      title: inputName.value,
+      local_id: localSelect.value,
+      start: inputInicio.value,
+      end: inputFim.value,
+      total_espectadores: inputTotalEspectadores.value,
+      outros_espectadores: inputOutrosEspectadores.value,
+      turmas: turmasSelect,
+      professores: professoresSelect,
+      total_recursos: inputTotalRecursos.value,
+      recurso_id: recursoSelect.value,
+      observacao: inputObservacao.value,
+    };
+
+    if (id === '') {
+      route = routeEvents('storeAtividade');
+    } else {
+      route = routeEvents('updateAtividade');
+      Event.id = id;
+      Event._method = 'PUT';
+    }
+    console.log({ route, Event });
+    sendEvent(route, Event);
+  });
+});
 
 function resetForm(form) {
   form.reset();
@@ -34,7 +67,7 @@ function resetForm(form) {
 function editButtonClick() {
   modal.find('.modal-title').text('Editar Atividade');
 
-  // Change Inputs' CSS
+  // Change Form's CSS
   btnClose.hidden = true;
   btnCancel.hidden = false;
   btnDelete.hidden = true;
@@ -62,7 +95,7 @@ function editButtonClick() {
   });
 }
 
-function changeFormToDisplayMode() {
+function openModalAndChangeToDisplayMode() {
   // Show Modal and change its title
   modal.modal('show');
   modal.find('.modal-title').text('Consultar Atividade');
@@ -86,8 +119,8 @@ function changeFormToDisplayMode() {
     el.classList.add('col-sm-9');
   });
 
-  // Bootstrap-selects
-  // $('select[name=local_select]').val(localId);
+  // ! Bootstrap-selects
+  //  $('select[name=local_select]').val(localId);
   $('select[name=local_select]').attr('disabled', true);
   $('select[name=turmas_select]').attr('disabled', true);
   $('select[name=professores_select]').attr('disabled', true);
@@ -114,7 +147,7 @@ function changeFormToDisplayMode() {
   inputProfessores.disabled = true;
 
   inputRecurso.type = 'text';
-  inputRecurso.value = recurso;
+  inputRecurso.value = recursoNome;
   inputRecurso.disabled = true;
 
   $('.select-picker-div').addClass('d-none');
@@ -128,7 +161,7 @@ function changeFormToDisplayMode() {
   inputTurmas.value = turmaNomeArray;
   inputProfessores.value = profNomeArray;
   inputTotalRecursos.value = totalRecursos;
-  inputRecurso.value = recurso;
+  inputRecurso.value = recursoNome;
   inputObservacao.value = observacao;
 
   inputName.disabled = true;
@@ -143,9 +176,8 @@ function changeFormToDisplayMode() {
   inputObservacao.disabled = true;
 }
 
-function changeFormToEditMode() {
+function changeModalToEditMode() {
   // Show Modal and change its title
-  modal.modal('show');
   modal.find('.modal-title').text('Adicionar Atividade');
 
   // Change Inputs layout
@@ -156,16 +188,16 @@ function changeFormToEditMode() {
   btnDelete.hidden = true;
 
   // Bootstrap-selects
-  $('select[name=local_select]').val('');
+  $('select[name=local_select]').val(localId);
   $('select[name=local_select]').removeAttr('disabled');
 
-  $('select[name=turmas_select]').val('');
+  $('#turmas_select').selectpicker('val', turmaIdArray);
   $('select[name=turmas_select]').removeAttr('disabled');
 
-  $('select[name=professores_select]').val('');
+  $('#professores_select').selectpicker('val', profIdArray);
   $('select[name=professores_select]').removeAttr('disabled');
 
-  $('select[name=recurso_select]').val('');
+  $('select[name=recurso_select]').val(recursoId);
   $('select[name=recurso_select]').removeAttr('disabled');
 
   $('.selectpicker').selectpicker('refresh');
@@ -217,9 +249,13 @@ function changeFormToEditMode() {
 
   inputInicio.value = start;
   inputFim.value = end;
-  console.log(start);
 }
 
 function cancelButtonClick() {
-  changeFormToDisplayMode();
+  openModalAndChangeToDisplayMode();
+}
+
+function deleteButtonClick() {
+  $('#showAtividadeModal').modal('hide');
+  $('#deleteAtividadeModal').modal('show');
 }
