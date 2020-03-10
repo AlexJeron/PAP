@@ -1,4 +1,4 @@
-<div class="modal fade" id="showAtividadeModal" tabindex="-1" role="dialog" aria-labelledby="showAtividadeModal"
+<div class="modal fade" id="masterAtividadeModal" tabindex="-1" role="dialog" aria-labelledby="masterAtividadeModal"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -9,18 +9,23 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="form_atividade" name="form_atividade">
+                <form id="form" name="form">
                     <input type="hidden" name="id" id="id">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Nome') }}</label>
+                        <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Nome') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10">
                             <input id="name" type="text" class="form-control" name="name"
-                                placeholder="Descreva a atividade" maxlength="80" disabled>
+                                placeholder="Descreva a atividade" maxlength="80" required disabled>
+
+                            <div class="invalid-feedback" id="invalid_name" style="display: none">O campo 'nome' é
+                                obrigatório!</div>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="local" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}</label>
+                        <label for="local" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10" id="div_local">
                             <select class="form-control selectpicker" id="local_select" name="local_select"
                                 data-live-search="true" title="Selecione um local" disabled>
@@ -28,33 +33,30 @@
                                 <option value="{{ $local->id }}">{{ $local->nome }}</option>
                                 @endforeach
                             </select>
-
-                            @error('new_local_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
                             <input id="local_input" name="local_input" type="hidden" class="form-control" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="inicio" class="col-sm-2 col-form-label text-md-right">{{ __('Início') }}</label>
+                        <label for="inicio" class="col-sm-2 col-form-label text-md-right">{{ __('Início') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
 
-                        <div class="col-sm-10">
+                        <div class="col-sm-5 pr-0" style="max-width:38.1%">
                             <input id="inicio" type="datetime-local" class="form-control" name="inicio" disabled>
                         </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label for="fim" class="col-sm-2 col-form-label text-md-right">{{ __('Fim') }}</label>
+                        <label for="fim" class="col-sm-1 col-form-label text-md-right pl-0 pr-0"
+                            style="margin-left: -0.4rem; max-width: 4%">{{ __('Fim') }}</label>
 
-                        <div class="col-sm-10">
+                        <div class="col-sm-5 mr-0" style="max-width:40.2%">
                             <input id="fim" type="datetime-local" class="form-control" name="fim" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="total_espectadores"
-                            class="col-sm-2 col-form-label text-md-right">{{ __('Espectadores') }}</label>
+                            class="col-sm-2 col-form-label text-md-right">{{ __('Espectadores') }}<span class="red"
+                                style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-1 num-col-sm-1">
                             <input id="total_espectadores" type="number" min="1" class="form-control"
@@ -64,8 +66,8 @@
 
                         <div class="col-sm-9 pl-0 num-col-sm-9">
                             <input id="outros_espectadores" type="text" class="form-control" name="outros_espectadores"
-                                placeholder="Sem outros possíveis espectadores" style="width:94%" maxlength="80"
-                                disabled>
+                                placeholder="Tipo de espectadores (ex: Alunos) [Campo Opcional]" style="width:94%"
+                                maxlength="80" disabled>
                         </div>
                     </div>
 
@@ -164,8 +166,9 @@
                             </svg>
                             Editar
                         </button>
-                        <button type="button" id="save_atividade" class="btn btn-primary save-event">
-                            <svg aria-hidden="true" viewBox="0 0 448 512" width="17" height="17">
+                        <button type="submit" id="save_atividade" class="btn btn-primary save-event">
+                            <svg aria-hidden="true" viewBox="0 0 448 512" width="17" height="17"
+                                style="margin-top: -3px">
                                 <path fill="currentColor"
                                     d="M433.941 129.941l-83.882-83.882A48 48 0 0 0 316.118 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V163.882a48 48 0 0 0-14.059-33.941zM224 416c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64s64 28.654 64 64c0 35.346-28.654 64-64 64zm96-304.52V212c0 6.627-5.373 12-12 12H76c-6.627 0-12-5.373-12-12V108c0-6.627 5.373-12 12-12h228.52c3.183 0 6.235 1.264 8.485 3.515l3.48 3.48A11.996 11.996 0 0 1 320 111.48z">
                                 </path>

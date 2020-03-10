@@ -16,7 +16,7 @@
                     Tem a certeza que deseja apagar esta atividade?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-danger delete-event">Apagar</button>
                 </div>
             </div>

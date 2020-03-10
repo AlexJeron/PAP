@@ -77,8 +77,7 @@
 </div>
 <!-- End of Page Wrapper -->
 
-@include('dashboard.modals.show')
-@include('dashboard.modals.new')
+@include('dashboard.modals.master')
 @include('dashboard.modals.delete')
 @include('layouts.logout-modal')
 

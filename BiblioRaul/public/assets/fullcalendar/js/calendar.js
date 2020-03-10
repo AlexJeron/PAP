@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-const modal = $('#showAtividadeModal');
+const modal = $('#masterAtividadeModal');
+const form = document.getElementById('form');
 
 const inputId = document.getElementById('id');
 const inputName = document.getElementById('name');
@@ -20,8 +21,8 @@ const btnEdit = document.getElementById('edit_atividade');
 const btnDelete = document.getElementById('delete_atividade');
 const btnSave = document.getElementById('save_atividade');
 
-const formAtividadeInputs = document.getElementById('form_atividade').getElementsByTagName('input');
-const formAtividadeTextArea = document.getElementById('form_atividade').getElementsByTagName('textarea');
+const formAtividadeInputs = form.getElementsByTagName('input');
+const formAtividadeTextArea = form.getElementsByTagName('textarea');
 
 const colSm1 = document.getElementsByClassName('num-col-sm-1');
 const colSm9 = document.getElementsByClassName('num-col-sm-9');
@@ -148,8 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
       title = element.event.title;
       localId = element.event.extendedProps.local.id;
       localNome = element.event.extendedProps.local.nome;
-      recursoId = element.event.extendedProps.recurso.id;
-      recursoNome = element.event.extendedProps.recurso.nome;
+      if (element.event.extendedProps.recurso !== null) {
+        recursoId = element.event.extendedProps.recurso.id;
+        recursoNome = element.event.extendedProps.recurso.nome;
+      }
       start = moment(element.event.start).format('YYYY-MM-DDTHH:mm');
       end = moment(element.event.end).format('YYYY-MM-DDTHH:mm');
 
@@ -175,20 +178,21 @@ document.addEventListener('DOMContentLoaded', () => {
       btnEdit.addEventListener('click', () => editButtonClick());
       // eslint-disable-next-line no-undef
       btnCancel.addEventListener('click', () => cancelButtonClick());
+      modal.modal('show');
       // eslint-disable-next-line no-undef
-      openModalAndChangeToDisplayMode();
+      changeModalToDisplayMode();
     },
     select: (element) => {
-      // eslint-disable-next-line no-undef
-      resetForm(document.getElementById('form_atividade'));
-
       start = moment(element.start).format('YYYY-MM-DDTHH:mm');
       end = moment(element.start).format('YYYY-MM-DDTHH:mm');
+      id = '';
 
       modal.modal('show');
 
       // eslint-disable-next-line no-undef
       changeModalToEditMode();
+      // eslint-disable-next-line no-undef
+      resetForm(form);
     },
     // eslint-disable-next-line no-undef
     events: routeEvents('loadAtividades'),

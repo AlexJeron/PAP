@@ -60,22 +60,39 @@ class AtividadeController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(request()->all());
-        $this->validateNewAtividade();
+        if (request()->has('title')) {
+            $this->validateAjaxStoreAtividade();
 
-        $atividade = new Atividade(request(['nome', 'user_id', 'local_id', 'recurso_id', 'inicio', 'fim', 'total_espectadores', 'outros_espectadores', 'num_recursos', 'observacao']));
-        $atividade->user_id = Auth::user()->id;
-        $atividade->local_id = $request->new_local_id;
-        $atividade->recurso_id = $request->new_recurso_id;
-        $atividade->inicio = Carbon::parse($request->inicio)->format('Y-m-d H:i:s');
-        $atividade->fim = empty($request->fim) ? null : Carbon::parse($request->fim)->format('Y-m-d H:i:s');
-        $atividade->num_recursos = $request->new_num_recursos;
-        $atividade->save();
+            $atividade = new Atividade(request(['nome', 'user_id', 'local_id', 'recurso_id', 'inicio', 'fim', 'total_espectadores', 'outros_espectadores', 'num_recursos', 'observacao']));
+            $atividade->nome = $request->title;
+            $atividade->user_id = Auth::user()->id;
+            if ($request->recurso_id) {
+                $atividade->recurso_id = (int)$request->recurso_id;
+            }
+            $atividade->inicio = Carbon::parse($request->start)->format('Y-m-d H:i:s');
+            $atividade->fim = empty($request->end) ? null : Carbon::parse($request->end)->format('Y-m-d H:i:s');
+            $atividade->num_recursos = $request->total_recursos;
+            $atividade->save();
 
-        $atividade->turmas()->attach(request('new_turmas'));
-        $atividade->professores()->attach(request('new_professores'));
+            $atividade->turmas()->attach(request('turmas'));
+            $atividade->professores()->attach(request('professores'));
+        } else {
+            $this->validateStoreAtividade();
 
-        return back();
+            $atividade = new Atividade(request(['nome', 'user_id', 'local_id', 'recurso_id', 'inicio', 'fim', 'total_espectadores', 'outros_espectadores', 'num_recursos', 'observacao']));
+            $atividade->user_id = Auth::user()->id;
+            $atividade->local_id = $request->new_local_id;
+            $atividade->recurso_id = $request->new_recurso_id;
+            $atividade->inicio = Carbon::parse($request->inicio)->format('Y-m-d H:i:s');
+            $atividade->fim = empty($request->fim) ? null : Carbon::parse($request->fim)->format('Y-m-d H:i:s');
+            $atividade->num_recursos = $request->new_num_recursos;
+            $atividade->save();
+
+            $atividade->turmas()->attach(request('new_turmas'));
+            $atividade->professores()->attach(request('new_professores'));
+
+            return back();
+        }
     }
 
     /**
@@ -135,7 +152,7 @@ class AtividadeController extends Controller
         if ($request->has('title')) {
             // dd(request()->all());
             // var_dump(request()->all());
-            $this->validateAjaxUpdate();
+            $this->validateAjaxUpdateAtividade();
 
             $atividade = Atividade::findOrFail($request->id);
             $atividade->nome = $request->title;
@@ -162,7 +179,7 @@ class AtividadeController extends Controller
         }
     }
 
-    protected function validateAjaxUpdate()
+    protected function validateAjaxUpdateAtividade()
     {
         return request()->validate([
             'id' => 'required|max:20',
@@ -198,7 +215,7 @@ class AtividadeController extends Controller
         ]);
     }
 
-    protected function validateNewAtividade()
+    protected function validateStoreAtividade()
     {
         return request()->validate([
             'nome' => 'required|max:255',
@@ -211,6 +228,23 @@ class AtividadeController extends Controller
             'new_professores' => 'exists:professor,id',
             'new_num_recursos' => 'nullable|max:11',
             'new_recurso_id' => 'nullable|max:20',
+            'observacao' => 'nullable|max:255',
+        ]);
+    }
+
+    protected function validateAjaxStoreAtividade()
+    {
+        return request()->validate([
+            'title' => 'required|max:255',
+            'local_id' => 'required|max:20',
+            'start' => 'required|max:25',
+            'end' => 'nullable|max:25',
+            'total_espectadores' => 'required|max:10',
+            'outros_espectadores' => 'nullable|max:255',
+            'turmas' => 'exists:turma,id',
+            'professores' => 'exists:professor,id',
+            'total_recursos' => 'nullable|max:11',
+            'recurso_id' => 'nullable|max:20',
             'observacao' => 'nullable|max:255',
         ]);
     }

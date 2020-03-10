@@ -26,7 +26,9 @@ $(() => {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     },
   });
-  $('.save-event').click(() => {
+
+  $('.save-event').click((event) => {
+    event.preventDefault();
     localSelect = document.getElementById('local_select');
     turmasSelect = $('#turmas_select').val();
     professoresSelect = $('#professores_select').val();
@@ -47,21 +49,33 @@ $(() => {
       observacao: inputObservacao.value,
     };
 
-    if (id === '') {
-      route = routeEvents('storeAtividade');
-    } else {
+    if (id) {
       route = routeEvents('updateAtividade');
       Event.id = id;
       Event._method = 'PUT';
+    } else {
+      route = routeEvents('storeAtividade');
     }
-    console.log({ route, Event });
-    sendEvent(route, Event);
+
+    // console.log(inputName.value);
+    if (inputName.value) {
+      console.log({ route, Event });
+      sendEvent(route, Event);
+      $('#masterAtividadeModal').modal('hide');
+    } else if (localSelect.value === undefined) {
+      document.querySelector('[data-id="local-select"]').style.borderColor = 'red';
+    } else if (inputTotalEspectadores.value === undefined) {
+      //
+    } else {
+      inputName.classList.add('is-invalid');
+      document.getElementById('invalid_name').style.display = 'block';
+    }
   });
 });
 
 function resetForm(form) {
   form.reset();
-  // document.form_atividade.reset();
+  $('.selectpicker').selectpicker('val', '');
 }
 
 function editButtonClick() {
@@ -95,9 +109,7 @@ function editButtonClick() {
   });
 }
 
-function openModalAndChangeToDisplayMode() {
-  // Show Modal and change its title
-  modal.modal('show');
+function changeModalToDisplayMode() {
   modal.find('.modal-title').text('Consultar Atividade');
 
   // Change Inputs' CSS to a cleaner display mode
@@ -121,11 +133,16 @@ function openModalAndChangeToDisplayMode() {
 
   // ! Bootstrap-selects
   //  $('select[name=local_select]').val(localId);
-  $('select[name=local_select]').attr('disabled', true);
-  $('select[name=turmas_select]').attr('disabled', true);
-  $('select[name=professores_select]').attr('disabled', true);
-  $('select[name=recursos_select]').attr('disabled', true);
-  $('.selectpicker').selectpicker('refresh');
+  // $('select[name=local_select]').attr('disabled', true);
+  // $('select[name=turmas_select]').attr('disabled', true);
+  // $('select[name=professores_select]').attr('disabled', true);
+  // $('select[name=recursos_select]').attr('disabled', true);
+  // $('.selectpicker').selectpicker('refresh');
+
+  document.querySelectorAll('span.red').forEach((e) => {
+    e.style.display = 'none';
+  });
+  document.getElementById('outros_espectadores').placeholder = 'Sem outros possíveis espectadores';
 
   btnClose.hidden = false;
   btnCancel.hidden = true;
@@ -147,7 +164,9 @@ function openModalAndChangeToDisplayMode() {
   inputProfessores.disabled = true;
 
   inputRecurso.type = 'text';
-  inputRecurso.value = recursoNome;
+  if (recursoNome !== undefined) {
+    inputRecurso.value = recursoNome;
+  }
   inputRecurso.disabled = true;
 
   $('.select-picker-div').addClass('d-none');
@@ -161,7 +180,9 @@ function openModalAndChangeToDisplayMode() {
   inputTurmas.value = turmaNomeArray;
   inputProfessores.value = profNomeArray;
   inputTotalRecursos.value = totalRecursos;
-  inputRecurso.value = recursoNome;
+  if (recursoNome !== undefined) {
+    inputRecurso.value = recursoNome;
+  }
   inputObservacao.value = observacao;
 
   inputName.disabled = true;
@@ -181,6 +202,11 @@ function changeModalToEditMode() {
   modal.find('.modal-title').text('Adicionar Atividade');
 
   // Change Inputs layout
+  document.querySelectorAll('span.red').forEach((e) => {
+    e.style.display = 'inline';
+  });
+  document.getElementById('outros_espectadores').placeholder = 'Tipo de espectadores (ex: Alunos) [Campo Opcional]';
+
   btnClose.hidden = false;
   btnCancel.hidden = true;
   btnEdit.hidden = true;
@@ -252,10 +278,14 @@ function changeModalToEditMode() {
 }
 
 function cancelButtonClick() {
-  openModalAndChangeToDisplayMode();
+  changeModalToDisplayMode();
 }
 
 function deleteButtonClick() {
-  $('#showAtividadeModal').modal('hide');
+  $('#masterAtividadeModal').modal('hide');
   $('#deleteAtividadeModal').modal('show');
 }
+
+$('#deleteAtividadeModal').on('hide.bs.modal', (e) => {
+  $('#masterAtividadeModal').modal('show');
+});
