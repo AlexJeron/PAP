@@ -27,13 +27,18 @@
                         <label for="local" class="col-sm-2 col-form-label text-md-right">{{ __('Local') }}<span
                                 class="red" style="margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-10" id="div_local">
+
                             <select class="form-control selectpicker" id="local_select" name="local_select"
                                 data-live-search="true" title="Selecione um local" disabled>
                                 @foreach ($locais as $local)
                                 <option value="{{ $local->id }}">{{ $local->nome }}</option>
                                 @endforeach
                             </select>
+
                             <input id="local_input" name="local_input" type="hidden" class="form-control" disabled>
+
+                            <div class="invalid-feedback" id="invalid_local" style="display: none">O campo 'local' é
+                                obrigatório!</div>
                         </div>
                     </div>
 
@@ -53,6 +58,13 @@
                         </div>
                     </div>
 
+                    <div class="form-group row mt-n3">
+                        <div class="col-sm-2" style="display: block;"></div>
+                        <div class="col-sm-5 invalid-feedback" id="invalid_start" style="display: none;">O campo
+                            'início' é obrigatório!
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label for="total_espectadores"
                             class="col-sm-2 col-form-label text-md-right">{{ __('Espectadores') }}<span class="red"
@@ -61,13 +73,19 @@
                         <div class="col-sm-1 num-col-sm-1">
                             <input id="total_espectadores" type="number" min="1" class="form-control"
                                 name="total_espectadores" placeholder="Total" disabled>
-
                         </div>
 
                         <div class="col-sm-9 pl-0 num-col-sm-9">
                             <input id="outros_espectadores" type="text" class="form-control" name="outros_espectadores"
                                 placeholder="Tipo de espectadores (ex: Alunos) [Campo Opcional]" style="width:94%"
                                 maxlength="80" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-n3">
+                        <div class="col-sm-2" style="display: block;"></div>
+                        <div class="col-sm-5 invalid-feedback" id="invalid_total" style="display: none;">O campo
+                            'local' é obrigatório!
                         </div>
                     </div>
 

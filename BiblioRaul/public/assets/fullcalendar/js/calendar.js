@@ -193,6 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
       changeModalToEditMode();
       // eslint-disable-next-line no-undef
       resetForm(form);
+      // eslint-disable-next-line no-undef
+      errorClear();
     },
     // eslint-disable-next-line no-undef
     events: routeEvents('loadAtividades'),

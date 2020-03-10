@@ -26,51 +26,80 @@ $(() => {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     },
   });
+});
 
-  $('.save-event').click((event) => {
-    event.preventDefault();
-    localSelect = document.getElementById('local_select');
-    turmasSelect = $('#turmas_select').val();
-    professoresSelect = $('#professores_select').val();
-    recursoSelect = document.getElementById('recurso_select');
-    // console.log({ localSelect, turmasSelect, professoresSelect, recursoSelect });
+function errorClear() {
+  inputName.classList.remove('is-invalid');
+  document.getElementById('invalid_name').style.display = 'none';
 
-    const Event = {
-      title: inputName.value,
-      local_id: localSelect.value,
-      start: inputInicio.value,
-      end: inputFim.value,
-      total_espectadores: inputTotalEspectadores.value,
-      outros_espectadores: inputOutrosEspectadores.value,
-      turmas: turmasSelect,
-      professores: professoresSelect,
-      total_recursos: inputTotalRecursos.value,
-      recurso_id: recursoSelect.value,
-      observacao: inputObservacao.value,
-    };
+  document.querySelector('[data-id="local_select"]').style.borderColor = '#d1d3e288';
+  document.getElementById('invalid_local').style.display = 'none';
 
-    if (id) {
-      route = routeEvents('updateAtividade');
-      Event.id = id;
-      Event._method = 'PUT';
-    } else {
-      route = routeEvents('storeAtividade');
-    }
+  inputInicio.classList.remove('is-invalid');
+  document.getElementById('invalid_start').style.display = 'none';
 
-    // console.log(inputName.value);
-    if (inputName.value) {
-      console.log({ route, Event });
-      sendEvent(route, Event);
-      $('#masterAtividadeModal').modal('hide');
-    } else if (localSelect.value === undefined) {
-      document.querySelector('[data-id="local-select"]').style.borderColor = 'red';
-    } else if (inputTotalEspectadores.value === undefined) {
-      //
-    } else {
-      inputName.classList.add('is-invalid');
-      document.getElementById('invalid_name').style.display = 'block';
-    }
-  });
+  inputTotalEspectadores.classList.remove('is-invalid');
+  document.getElementById('invalid_total').style.display = 'none';
+}
+
+function formValidation() {
+  if (inputName.value === '') {
+    inputName.classList.add('is-invalid');
+    document.getElementById('invalid_name').style.display = 'block';
+  }
+
+  if (localSelect.value === '') {
+    document.querySelector('[data-id="local_select"]').style.borderColor = 'red';
+    document.getElementById('invalid_local').style.display = 'block';
+  }
+
+  if (inputInicio.value === '') {
+    inputInicio.classList.add('is-invalid');
+    document.getElementById('invalid_start').style.display = 'block';
+  }
+
+  if (inputTotalEspectadores.value === '') {
+    inputTotalEspectadores.classList.add('is-invalid');
+    document.getElementById('invalid_total').style.display = 'block';
+  }
+}
+
+$('.save-event').click((event) => {
+  event.preventDefault();
+  localSelect = document.getElementById('local_select');
+  turmasSelect = $('#turmas_select').val();
+  professoresSelect = $('#professores_select').val();
+  recursoSelect = document.getElementById('recurso_select');
+  // console.log({ localSelect, turmasSelect, professoresSelect, recursoSelect });
+
+  const Event = {
+    title: inputName.value,
+    local_id: localSelect.value,
+    start: inputInicio.value,
+    end: inputFim.value,
+    total_espectadores: inputTotalEspectadores.value,
+    outros_espectadores: inputOutrosEspectadores.value,
+    turmas: turmasSelect,
+    professores: professoresSelect,
+    total_recursos: inputTotalRecursos.value,
+    recurso_id: recursoSelect.value,
+    observacao: inputObservacao.value,
+  };
+
+  if (id) {
+    route = routeEvents('updateAtividade');
+    Event.id = id;
+    Event._method = 'PUT';
+  } else {
+    route = routeEvents('storeAtividade');
+  }
+
+  formValidation();
+
+  if (inputName.value && localSelect.value && inputTotalEspectadores.value) {
+    sendEvent(route, Event);
+    $('#masterAtividadeModal').modal('hide');
+  }
 });
 
 function resetForm(form) {
@@ -286,6 +315,6 @@ function deleteButtonClick() {
   $('#deleteAtividadeModal').modal('show');
 }
 
-$('#deleteAtividadeModal').on('hide.bs.modal', (e) => {
+$('#deleteAtividadeModal').on('hide.bs.modal', () => {
   $('#masterAtividadeModal').modal('show');
 });
