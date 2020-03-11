@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import "variables";
+@import "base/variables";
 
 // Fontawesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
@@ -12,20 +12,14 @@
 // Open Iconic
 @import "~open-iconic/font/css/open-iconic-bootstrap.min.css";
 
-// Bootstrap-select
-// @import "~bootstrap-select/sass/bootstrap-select.scss";
+// Sb Admin Style
+@import "base/sb-admin-2";
 
-// Main Style
-@import "sb-admin-2";
-
-// Other CSS
-@import "other";
+// General CSS
+@import "base/general";
 
 // Switch button
-@import "switch";
+@import "components/switch";
 
 // Search bar
-@import "searchbar";
-
-// Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+@import "components/searchbar";

@@ -50,30 +50,32 @@
                         <label for="inicio" class="col-sm-2 col-form-label text-md-right">{{ __('Início') }}<span
                                 class="red" style="margin-right: -0.5rem">*</span></label>
 
-                        <div class="col-sm-10">
-                            <input type="datetime-local" id="inicio" name="inicio"
+                        <div class="col-sm-5 pr-0" style="max-width:38.1%">
+                            <input id="inicio" name="inicio" type="datetime-local"
                                 class="form-control @error('inicio') is-invalid @enderror" required>
+                        </div>
 
-                            @error('inicio')
-                            <div class=" invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <label for="fim" class="col-sm-1 col-form-label text-md-right pl-0 pr-0"
+                            style="margin-left: -0.4rem; max-width: 4%">{{ __('Fim') }}</label>
 
+                        <div class="col-sm-5 mr-0" style="max-width:40.2%">
+                            <input id="fim" name="fim" type="datetime-local"
+                                class="form-control @error('fim') is-invalid @enderror">
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="fim" class="col-sm-2 col-form-label text-md-right">{{ __('Fim') }}<span class="red"
-                                style="visibility: hidden; margin-right: -0.5rem">*</span></label>
-
-                        <div class="col-sm-10">
-                            <input type="datetime-local" id="fim" name="fim"
-                                class="form-control @error('fim') is-invalid @enderror">
-
-                            @error('fim')
-                            <div class=" invalid-feedback">{{ $message }}</div>
-                            @enderror
-
+                    <div class="form-group row mt-n3">
+                        <div class="col-sm-2" style="display: block;"></div>
+                        @error('inicio')
+                        <div class="col-sm-5 invalid-feedback" id="invalid_start" style="display: none;">{{ $message }}
                         </div>
+                        @enderror
+
+                        <div class="col-sm-2" style="display: block;"></div>
+                        @error('fim')
+                        <div class="col-sm-5 invalid-feedback" id="invalid_end" style="display: none;">{{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="form-group row">

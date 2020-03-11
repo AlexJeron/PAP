@@ -18764,7 +18764,7 @@ div.dt-buttons.btn-group.flex-wrap {
 
 .form-show-observacao {
   background-color: transparent !important;
-  border-bottom: 1px solid #c1c2cc4d;
+  padding: 7px 0px 0px;
   color: #5b5b5b;
   border-radius: 4px;
   width: 95%;
@@ -18884,6 +18884,18 @@ body::-webkit-scrollbar {
   fill: #fff;
   margin-right: 0.25em;
   margin-top: -0.15em;
+}
+
+#show_observacao {
+  background-color: transparent;
+}
+
+.btn.dropdown-toggle.btn-light {
+  border: 1px solid #d1d3e288;
+}
+
+.btn-light:hover {
+  background-color: transparent;
 }
 
 /* The switch - the box around the slider */

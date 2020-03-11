@@ -102,8 +102,12 @@ $('.save-event').click((event) => {
   }
 });
 
-function resetForm(form) {
-  form.reset();
+function formReset(form) {
+  inputName.value = '';
+  inputTotalEspectadores.value = '';
+  inputOutrosEspectadores.value = '';
+  inputRecurso.value = '';
+  inputObservacao.value = '';
   $('.selectpicker').selectpicker('val', '');
 }
 
@@ -123,7 +127,7 @@ function editButtonClick() {
   });
 
   Array.from(formAtividadeTextArea).forEach((el) => {
-    el.classList.remove('form-show-observacao');
+    el.classList.remove('form-show');
     el.disabled = false;
   });
 
@@ -147,7 +151,7 @@ function changeModalToDisplayMode() {
   });
 
   Array.from(formAtividadeTextArea).forEach((el) => {
-    el.classList.add('form-show-observacao');
+    el.classList.add('form-show');
   });
 
   Array.from(colSm1).forEach((el) => {
@@ -263,7 +267,7 @@ function changeModalToEditMode() {
   });
 
   Array.from(formAtividadeTextArea).forEach((el) => {
-    el.classList.remove('form-show-observacao');
+    el.classList.remove('form-show');
   });
 
   Array.from(colSm1).forEach((el) => {

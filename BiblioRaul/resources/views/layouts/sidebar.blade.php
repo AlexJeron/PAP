@@ -104,7 +104,7 @@
 
     <!-- Nav Item - Relatórios -->
     <li class="{{ request()->is('relatorios') ? 'nav-item active' : 'nav-item' }}">
-        <a class="nav-link" href="relatorios">
+        <a class="nav-link" href="#">
             <i class="fas fa-list-alt"></i>
             <span>Relatórios</span>
         </a>

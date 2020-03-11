@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 const modal = $('#masterAtividadeModal');
 const form = document.getElementById('form');
@@ -55,36 +56,7 @@ let end;
 document.addEventListener('DOMContentLoaded', () => {
   const { Calendar } = this.FullCalendar;
 
-  // const { Draggable } = this.FullCalendarInteraction;
-
-  /* initialize the external events
-    -----------------------------------------------------------------*/
-
-  // const containerEl = document.getElementById('external-events-list');
-  // eslint-disable-next-line no-unused-vars
-  // const draggable = new Draggable(containerEl, {
-  //   itemSelector: '.fc-event',
-  //   eventData: (eventEl) => ({
-  //     title: eventEl.innerText.trim(),
-  //   }),
-  // });
-
-  // the individual way to do it
-  // let containerEl = document.getElementById('external-events-list');
-  // let eventEls = Array.prototype.slice.call(
-  //   containerEl.querySelectorAll('.fc-event')
-  // );
-  // eventEls.forEach(function(eventEl) {
-  //   new Draggable(eventEl, {
-  //     eventData: {
-  //       title: eventEl.innerText.trim(),
-  //     }
-  //   });
-  // });
-
-  /* initialize the calendar
-    -----------------------------------------------------------------*/
-
+  // Initialize the calendar
   const calendarEl = document.getElementById('calendar');
   const calendar = new Calendar(calendarEl, {
     plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list'],
@@ -121,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
           start,
           end,
         };
-        // eslint-disable-next-line no-undef
         sendEvent(routeEvents('updateAtividade'), newAtividade);
         // If there's no end date
       } else {
@@ -130,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
           id: element.event.id,
           start,
         };
-        // eslint-disable-next-line no-undef
         sendEvent(routeEvents('updateAtividade'), newAtividade);
       }
     },
@@ -138,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.dir(element);
 
       // Fill Modal's Inputs with Data from the DB
-      // const localId = element.event.extendedProps.local.id.toString();
       totalEspectadores = element.event.extendedProps.total_espectadores;
       outrosEspectadores = element.event.extendedProps.outros_espectadores;
       turmas = element.event.extendedProps.turmas;
@@ -174,29 +143,21 @@ document.addEventListener('DOMContentLoaded', () => {
       turmaNomeArray = turmaNomeArray.join(', ');
       profNomeArray = profNomeArray.join(', ');
 
-      // eslint-disable-next-line no-undef
       btnEdit.addEventListener('click', () => editButtonClick());
-      // eslint-disable-next-line no-undef
       btnCancel.addEventListener('click', () => cancelButtonClick());
       modal.modal('show');
-      // eslint-disable-next-line no-undef
       changeModalToDisplayMode();
     },
     select: (element) => {
+      id = '';
       start = moment(element.start).format('YYYY-MM-DDTHH:mm');
       end = moment(element.start).format('YYYY-MM-DDTHH:mm');
-      id = '';
 
       modal.modal('show');
-
-      // eslint-disable-next-line no-undef
       changeModalToEditMode();
-      // eslint-disable-next-line no-undef
-      resetForm(form);
-      // eslint-disable-next-line no-undef
+      formReset(form);
       errorClear();
     },
-    // eslint-disable-next-line no-undef
     events: routeEvents('loadAtividades'),
   });
 
