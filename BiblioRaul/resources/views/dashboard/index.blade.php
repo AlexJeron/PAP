@@ -79,6 +79,7 @@
 
 @include('dashboard.modals.master')
 @include('dashboard.modals.delete')
+@include('dashboard.modals.confirm')
 @include('layouts.logout-modal')
 
 @endsection

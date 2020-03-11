@@ -1,10 +1,10 @@
-<div class="modal fade" id="masterAtividadeModal" tabindex="-1" role="dialog" aria-labelledby="masterAtividadeModal"
-    aria-hidden="true">
+<div class="modal fade" id="masterAtividadeModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="masterAtividadeModal" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title"></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close close-first-modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -165,7 +165,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" id="close_atividade" class="btn" data-dismiss="modal">Fechar</button>
+                        <button type="button" id="close_atividade" class="btn close-first-modal">Fechar</button>
                         <button type="button" id="cancel_atividade" class="btn">Cancelar</button>
                         <button type="button" id="delete_atividade" class="btn btn-danger"
                             onclick="deleteButtonClick()">

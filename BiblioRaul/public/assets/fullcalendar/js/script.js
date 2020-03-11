@@ -2,6 +2,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
+$(document).ready(() => {
+  $('.close-first-modal').click(() => {
+    $('#masterAtividadeModal').modal('hide');
+    $('#warningModal')
+      .modal('show')
+      .on('show.bs.modal', () => {
+        $('.confirm-close').click(() => {
+          $('#warningModal').modal('hide');
+        });
+        $('.cancel-close').click(() => {
+          $('#warningModal').modal('hide');
+          $('#masterAtividadeModal').modal('show');
+        });
+      });
+  });
+});
+
 function routeEvents(route) {
   return document.getElementById('calendar').dataset[route];
 }
