@@ -15,26 +15,29 @@ class RecursoController extends Controller
     public function index()
     {
         $recursos = Recurso::latest()->get();
+
         return view('recurso.index', ['recursos' => $recursos]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store()
     {
         Recurso::create($this->validateStoreRecurso());
+
         return back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Recurso  $recurso
+     * @param \App\Recurso $recurso
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -49,13 +52,15 @@ class RecursoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Recurso  $recurso
+     * @param \App\Recurso $recurso
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
         $recurso = Recurso::findOrFail($request->recurso_id);
         $recurso->delete();
+
         return back();
     }
 
@@ -64,14 +69,16 @@ class RecursoController extends Controller
         return request()->validate([
             'nome' => 'required|unique:recurso|max:255',
             'quantidade_total' => 'nullable|numeric|max:255',
+            'danificados' => 'nullable|numeric|max:255',
         ]);
     }
 
     protected function validateUpdateRecurso(Recurso $recurso)
     {
         return request()->validate([
-            'nome' => 'required|max:255|unique:recurso,nome,' . $recurso->id,
+            'nome' => 'required|max:255|unique:recurso,nome,'.$recurso->id,
             'quantidade_total' => 'nullable|numeric|max:255',
+            'danificados' => 'nullable|numeric|max:255',
         ]);
     }
 }

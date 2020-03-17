@@ -1,5 +1,5 @@
 {
-    "discord.enabled": false,
+    "discord.enabled": true,
     "gitlens.currentLine.enabled": true,
     "gitlens.hovers.currentLine.over": "line"
 }

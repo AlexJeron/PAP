@@ -39,6 +39,23 @@
 
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label for="danificados"
+                            class="col-sm-4 col-form-label text-md-right">{{ __('Danificados') }}</label>
+
+                        <div class="col-sm-8">
+                            <input id="danificados" type="number"
+                                class="form-control @error('danificados') is-invalid @enderror" name="danificados"
+                                value="{{ old('danificados') }}" min="1" max="1000000000">
+
+                            @error('danificados')
+                            <div class="invalid-feedback">{{ $errors->first('danificados') }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="submit" class="btn btn-primary">

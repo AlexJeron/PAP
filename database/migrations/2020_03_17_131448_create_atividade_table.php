@@ -30,17 +30,20 @@ class CreateAtividadeTable extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('user')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+            ;
 
             $table->foreign('local_id')
                 ->references('id')
                 ->on('local')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+            ;
 
             $table->foreign('recurso_id')
                 ->references('id')
                 ->on('recurso')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+            ;
         });
 
         Schema::create('atividade_professor', function (Blueprint $table) {

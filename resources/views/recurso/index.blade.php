@@ -51,6 +51,7 @@
                                     <tr>
                                         <th>Nome</th>
                                         <th>Quantidade</th>
+                                        <th>Danificados</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
@@ -59,11 +60,13 @@
                                     <tr>
                                         <td> {{ $recurso->nome }} </td>
                                         <td> {{ $recurso->quantidade_total }} </td>
+                                        <td> {{ $recurso->danificados }} </td>
                                         <td class="text-center">
                                             <a type="button" data-id="{{ $recurso->id }}"
                                                 data-nome="{{ $recurso->nome }}"
                                                 data-quantidade_total="{{ $recurso->quantidade_total }}"
-                                                data-toggle="modal" data-target="#editRecursoModal">
+                                                data-danificados="{{ $recurso->danificados}}" data-toggle="modal"
+                                                data-target="#editRecursoModal">
                                                 <i class="far fa-edit" style="color:#f6993f"></i>
                                             </a>
                                             <a type="button" data-recurso_id="{{ $recurso->id }}" data-toggle="modal"
@@ -110,7 +113,7 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Datatables custom script -->
-<script src="/js/datatable/professor.js"></script>
+<script src="/js/datatable/recurso.js"></script>
 
 <!-- DataTables CDN -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
