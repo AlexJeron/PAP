@@ -5,17 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "edge",
-      "request": "attach",
-      "name": "Attach to Edge",
-      "port": 9222
+      "name": "Listen for XDebug",
+      "type": "php",
+      "request": "launch",
+      "port": 9000
     },
     {
-      "type": "chrome",
+      "name": "Launch currently open script",
+      "type": "php",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
-      "url": "http://localhost:8080",
-      "webRoot": "${workspaceFolder}"
+      "program": "${file}",
+      "cwd": "${fileDirname}",
+      "port": 9000
     }
   ]
 }
