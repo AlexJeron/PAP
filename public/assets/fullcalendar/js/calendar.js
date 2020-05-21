@@ -6,6 +6,7 @@ const form = document.getElementById('form');
 const inputId = document.getElementById('id');
 const inputName = document.getElementById('name');
 const inputLocal = document.getElementById('local_input');
+
 const inputInicio = document.getElementById('inicio');
 const inputFim = document.getElementById('fim');
 const inputTotalEspectadores = document.getElementById('total_espectadores');
