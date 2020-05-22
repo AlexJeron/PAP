@@ -8,6 +8,16 @@
     font-weight: 900;
 }
 
+.calendar-header {
+    width: 102.5%;
+    margin-left: -1.22rem;
+    margin-top: -1.25rem;
+}
+
+// .table-bordered-grey {
+//     border: #dadce0 1px solid;
+// }
+
 ::selection {
     color: white;
     background: $primary;

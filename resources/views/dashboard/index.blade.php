@@ -50,11 +50,11 @@
             <div class="container-fluid">
 
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
+                    {{-- <div class="card-header py-3">
                         <h5 class="d-flex p-2 m-0 font-weight-bold text-primary">Calendário de Atividades</h5>
-                    </div>
-                    <div class="card-body">
-                        <div id='calendar' data-load-atividades="{{ route('loadAtividades') }}"
+                    </div> --}}
+                    <div class="card-body" style="height:87vh">
+                        <div id="calendar" data-load-atividades="{{ route('loadAtividades') }}"
                             data-update-atividade="{{ route('updateAtividade') }}"
                             data-store-atividade="{{ route('storeAtividade') }}">
                         </div>
@@ -70,7 +70,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        @include('layouts.footer')
+        {{-- @include('layouts.footer') --}}
     </div>
     <!-- End of Content Wrapper -->
 

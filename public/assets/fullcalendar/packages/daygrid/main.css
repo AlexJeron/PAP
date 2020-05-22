@@ -42,11 +42,11 @@
 }
 
 .fc-ltr .fc-dayGrid-view .fc-day-top .fc-day-number {
-  float: right;
+  /* float: right; */
 }
 
 .fc-rtl .fc-dayGrid-view .fc-day-top .fc-day-number {
-  float: left;
+  /* float: left; */
 }
 
 .fc-ltr .fc-dayGrid-view .fc-day-top .fc-week-number {

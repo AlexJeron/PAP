@@ -6198,7 +6198,9 @@ Docs & License: https://fullcalendar.io/
       _this._updateToday = memoizeRendering(_this.updateToday, null, [_this._renderLayout]);
       _this._updatePrev = memoizeRendering(_this.updatePrev, null, [_this._renderLayout]);
       _this._updateNext = memoizeRendering(_this.updateNext, null, [_this._renderLayout]);
-      _this.el = createElement('div', { className: 'calendar-toolbar fc-toolbar ' + extraClassName });
+      _this.el = createElement('div', {
+        className: 'calendar-toolbar fc-toolbar ' + extraClassName,
+      });
       return _this;
     }
     Toolbar.prototype.destroy = function() {
