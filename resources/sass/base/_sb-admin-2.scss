@@ -1666,6 +1666,10 @@ pre code {
     border: 1px solid #dadce0;
 }
 
+.table-bordered-grey thead {
+    border-bottom: transparent;
+}
+
 .table-bordered thead th,
 .table-bordered thead td {
     border-bottom-width: 2px;

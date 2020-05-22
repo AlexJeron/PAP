@@ -160,6 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
       formReset(form);
       errorClear();
     },
+    windowResize: (view) => {
+      calendar.setOption('height', $(window).height() * 0.83);
+    },
     events: routeEvents('loadAtividades'),
   });
 

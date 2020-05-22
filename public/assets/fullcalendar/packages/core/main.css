@@ -221,12 +221,14 @@ temporary rendered events).
   background: none;
   /* in case <td>s are globally styled */
   border-color: transparent;
+  text-align: center !important;
 }
 
 .fc-row .fc-content-skeleton td,
 .fc-row .fc-mirror-skeleton td {
   /* don't put a border between events and/or the day number */
   border-bottom: 0;
+  text-align: center !important;
 }
 
 .fc-row .fc-content-skeleton tbody td,
