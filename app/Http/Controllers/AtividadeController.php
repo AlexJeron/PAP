@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
+use App\Http\Requests\EventRequest;
 use App\Local;
 use App\Professor;
 use App\Recurso;
@@ -10,7 +11,8 @@ use App\Turma;
 use App\User;
 use Auth;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+
+// use Illuminate\Http\Request;
 
 class AtividadeController extends Controller
 {
@@ -19,7 +21,7 @@ class AtividadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(EventRequest $request)
     {
         // Date format
         setlocale(LC_COLLATE, 'pt-PT.utf8');
@@ -30,9 +32,10 @@ class AtividadeController extends Controller
             // dd(request()->all());
             $this->validateYearMonth();
             $atividades = Atividade::latest()
-            ->whereMonth('inicio', Carbon::parse($request->year_month)->format('m'))
-            ->whereYear('inicio', Carbon::parse($request->year_month)->format('Y'))
-            ->get();
+                ->whereMonth('inicio', Carbon::parse($request->year_month)->format('m'))
+                ->whereYear('inicio', Carbon::parse($request->year_month)->format('Y'))
+                ->get()
+            ;
 
             $users = User::all()->sortBy('nome', SORT_LOCALE_STRING);
             $locais = Local::all()->sortBy('nome', SORT_LOCALE_STRING);
@@ -55,10 +58,9 @@ class AtividadeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
         if (request()->has('title')) {
             $this->validateAjaxStoreAtividade();
@@ -67,7 +69,7 @@ class AtividadeController extends Controller
             $atividade->nome = $request->title;
             $atividade->user_id = Auth::user()->id;
             if ($request->recurso_id) {
-                $atividade->recurso_id = (int)$request->recurso_id;
+                $atividade->recurso_id = (int) $request->recurso_id;
             }
             $atividade->inicio = Carbon::parse($request->start)->format('Y-m-d H:i:s');
             $atividade->fim = empty($request->end) ? null : Carbon::parse($request->end)->format('Y-m-d H:i:s');
@@ -98,11 +100,11 @@ class AtividadeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Atividade  $atividade
+     * @param \App\Atividade $atividade
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(EventRequest $request)
     {
         // dd(request()->all());
         var_dump(request()->all());
@@ -129,13 +131,15 @@ class AtividadeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Atividade  $atividade
+     * @param \App\Atividade $atividade
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(EventRequest $request)
     {
         $atividade = Atividade::findOrFail($request->atividade_id);
         $atividade->delete();
+
         return back();
     }
 
@@ -143,11 +147,13 @@ class AtividadeController extends Controller
     {
         $atividades = Atividade::with('local', 'recurso', 'professores', 'turmas')
             ->select(\DB::raw('id, nome AS title, local_id, recurso_id, inicio AS start, fim AS end, total_espectadores, outros_espectadores, num_recursos AS total_recursos, observacao'))
-            ->get();
+            ->get()
+        ;
+
         return response()->json($atividades);
     }
 
-    public function ajaxUpdate(Request $request)
+    public function ajaxUpdate(EventRequest $request)
     {
         if ($request->has('title')) {
             // dd(request()->all());

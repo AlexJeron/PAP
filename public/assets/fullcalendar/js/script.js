@@ -17,6 +17,9 @@ function sendEvent(route, data_) {
         window.location.reload();
       }
     },
+    error: (json) => {
+      console.log(json);
+    },
   });
 }
 
