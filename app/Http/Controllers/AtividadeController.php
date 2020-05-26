@@ -11,6 +11,7 @@ use App\Turma;
 use App\User;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 // use Illuminate\Http\Request;
 
@@ -135,8 +136,9 @@ class AtividadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EventRequest $request)
+    public function destroy(Request $request)
     {
+        dd($request->all());
         $atividade = Atividade::findOrFail($request->atividade_id);
         $atividade->delete();
 
@@ -183,6 +185,14 @@ class AtividadeController extends Controller
             }
             $atividade->save();
         }
+    }
+
+    public function ajaxDestroy(Request $request)
+    {
+        // dd($request->all());
+        Atividade::findOrFail($request->id)->delete();
+
+        // return response()->json(true);
     }
 
     protected function validateAjaxUpdateAtividade()

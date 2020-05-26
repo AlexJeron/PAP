@@ -56,7 +56,8 @@
                     <div class="card-body" style="height:87vh">
                         <div id="calendar" data-load-atividades="{{ route('loadAtividades') }}"
                             data-update-atividade="{{ route('updateAtividade') }}"
-                            data-store-atividade="{{ route('storeAtividade') }}">
+                            data-store-atividade="{{ route('storeAtividade') }}"
+                            data-delete-atividade="{{ route('deleteAtividade') }}">
                         </div>
 
                         <div style='clear:both'></div>

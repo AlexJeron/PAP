@@ -14,11 +14,11 @@
 // Main Dashboard
 
 use App\Atividade;
-use App\User;
 use App\Local;
 use App\Professor;
-use App\Turma;
 use App\Recurso;
+use App\Turma;
+use App\User;
 
 Route::get('/', function () {
     $atividades = Atividade::latest()->get();
@@ -35,6 +35,7 @@ Route::get('/', function () {
 Route::get('/template', function () {
     $professores = App\Professor::take(3)->latest()->get();
     $users = App\User::take(3)->latest()->get();
+
     return view('dashboard.dashboard-template', ['professores' => $professores, 'users' => $users]);
 })->middleware('auth');
 
@@ -69,3 +70,4 @@ Route::resource('atividades', 'AtividadeController')->middleware('auth');
 Route::get('/load-atividades', 'AtividadeController@ajaxLoad')->name('loadAtividades');
 Route::put('/update-atividade', 'AtividadeController@ajaxUpdate')->name('updateAtividade');
 Route::post('/store-atividade', 'AtividadeController@store')->name('storeAtividade');
+Route::delete('/destroy-atividade', 'AtividadeController@ajaxDestroy')->name('deleteAtividade');

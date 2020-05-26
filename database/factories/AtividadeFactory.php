@@ -15,7 +15,7 @@ $factory->define(Atividade::class, function (Faker $faker) {
         'local_id' => factory(\App\Local::class),
         'recurso_id' => $faker->numberBetween($min = 1, $max = 2),
         'inicio' => $start,
-        'fim' => $faker->dateTimeBetween($start, $start->format('Y-m-d H:i:s') . '+' . $randomNum . 'days'),
+        'fim' => $faker->dateTimeBetween($start, $start->format('Y-m-d H:i:s').'+'.$randomNum.'days'),
         'total_espectadores' => $faker->numberBetween($min = 1, $max = 50),
         'outros_espectadores' => $faker->name,
         'num_recursos' => $faker->numberBetween($min = 1, $max = 30),

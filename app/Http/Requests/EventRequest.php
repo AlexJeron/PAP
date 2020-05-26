@@ -24,15 +24,10 @@ class EventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:1',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'title.required' => 'Preencha o campo Nome',
-            'title.min' => 'O nome precisa de pelo menos 1 caracter',
+            'title' => 'required|max:255',
+            'local_id' => 'required|max:20',
+            'start' => 'required|max:25',
+            'total_espectadores' => 'required|max:10',
         ];
     }
 }

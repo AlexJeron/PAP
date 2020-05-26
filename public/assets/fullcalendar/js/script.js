@@ -67,6 +67,17 @@ function formValidation() {
   }
 }
 
+$('.delete-event').click((event) => {
+  id = document.getElementById('id');
+  const Event = {
+    id: inputId.value,
+    _method: 'DELETE',
+  };
+  route = routeEvents('deleteAtividade');
+  sendEvent(route, Event);
+  $('#deleteAtividadeModal').modal('hide');
+});
+
 $('.save-event').click((event) => {
   event.preventDefault();
   localSelect = document.getElementById('local_select');

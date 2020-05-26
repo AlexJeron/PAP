@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach to url with files served from ./out",
+      "name": "Attach to url",
       "type": "chrome",
       "request": "attach",
       "port": 9222,

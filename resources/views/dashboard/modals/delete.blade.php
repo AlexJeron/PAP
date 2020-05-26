@@ -1,9 +1,10 @@
 <div class="modal fade" id="deleteAtividadeModal" tabindex="-1" role="dialog"
     aria-labelledby="deleteAtividadeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="{{ route('atividades.destroy', 'delete') }}">
-            @method('DELETE')
-            @csrf
+        {{-- <form method="POST" action="{{ route('atividades.destroy', 'delete') }}"> --}}
+        <form id="formEvent">
+            {{-- @method('DELETE') --}}
+            {{-- @csrf --}}
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="deleteAtividadeModalLabel">Apagar Atividade</h5>
@@ -17,7 +18,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-danger delete-event">Apagar</button>
+                    <button type="button" class="btn btn-danger delete-event">Apagar</button>
                 </div>
             </div>
         </form>
