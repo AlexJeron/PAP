@@ -53,6 +53,7 @@ let recursoSelect;
 let observacao;
 let start;
 let end;
+let calendarObject;
 
 document.addEventListener('DOMContentLoaded', () => {
   const { Calendar } = this.FullCalendar;
@@ -167,4 +168,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   calendar.render();
+  calendarObject = calendar;
 });

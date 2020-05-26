@@ -69,6 +69,9 @@ function formValidation() {
 
 $('.delete-event').click((event) => {
   id = document.getElementById('id');
+  const calendarEvent = calendarObject.getEventById(id.value);
+  calendarEvent.remove();
+
   const Event = {
     id: inputId.value,
     _method: 'DELETE',
@@ -76,6 +79,18 @@ $('.delete-event').click((event) => {
   route = routeEvents('deleteAtividade');
   sendEvent(route, Event);
   $('#deleteAtividadeModal').modal('hide');
+  // $('.delete-event')
+  //   .parents('.modal:first')
+  //   .hide();
+  // $('body').removeClass('modal-open');
+  // $('.modal-backdrop').remove();
+
+  // $('#deleteAtividadeModal').on('hidden.bs.modal', () => {
+  //   $('#masterAtividadeModal').modal('show');
+  //   $('#masterAtividadeModal').on('shown.bs.modal', () => {
+  //     $('#masterAtividadeModal').modal('hide');
+  //   });
+  // });
 });
 
 $('.save-event').click((event) => {
@@ -333,6 +348,10 @@ function deleteButtonClick() {
   $('#deleteAtividadeModal').modal('show');
 }
 
-$('#deleteAtividadeModal').on('hide.bs.modal', () => {
+// $('#deleteAtividadeModal').on('hide.bs.modal', () => {
+// $('#masterAtividadeModal').modal('show');
+// });
+
+function reopenMaster() {
   $('#masterAtividadeModal').modal('show');
-});
+}
