@@ -76,34 +76,37 @@ $('.delete-event').click((event) => {
     id: inputId.value,
     _method: 'DELETE',
   };
+
   route = routeEvents('deleteAtividade');
   sendEvent(route, Event);
   $('#deleteAtividadeModal').modal('hide');
-  // $('.delete-event')
-  //   .parents('.modal:first')
-  //   .hide();
-  // $('body').removeClass('modal-open');
-  // $('.modal-backdrop').remove();
-
-  // $('#deleteAtividadeModal').on('hidden.bs.modal', () => {
-  //   $('#masterAtividadeModal').modal('show');
-  //   $('#masterAtividadeModal').on('shown.bs.modal', () => {
-  //     $('#masterAtividadeModal').modal('hide');
-  //   });
-  // });
 });
 
 $('.save-event').click((event) => {
   event.preventDefault();
   localSelect = document.getElementById('local_select');
+  localNome = document
+    .getElementById('local_select')
+    .find('option:selected')
+    .map(function e() {
+      return $(this).text();
+    })
+    .get()
+    .join(',');
+  console.log(localNome);
   turmasSelect = $('#turmas_select').val();
   professoresSelect = $('#professores_select').val();
   recursoSelect = document.getElementById('recurso_select');
+  // recursoNome = document.querySelector('.filter-option-inner-inner').innerHTML;
   // console.log({ localSelect, turmasSelect, professoresSelect, recursoSelect });
 
   const Event = {
     title: inputName.value,
     local_id: localSelect.value,
+    local: {
+      id: localSelect.value,
+      nome: localNome.value,
+    },
     start: inputInicio.value,
     end: inputFim.value,
     total_espectadores: inputTotalEspectadores.value,
@@ -111,6 +114,10 @@ $('.save-event').click((event) => {
     turmas: turmasSelect,
     professores: professoresSelect,
     total_recursos: inputTotalRecursos.value,
+    recurso: {
+      id: recursoSelect.value,
+      nome: recursoNome.value,
+    },
     recurso_id: recursoSelect.value,
     observacao: inputObservacao.value,
   };
@@ -121,6 +128,7 @@ $('.save-event').click((event) => {
     Event._method = 'PUT';
   } else {
     route = routeEvents('storeAtividade');
+    calendarObject.addEvent(Event);
   }
 
   formValidation();
