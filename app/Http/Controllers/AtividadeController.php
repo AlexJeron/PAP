@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
-use App\Http\Requests\EventRequest;
 use App\Local;
 use App\Professor;
 use App\Recurso;
@@ -22,7 +21,7 @@ class AtividadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(EventRequest $request)
+    public function index(Request $request)
     {
         // Date format
         setlocale(LC_COLLATE, 'pt-PT.utf8');
@@ -61,7 +60,7 @@ class AtividadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(EventRequest $request)
+    public function store(Request $request)
     {
         if (request()->has('title')) {
             $this->validateAjaxStoreAtividade();
@@ -105,7 +104,7 @@ class AtividadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(EventRequest $request)
+    public function update(Request $request)
     {
         // dd(request()->all());
         var_dump(request()->all());
@@ -155,7 +154,7 @@ class AtividadeController extends Controller
         return response()->json($atividades);
     }
 
-    public function ajaxUpdate(EventRequest $request)
+    public function ajaxUpdate(Request $request)
     {
         if ($request->has('title')) {
             // dd(request()->all());
