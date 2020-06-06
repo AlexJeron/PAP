@@ -175,7 +175,8 @@
                             onclick="changeModalToEditMode()">
                             Editar
                         </button>
-                        <button type="submit" id="save_atividade" class="btn btn-primary save-event">
+                        <button type="submit" id="save_atividade" class="btn btn-primary save-event"
+                            onclick="refetchCalendar()">
                             Guardar
                         </button>
                     </div>

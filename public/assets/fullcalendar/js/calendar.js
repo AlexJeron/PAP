@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     windowResize: (view) => {
       calendar.setOption('height', $(window).height() * 0.83);
+      calendar.refetchEvents();
     },
     events: routeEvents('loadAtividades'),
   });

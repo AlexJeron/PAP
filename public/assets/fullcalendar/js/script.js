@@ -67,6 +67,10 @@ function formValidation() {
   }
 }
 
+function refetchCalendar() {
+  calendarObject.refetchEvents();
+}
+
 $('.delete-event').click((event) => {
   id = document.getElementById('id');
   const calendarEvent = calendarObject.getEventById(id.value);
@@ -113,12 +117,11 @@ $('.save-event').click((event) => {
     Event._method = 'PUT';
   }
 
-  console.log(Event);
-
   formValidation();
 
   if (inputName.value && localSelect.value && inputTotalEspectadores.value) {
     sendEvent(route, Event);
+    refetchCalendar();
     $('#masterAtividadeModal').modal('hide');
   }
 });
@@ -344,10 +347,13 @@ function deleteButtonClick() {
 // $('#masterAtividadeModal').modal('show');
 // });
 
-// $('#masterAtividadeModal').on('hidden.bs.modal', () => {
-//   id = '';
-//   console.log(id);
-// });
+$('#masterAtividadeModal').on('hide.bs.modal', () => {
+  // calendarObject.refetchEvents();
+});
+
+$('#masterAtividadeModal').on('hidden.bs.modal', () => {
+  // calendarObject.refetchEvents();
+});
 
 function reopenMaster() {
   $('#masterAtividadeModal').modal('show');
