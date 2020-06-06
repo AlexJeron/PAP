@@ -84,59 +84,35 @@ $('.delete-event').click((event) => {
 
 $('.save-event').click((event) => {
   event.preventDefault();
-  localSelect = document.getElementById('local_select');
-  localNome = document
-    .getElementById('local_select')
-    .find('option:selected')
-    .map(function e() {
-      return $(this).text();
-    })
-    .get()
-    .join(',');
-  console.log(localNome);
-  turmasSelect = $('#turmas_select').val();
-  professoresSelect = $('#professores_select').val();
-  recursoSelect = document.getElementById('recurso_select');
-  // recursoNome = document.querySelector('.filter-option-inner-inner').innerHTML;
-  // console.log({ localSelect, turmasSelect, professoresSelect, recursoSelect });
+  const id = $('#masterAtividadeModal input[name="id"]').val();
+  const title = $('#masterAtividadeModal input[name="name"]').val();
+  // const local = $('#masterAtividadeModal input[name="local"]').val();
+  const localSelect = document.getElementById('local_select');
+  const start = moment($('#masterAtividadeModal input[name="inicio"]').val(), 'DD-MM-YYYY HH:mm:ss').format(
+    'YYYY-MM-DDTHH:mm',
+  );
+  // const end = $('#masterAtividadeModal input[name="fim"]').val();
+  const totalEspectadores = $('#masterAtividadeModal input[name="total_espectadores"]').val();
 
   const Event = {
-    title: inputName.value,
+    title,
     local_id: localSelect.value,
-    local: {
-      id: localSelect.value,
-      nome: localNome.value,
-    },
-    start: inputInicio.value,
-    end: inputFim.value,
-    total_espectadores: inputTotalEspectadores.value,
-    outros_espectadores: inputOutrosEspectadores.value,
-    turmas: turmasSelect,
-    professores: professoresSelect,
-    total_recursos: inputTotalRecursos.value,
-    recurso: {
-      id: recursoSelect.value,
-      nome: recursoNome.value,
-    },
-    recurso_id: recursoSelect.value,
-    observacao: inputObservacao.value,
+    start,
+    total_espectadores: totalEspectadores,
   };
 
-  if (id) {
+  let route;
+  if (id === '') {
+    route = routeEvents('storeAtividade');
+  } else {
     route = routeEvents('updateAtividade');
     Event.id = id;
     Event._method = 'PUT';
-  } else {
-    route = routeEvents('storeAtividade');
-    calendarObject.addEvent(Event);
   }
 
-  formValidation();
+  console.log(Event);
 
-  if (inputName.value && localSelect.value && inputTotalEspectadores.value) {
-    sendEvent(route, Event);
-    $('#masterAtividadeModal').modal('hide');
-  }
+  sendEvent(route, Event);
 });
 
 function formReset(form) {
