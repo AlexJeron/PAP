@@ -84,24 +84,27 @@ $('.delete-event').click((event) => {
 
 $('.save-event').click((event) => {
   event.preventDefault();
-  const id = $('#masterAtividadeModal input[name="id"]').val();
-  const title = $('#masterAtividadeModal input[name="name"]').val();
-  // const local = $('#masterAtividadeModal input[name="local"]').val();
-  const localSelect = document.getElementById('local_select');
-  const start = moment($('#masterAtividadeModal input[name="inicio"]').val(), 'DD-MM-YYYY HH:mm:ss').format(
-    'YYYY-MM-DDTHH:mm',
-  );
-  // const end = $('#masterAtividadeModal input[name="fim"]').val();
-  const totalEspectadores = $('#masterAtividadeModal input[name="total_espectadores"]').val();
+  // id = $('#masterAtividadeModal input[name="id"]').val();
+  title = $('#masterAtividadeModal input[name="name"]').val();
+  localSelect = document.getElementById('local_select');
+  turmasSelect = $('#turmas_select').val();
+  professoresSelect = $('#professores_select').val();
+  recursoSelect = document.getElementById('recurso_select');
 
   const Event = {
     title,
     local_id: localSelect.value,
-    start,
-    total_espectadores: totalEspectadores,
+    start: inputInicio.value,
+    end: inputFim.value,
+    total_espectadores: inputTotalEspectadores.value,
+    outros_espectadores: inputOutrosEspectadores.value,
+    turmas: turmasSelect,
+    professores: professoresSelect,
+    total_recursos: inputTotalRecursos.value,
+    recurso_id: recursoSelect.value,
+    observacao: inputObservacao.value,
   };
 
-  let route;
   if (id === '') {
     route = routeEvents('storeAtividade');
   } else {
@@ -112,7 +115,12 @@ $('.save-event').click((event) => {
 
   console.log(Event);
 
-  sendEvent(route, Event);
+  formValidation();
+
+  if (inputName.value && localSelect.value && inputTotalEspectadores.value) {
+    sendEvent(route, Event);
+    $('#masterAtividadeModal').modal('hide');
+  }
 });
 
 function formReset(form) {
@@ -334,6 +342,11 @@ function deleteButtonClick() {
 
 // $('#deleteAtividadeModal').on('hide.bs.modal', () => {
 // $('#masterAtividadeModal').modal('show');
+// });
+
+// $('#masterAtividadeModal').on('hidden.bs.modal', () => {
+//   id = '';
+//   console.log(id);
 // });
 
 function reopenMaster() {

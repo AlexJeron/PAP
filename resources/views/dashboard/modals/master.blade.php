@@ -85,7 +85,7 @@
                     <div class="form-group row mt-n3">
                         <div class="col-sm-2" style="display: block;"></div>
                         <div class="col-sm-5 invalid-feedback" id="invalid_total" style="display: none;">O campo
-                            'local' é obrigatório!
+                            'total' é obrigatório!
                         </div>
                     </div>
 

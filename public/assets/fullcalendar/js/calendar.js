@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     eventClick: (element) => {
       console.dir(element);
+      console.log(id);
 
       // Fill Modal's Inputs with Data from the DB
       totalEspectadores = element.event.extendedProps.total_espectadores;
