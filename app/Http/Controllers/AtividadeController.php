@@ -107,7 +107,6 @@ class AtividadeController extends Controller
     public function update(Request $request)
     {
         // dd(request()->all());
-        var_dump(request()->all());
         $this->validateEditAtividade();
 
         $atividade = Atividade::findOrFail($request->id);
@@ -137,7 +136,7 @@ class AtividadeController extends Controller
      */
     public function destroy(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $atividade = Atividade::findOrFail($request->atividade_id);
         $atividade->delete();
 

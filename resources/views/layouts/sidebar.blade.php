@@ -57,16 +57,12 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li
         class="{{ request()->is('professores', 'turmas', 'users', 'locais', 'recursos') ? 'nav-item active' : 'nav-item' }}">
-        <a class="{{ request()->is('professores', 'turmas', 'users', 'locais', 'recursos') ? 'nav-link' : 'nav-link collapsed' }}"
-            href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="{{ request()->is('professores', 'turmas', 'users', 'locais', 'recursos') ? 'true' : 'false' }}"
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo" style="margin-left: -2px;">
             <i class="fas fa-fw fa-table"></i>
             <span style="margin-left: -2px;">Outras Tabelas</span>
         </a>
-        <div id="collapseTwo"
-            class="{{ request()->is('professores', 'turmas', 'users', 'locais', 'recursos') ? 'collapse show' : "collapse" }}"
-            aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gerir Tabelas:</h6>
 
@@ -102,13 +98,13 @@
         </div>
     </li>
 
-    <!-- Nav Item - Relatórios -->
-    <li class="{{ request()->is('relatorios') ? 'nav-item active' : 'nav-item' }}">
-        <a class="nav-link" href="#">
-            <i class="fas fa-list-alt"></i>
-            <span>Relatórios</span>
-        </a>
-    </li>
+    <!-- Nav Item - Histórico de Atividades-->
+    {{-- <li class="{{ request()->is('relatorios') ? 'nav-item active' : 'nav-item' }}">
+    <a class="nav-link" href="#">
+        <i class="fas fa-list-alt"></i>
+        <span>Histórico de Atividades</span>
+    </a>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

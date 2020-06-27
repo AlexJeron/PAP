@@ -36,7 +36,7 @@
                         Bem-Vindo
                     </span>
                     <span class="login100-form-title p-b-48">
-                        <img src="/img/Logo.png" alt="Logo" style="height:50px; width:43px;">
+                        <img src="/img/Logo.png" alt="Logo" style="height:60px; width:43px;">
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Um email válido é: a@b.c">

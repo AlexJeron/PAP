@@ -16,21 +16,21 @@ $(document).ready(() => {
         text: 'Copiar',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
-          columns: [0, 1, 2, 3, 4],
+          columns: [3, 0, 2, 4],
         },
       },
       {
         extend: 'excel',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
-          columns: [0, 1, 2, 3, 4],
+          columns: [3, 0, 2, 4],
         },
       },
       {
         extend: 'pdf',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
-          columns: [0, 1, 2, 3, 4],
+          columns: [3, 0, 2, 4],
         },
       },
       {
@@ -38,7 +38,7 @@ $(document).ready(() => {
         text: 'Imprimir',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
-          columns: [0, 1, 2, 3, 4],
+          columns: [3, 0, 2, 4],
         },
       },
       {

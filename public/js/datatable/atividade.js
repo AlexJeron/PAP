@@ -6,8 +6,6 @@ $(document).ready(() => {
     fixedHeader: true,
     responsive: true,
     sScrollX: '100%',
-    // keys: true,
-    // select: true,
     lengthMenu: [
       [10, 15, 20, -1],
       ['10 linhas', '15 linhas', '20 linhas', 'Mostrar tudo'],
@@ -40,7 +38,7 @@ $(document).ready(() => {
         text: 'Imprimir',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
-          columns: [0, 1, 2, 3, 4],
+          columns: [3, 0, 2, 3, 4],
         },
       },
       {

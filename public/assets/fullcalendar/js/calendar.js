@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     header: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay',
     },
     views: {
       week: {
