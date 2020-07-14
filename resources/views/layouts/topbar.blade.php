@@ -40,14 +40,14 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <span class="" id="night-mode" style="cursor:default; padding:0.25rem 1.5rem; color: #3a3b45">
+                {{-- <span class="" id="night-mode" style="cursor:default; padding:0.25rem 1.5rem; color: #3a3b45">
                     <i class="fas fa-moon fa-sm fa-fw mr-2 text-gray-400"></i>
                     Modo Noturno
                     <label class="switch" id="switch" style="margin-top:0.1rem">
                         <input type="checkbox" id="night-mode-checkbox">
                         <span class="slider round"></span>
                     </label>
-                </span>
+                </span> --}}
 
                 <a class="dropdown-item" href="/password/reset">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
