@@ -12,7 +12,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                        <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
                         <div class="col-sm-7">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                 name="nome" value="{{ old('name') }}" maxlength="80" autofocus required>
@@ -27,11 +28,12 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                        <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('Email') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-7">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" maxlength="80">
+                                name="email" value="{{ old('email') }}" maxlength="80" required>
 
                             @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -45,7 +47,8 @@
 
                     <div class="form-group row">
                         <label for="password"
-                            class="col-sm-4 col-form-label text-md-right">{{ __('Palavra-passe') }}</label>
+                            class="col-sm-4 col-form-label text-md-right">{{ __('Palavra-passe') }}<span class="red"
+                                style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-7">
                             <input id="password" type="password"
@@ -62,7 +65,8 @@
 
                     <div class="form-group row">
                         <label for="password_confirmation"
-                            class="col-sm-4 col-form-label text-md-right">{{ __('Confirmar Palavra-passe') }}</label>
+                            class="col-sm-4 col-form-label text-md-right">{{ __('Confirmar Palavra-passe') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-7">
                             <input id="password_confirmation" type="password" class="form-control"

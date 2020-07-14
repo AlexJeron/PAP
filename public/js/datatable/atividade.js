@@ -12,18 +12,11 @@ $(document).ready(() => {
     ],
     buttons: [
       {
-        extend: 'copy',
-        text: 'Copiar',
+        extend: 'print',
+        text: 'Imprimir',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
-          columns: [0, 1, 2, 3, 4],
-        },
-      },
-      {
-        extend: 'excel',
-        className: 'btn btn-sm btn-primary btn-shadow-sm',
-        exportOptions: {
-          columns: [0, 1, 2, 3, 4],
+          columns: [3, 0, 2, 3, 4],
         },
       },
       {
@@ -31,14 +24,6 @@ $(document).ready(() => {
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
           columns: [0, 1, 2, 3, 4],
-        },
-      },
-      {
-        extend: 'print',
-        text: 'Imprimir',
-        className: 'btn btn-sm btn-primary btn-shadow-sm',
-        exportOptions: {
-          columns: [3, 0, 2, 3, 4],
         },
       },
       {

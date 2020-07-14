@@ -16,8 +16,8 @@
     <!-- Nav Item - Dashboard -->
     <li class="{{ request()->is('/') ? 'nav-item active' : 'nav-item' }}">
         <a class="nav-link" href="/">
-            <i class="oi oi-dashboard"></i>
-            <span>Dashboard</span>
+            <i class="fas fa-calendar-alt"></i>
+            <span>Calendário</span>
         </a>
     </li>
 
@@ -36,7 +36,7 @@
     ?>
     <li class="{{ request()->is('atividades') ? 'nav-item active' : 'nav-item' }}">
         <a class="nav-link" href="atividades?year_month={{ $currentDate }}">
-            <i class="fas fa-calendar-alt"></i>
+            <i class="fas fa-list"></i>
             <span>Tabela de Atividades</span>
         </a>
     </li>

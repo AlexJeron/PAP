@@ -12,14 +12,6 @@ $(document).ready(() => {
     ],
     buttons: [
       {
-        extend: 'copy',
-        text: 'Copiar',
-        className: 'btn btn-sm btn-primary btn-shadow-sm',
-        exportOptions: {
-          columns: [3, 0, 2, 4],
-        },
-      },
-      {
         extend: 'print',
         text: 'Imprimir',
         className: 'btn btn-sm btn-primary btn-shadow-sm',

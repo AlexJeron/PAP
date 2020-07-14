@@ -51,7 +51,7 @@
                                     <tr>
                                         <th>Nome</th>
                                         <th>Quantidade</th>
-                                        <th>Danificados</th>
+                                        {{-- <th>Danificados</th> --}}
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
@@ -60,7 +60,7 @@
                                     <tr>
                                         <td> {{ $recurso->nome }} </td>
                                         <td> {{ $recurso->quantidade_total }} </td>
-                                        <td> {{ $recurso->danificados }} </td>
+                                        {{-- <td> {{ $recurso->danificados }} </td> --}}
                                         <td class="text-center">
                                             <a type="button" data-id="{{ $recurso->id }}"
                                                 data-nome="{{ $recurso->nome }}"

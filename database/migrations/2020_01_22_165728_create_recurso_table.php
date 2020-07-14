@@ -16,8 +16,8 @@ class CreateRecursoTable extends Migration
         Schema::create('recurso', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome')->unique();
-            $table->integer('quantidade_total');
-            $table->integer('danificados')->default('0');
+            $table->integer('quantidade_total')->nullable();
+            $table->integer('danificados')->nullable()->default('0');
             $table->timestamps();
         });
     }

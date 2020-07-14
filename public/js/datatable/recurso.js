@@ -12,15 +12,8 @@ $(document).ready(() => {
     ],
     buttons: [
       {
-        extend: 'copy',
-        text: 'Copiar',
-        className: 'btn btn-sm btn-primary btn-shadow-sm',
-        exportOptions: {
-          columns: [0, 1, 2],
-        },
-      },
-      {
-        extend: 'excel',
+        extend: 'print',
+        text: 'Imprimir',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
           columns: [0, 1],
@@ -28,14 +21,6 @@ $(document).ready(() => {
       },
       {
         extend: 'pdf',
-        className: 'btn btn-sm btn-primary btn-shadow-sm',
-        exportOptions: {
-          columns: [0, 1],
-        },
-      },
-      {
-        extend: 'print',
-        text: 'Imprimir',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
           columns: [0, 1],

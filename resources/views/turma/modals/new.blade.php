@@ -13,7 +13,8 @@
                 <div class="modal-body">
 
                     <div class="form-group row">
-                        <label for="nome" class="col-sm-3 col-form-label text-md-right">{{ __('Nome') }}</label>
+                        <label for="nome" class="col-sm-3 col-form-label text-md-right">{{ __('Nome') }}<span
+                                class="red" style="margin-right: -0.5rem">*</span></label>
 
                         <div class="col-sm-9">
                             <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror"
