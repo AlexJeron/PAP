@@ -132,6 +132,7 @@ function formReset(form) {
   inputOutrosEspectadores.value = '';
   inputRecurso.value = '';
   inputObservacao.value = '';
+  inputTotalRecursos.value = '';
   $('.selectpicker').selectpicker('val', '');
 }
 
