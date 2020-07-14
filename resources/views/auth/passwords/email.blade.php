@@ -61,6 +61,9 @@
                             </button>
                         </div>
                     </div>
+                    <div class="text-center">
+                        <a class="text-primary" href="/">Voltar</a>
+                    </div>
                 </form>
 
             </div>

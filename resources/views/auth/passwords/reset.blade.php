@@ -88,6 +88,9 @@
                                 Redefinir
                             </button>
                         </div>
+                        <div class="text-center">
+                            <a class="text-primary" href="/password/reset">Esqueceu-se da sua Palavra-Passe?</a>
+                        </div>
                     </div>
                 </form>
             </div>
