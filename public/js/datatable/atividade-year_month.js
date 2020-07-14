@@ -20,7 +20,8 @@ $(document).ready(() => {
         },
       },
       {
-        extend: 'excel',
+        extend: 'print',
+        text: 'Imprimir',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
           columns: [3, 0, 2, 4],
@@ -28,14 +29,6 @@ $(document).ready(() => {
       },
       {
         extend: 'pdf',
-        className: 'btn btn-sm btn-primary btn-shadow-sm',
-        exportOptions: {
-          columns: [3, 0, 2, 4],
-        },
-      },
-      {
-        extend: 'print',
-        text: 'Imprimir',
         className: 'btn btn-sm btn-primary btn-shadow-sm',
         exportOptions: {
           columns: [3, 0, 2, 4],
