@@ -12,7 +12,7 @@ $factory->define(Atividade::class, function (Faker $faker) {
     return [
         'nome' => $faker->sentence,
         'user_id' => factory(\App\User::class),
-        'local_id' => factory(\App\Local::class),
+        'local_id' => $faker->numberBetween($min = 1, $max = 7),
         'recurso_id' => $faker->numberBetween($min = 1, $max = 2),
         'inicio' => $start,
         'fim' => $faker->dateTimeBetween($start, $start->format('Y-m-d H:i:s').'+'.$randomNum.'days'),
