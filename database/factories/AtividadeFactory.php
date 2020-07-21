@@ -17,7 +17,7 @@ $factory->define(Atividade::class, function (Faker $faker) {
         'inicio' => $start,
         'fim' => $faker->dateTimeBetween($start, $start->format('Y-m-d H:i:s').'+'.$randomNum.'days'),
         'total_espectadores' => $faker->numberBetween($min = 1, $max = 50),
-        'outros_espectadores' => $faker->name,
+        'outros_espectadores' => $faker->randomElement(['alunos', 'professores', 'estudantes', 'pais']),
         'num_recursos' => $faker->numberBetween($min = 1, $max = 30),
         'observacao' => $faker->sentence,
         'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
