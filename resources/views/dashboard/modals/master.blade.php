@@ -74,7 +74,6 @@
                             <input id="total_espectadores" type="number" min="1" class="form-control"
                                 name="total_espectadores" placeholder="Total" disabled>
                         </div>
-
                         <div class="col-sm-9 pl-0 num-col-sm-9">
                             <input id="outros_espectadores" type="text" class="form-control" name="outros_espectadores"
                                 placeholder="Tipo de espectadores (ex: Alunos) [Campo Opcional]" style="width:94%"
